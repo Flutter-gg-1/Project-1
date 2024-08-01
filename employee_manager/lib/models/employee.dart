@@ -1,7 +1,6 @@
 import 'dart:math'; // library used to generate random id
 
 // Employee class represents an employee properities and actions
-
 class Employee {
   // class attributes
   final int id = Random().nextInt(9999999);

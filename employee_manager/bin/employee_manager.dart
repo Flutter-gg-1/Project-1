@@ -6,20 +6,23 @@ import 'package:employee_manager/models/employee.dart'; // employee class
 
 void main() {
   // initialize list of employees
-  List employees = [];
+  List<Employee> employees = [];
   while_manage:
   while(true) {
     managerMenu();
     stdout.write("Choose an option : ");
-    String? action = stdin.readLineSync();
+    var action = stdin.readLineSync();
     switch(action) {
       // EXIT
       case '0' :
       print("good bye ...");
       break while_manage;
 
-      case '1' :
       // view employees
+      case '1' :
+      for(var emp in employees) {
+        emp.display();
+      }
 
       // add employee
       case '2' :
