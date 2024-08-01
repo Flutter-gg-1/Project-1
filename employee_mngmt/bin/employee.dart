@@ -17,6 +17,8 @@ class Employee {
   String? dept;
   int? salary;
 
+  List<Employee> listOfEmployees = [];
+
   Employee(
       {required this.firstName,
       required this.lastName,
@@ -31,6 +33,7 @@ class Employee {
       this.dept,
       this.salary}) {
     empID = generateEmployeeID();
+    listOfEmployees.add(this);
   }
 
   String generateEmployeeID() {
