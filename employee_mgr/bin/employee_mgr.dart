@@ -1,4 +1,4 @@
-import '../home.dart';
+import 'home/home.dart';
 
 void main(List<String> arguments) {
   var home = Home();
