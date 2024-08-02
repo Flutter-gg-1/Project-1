@@ -1,4 +1,8 @@
+import 'dart:io';
+
 import './global_variabels.dart';
+import './add_new_employee.dart';
+import './display_all_employee.dart';
 
 class Home {
   static void instruction() {
@@ -17,9 +21,41 @@ class Home {
   static void userInput(String str) {
     switch (str) {
       case '1':
-        print("add new employee");
+        print("+++++++++++++++++++++++++++++++");
+        print("Add New Employee");
+        print("Employee Name :");
+        String inputEmployeeName = stdin.readLineSync().toString();
+        print("Employee National ID :");
+        String inputNationalID = stdin.readLineSync().toString();
+        print("Employee National Date of birth :");
+        String inputEmployeeDateOfBirth = stdin.readLineSync().toString();
+        print("Employee Job Title :");
+        String inputEmployeeJobTitle = stdin.readLineSync().toString();
+        print("Employee Job Description :");
+        String inputEmployeeJobDescription = stdin.readLineSync().toString();
+        print("Employee Basic Salary :");
+        var inputEmployeeJBasicSalary =
+            int.parse(stdin.readLineSync().toString());
+        print("Employee Other Allowance :");
+        double inputEmployeeJOtherAllowance =
+            double.parse(stdin.readLineSync()!);
+        addNewEmployee(
+            empName: inputEmployeeName,
+            nationaID: inputNationalID,
+            dateOfBirth: inputEmployeeDateOfBirth,
+            jobTitle: inputEmployeeJobTitle,
+            jobDescription: inputEmployeeJobDescription,
+            basicSalary: inputEmployeeJBasicSalary,
+            otherAllowances: inputEmployeeJOtherAllowance);
+        stdin.readLineSync();
+        Home.instruction();
+
       case '2':
-        print("Display all employee");
+        displayAllEmployee(allEmployee);
+        stdin.readLineSync();
+
+        Home.instruction();
+
       case '3':
         print("Update an employee");
       case '4':
