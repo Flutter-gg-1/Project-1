@@ -1,54 +1,29 @@
-import 'dart:io'; // function to interact with user
+import 'dart:math';                   // library used to generate random employee id
+import 'get_input_name.dart';         // function to get name input from user
+import 'get_input_salary.dart';       // function to get salary input from user
+import 'get_input_job_desc.dart';     // function to get job description input from user
+import 'get_input_permissions.dart';  // function to get permissions input from user
 import 'package:employee_manager/models/employee.dart'; // employee class
 
 // function to add a new employee
-Employee addEmployee({required int id}) {
-  // ask manager to enter employee name
-  stdout.write("Enter employee name : ");
-  String? name = stdin.readLineSync();
-  // name validation
-  while(name!.isEmpty || !name.contains(RegExp('^[a-zA-Z ]+\$'))) {
-    print("ERROR !! : Invalid Name\n");
-    stdout.write("Enter employee name : ");
-    name = stdin.readLineSync();
+List addEmployee({required Map<int, Employee> employees}) {
+  // generate employee id
+  int id = Random().nextInt(9999999);
+
+  // generate new id if id already exists
+  while (employees.containsKey(id)) {
+    id = Random().nextInt(9999999);
   }
 
-  // ask manager to enter employee salary
-  stdout.write("Enter employee salary in SR : ");
-  String? salary = stdin.readLineSync();
-  // salary validation
-  while(salary!.isEmpty || double.tryParse(salary) == null) {
-    print("ERROR !! : Invalid Salary\n");
-    stdout.write("Enter employee salary in SR : ");
-    salary = stdin.readLineSync();
-  }
-  
-  // ask manager to enter employee job desription
-  stdout.write("Enter employee job description : ");
-  String? jobDesc = stdin.readLineSync();
-  // job description validation
-  while(jobDesc!.isEmpty) {
-    print("ERROR !! : Invalid job description\n");
-    stdout.write("Enter employee job description : ");
-    jobDesc = stdin.readLineSync();
-  }
-  
-  // ask manager if employee has current permissions
-  List permissions = [];
-  stdout.write("How many permissions does $name have (0-3) ? : ");
-  String? numOfPermissions = stdin.readLineSync();
-  // number validation
-  while(numOfPermissions!.isEmpty || !['0','1','2','3'].contains(numOfPermissions)) {
-    print("ERROR !! : Invalid number\n");
-    stdout.write("How many permissions does $name have (0-3) ? : ");
-    numOfPermissions = stdin.readLineSync();
-  }
-  // add permissions if exist
-  for(int i=0; i<int.parse(numOfPermissions); i++) {
-    stdout.write("Enter permission ${i+1} : ");
-    permissions.add(stdin.readLineSync());
-  }
+  // get employee info
+  String name = getInputName();
+  double salary = getInputSalary();
+  String jobDesc = getInputJobDesc();
+  List permissions = getInputPermissions(name: name);
 
-  // finally, return an instance of class employee with above inputs
-  return Employee(id:id, name: name, salary: double.parse(salary), jobDesc: jobDesc, permissions: permissions);
+  // create an instance of class employee with above inputs
+  Employee employee = Employee(id: id, name: name, salary: salary, jobDesc: jobDesc, permissions: permissions);
+
+  // return the two values to be added to the employees map
+  return [id, employee];
 }

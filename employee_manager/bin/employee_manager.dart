@@ -1,6 +1,5 @@
 // imports
 import 'dart:io';             // library used to interact with user
-import 'dart:math';           // library used to generate employee id
 import 'manager_menu.dart';   // function to print manager's menu
 import 'add_employee.dart';   // function to add a new employee
 import 'package:employee_manager/models/employee.dart'; // employee class
@@ -32,15 +31,9 @@ void main() {
 
       // add employee
       case '2' :
-      // initialize employee id
-      int id = Random().nextInt(9999999);
-      // generate new id if id already exists
-      while(employees.containsKey(id)) {
-        id = Random().nextInt(9999999);
-      }
-      // create employee instance with the generated id
-      Employee employee = addEmployee(id:id);
-      // add employee to map with their id
+      List employeeInfo = addEmployee(employees: employees);
+      int id = employeeInfo[0];
+      Employee employee = employeeInfo[1];
       employees[id] = employee;
       print("Employee ${employee.name} is added to employees list ✅\n${employee.name}'s ID is $id");
 
