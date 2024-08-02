@@ -1,6 +1,16 @@
 import 'dart:io';
-import 'dart:math';
 import '../all_file.dart';
 void deleteEmployee(){
-  print('Delete Employee');
+    print('\n_____________# Delete Employee #___________\n');
+    print('Enter Employee ID: ');
+    final int id = int.parse(stdin.readLineSync()!);
+    for (var element in employeeList) {
+      if (element['id'].toString().trim() == id.toString().trim()) {
+        print(element);
+        employeeList.remove(element);
+        break;
+      }
+    }
+    print('\nEmployee Deleted Successfully\n');
+
 }
