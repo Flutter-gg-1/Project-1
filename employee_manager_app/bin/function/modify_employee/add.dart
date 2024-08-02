@@ -17,6 +17,6 @@ Employee.info.addAll({
     'job description : $jobDescription',
     'permission : $permission'
     ]});
-
-    print('${Employee.info}');
+    PrintWithColor.green('Employee $name has been created with info :');
+    print('${Employee.info[name]}');   
 }

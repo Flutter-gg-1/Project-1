@@ -11,11 +11,9 @@ double salary = double.parse(stdin.readLineSync().toString().trim());
 
 if (Employee.info.containsKey(name)) {
   //salary index = 0  VVV
-  Employee.info[name]![0]=salary;
+  Employee.info[name]![0]='Salary : $salary';
   PrintWithColor.green('Done');
-  stdin.readLineSync();
 }else{
-  print('there is no employee have a neme $name');
-  stdin.readLineSync();
+  PrintWithColor.red('there is no employee have a neme $name'); 
 }
 }

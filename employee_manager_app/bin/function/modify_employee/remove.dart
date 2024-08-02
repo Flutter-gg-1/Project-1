@@ -9,5 +9,4 @@ String name = stdin.readLineSync().toString().trim();
 Employee.info.remove(name);
 
 PrintWithColor.red('Employee $name has been removed');
-
 }
