@@ -37,14 +37,14 @@ interface() {
   user as Employee;
   while (true) {
     if (user.permission == PermissionLevel.admin.toString().split(".").last) {
-      adminPage();
+      adminPage(user);
     } else {
-      employeePage();
+      employeePage(user);
     }
   }
 }
 
-void adminPage() {
+void adminPage(Employee user) {
   print("*****ADMIN*****");
   print("1- Add employee 2- edit employee  0-logout");
   String userInput = stdin.readLineSync() ?? "0";
@@ -81,10 +81,14 @@ void adminPage() {
   }
 }
 
-employeePage() {
-  print("0-logout");
+employeePage(Employee user) {
+  print("1-show my info 0-logout");
   String userInput = stdin.readLineSync() ?? "0";
   switch (userInput) {
+    case == "1":
+      user.printEmployeeInfo();
+      break;
+
     case == "0":
       interface();
       break;
