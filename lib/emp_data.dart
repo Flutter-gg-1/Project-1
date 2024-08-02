@@ -17,6 +17,15 @@ void addEmployee(Employee emp) {
   }
 }
 
+getEmployee(var id) {
+  for (var emp in emps) {
+    if (emp.id == id) {
+      return emp;
+    }
+  }
+  return false;
+}
+
 void printAllEmployees() {
   for (var emp in emps) {
     print("* " * 12);
