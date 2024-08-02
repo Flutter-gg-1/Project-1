@@ -2,9 +2,9 @@
 import 'dart:io';
 import 'all_file.dart';
 void mainDashboard(){
-  print('Main Dashboard');
-  print('1. Employee Manager  2. Supervisor  3. Exit');
-  stdout.write('Enter your choice: ');
+  print('\n______________########## Main Dashboard ##########___________');
+  print('1. Employee Manager  2. Employee Profile  3. Exit');
+  stdout.write('Enter your choice: \n');
   int? choice = int.parse(stdin.readLineSync()!);
   switch(choice){
     case 1:

@@ -2,15 +2,15 @@
 import 'dart:io';
 import 'all_file.dart';
 void employeeManager(){
-  print('Dashboard of Employee Manager');
-  print('1. Manage Employee  2. Supervisor');
+  print('\n_____________########## Dashboard of Employee Manager ##########___________\n');
+  print('1. Employee  2. Supervisor');
   print('3. Workers   4. Main Dashboard');
-  print('to exit press 0');
+  print('to exit press 0\n');
   stdout.write('Enter your choice: ');
   int? choice = int.parse(stdin.readLineSync()!);
   switch(choice){
     case 1:
-      employeeManager();
+      emp();
       break;
     case 2:
       supervisorEmployee();

@@ -1,6 +1,5 @@
 // Employee Manager
 import 'dart:io';
-import 'all_file.dart';
-void employeeManager(){
+void emp(){
   print('Employee Manager');
 }
