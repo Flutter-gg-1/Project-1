@@ -13,6 +13,21 @@ class Department {
     listOfDept.add(this);
   }
 
+  static Department? getDepartment(String deptName) {
+    int departmentIndex = -1;
+    for (int i = 0; i < listOfDept.length; i++) {
+      if (listOfDept[i].deptName == deptName) {
+        departmentIndex = i;
+        break;
+      }
+    }
+    if (departmentIndex > 0) {
+      return listOfDept[departmentIndex];
+    } else {
+      return null;
+    }
+  }
+
   String generateDeptID(String? deptName) {
     Random random = Random();
 

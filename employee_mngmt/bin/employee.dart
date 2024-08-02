@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'department.dart';
 
 class Employee {
   String? firstName;
@@ -17,7 +18,7 @@ class Employee {
   String? password;
 
   String? role;
-  String? dept;
+  Department? dept;
   String? jobDescription;
   static List<Employee> permissionList = [];
   int? salary;
@@ -30,9 +31,9 @@ class Employee {
     required this.role,
   }) {
     empID = generateEmployeeID();
-    password = setPassword();
+    password = setPassword(this);
     fillEmployeeInformation(this);
-    listOfEmployees.add(empID as Employee);
+    listOfEmployees.add(this);
     print('Employee $empID Added Successfully!!');
   }
 
@@ -46,13 +47,13 @@ class Employee {
     }
     if (employeeIndex > 0) {
       return listOfEmployees[employeeIndex];
-    }else{
+    } else {
       return null;
     }
   }
 
   static viewInfo(Employee? emp) {
-    if(emp == null){
+    if (emp == null) {
       print('Employee Not Found!!');
       return;
     }
@@ -65,7 +66,7 @@ class Employee {
     print('Email: ${emp.email}');
     print('Address: ${emp.address}');
     print('role: ${emp.role}');
-    print('Department: ${emp.dept}');
+    print('Department: ${emp.dept!.deptName}');
     print('Job Description: ${emp.jobDescription}');
     print('Salary: ${emp.salary}');
     print('Permission to Modify: ${permissionList.contains(emp)}');
@@ -99,18 +100,19 @@ class Employee {
     stdout.write('Address: ');
     emp.address = stdin.readLineSync();
     stdout.write('Department: ');
-    emp.dept = stdin.readLineSync();
+    Department department = Department(deptName: stdin.readLineSync());
+    emp.dept = department;
     stdout.write('Job Description: ');
     emp.jobDescription = stdin.readLineSync();
     stdout.write('Salary: ');
     emp.salary = int.parse(stdin.readLineSync()!);
   }
 
-  String setPassword() {
-    stdout.write('Enter your new password');
+  static String setPassword(Employee emp) {
+    stdout.write('Enter your new password: ');
     String password = stdin.readLineSync()!;
     String hashedPassword = sha256.convert(utf8.encode(password)).toString();
-    this.password = hashedPassword;
+    emp.password = hashedPassword;
     return hashedPassword;
   }
 
