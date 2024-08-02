@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:math';
+import '../all_file.dart';
 
-void addEmployee(){
+void addEmployee() {
   print('\n_____________# Add Employee #___________\n');
   print('Employee ID will be generated automatically');
   int? id = Random().nextInt(1000);
@@ -18,17 +19,35 @@ void addEmployee(){
   print('Enter Employee descriptions: ');
   String? descriptions = stdin.readLineSync();
   print('Enter Employee permissions: ');
-  String? permissions = stdin.readLineSync();
-  print('\n');
-  print('ID: $id');
-  print('Name: $name');
-  print('Age: $age');
-  print('Phone Number: $phoneNumber');
-  print('Position: $position');
-  print('Permissions: $permissions');
-  print('Salary: $salary');
-  print('Descriptions: $descriptions');
-  print('\n');
-  print('Add Employee Successfull...');
-  print('\n');
+  print('1. Manager  2. Workers  3. Supervisor ');
+  int? perInput = int.parse(stdin.readLineSync()!);
+  String? permissions;
+  switch (perInput) {
+    case 1:
+      permissions = 'Manager';
+      break;
+    case 2:
+      permissions = 'Workers';
+      break;
+    case 3:
+      permissions = 'Supervisor';
+      break;
+    default:
+      print('Invalid choice , Exit...');
+      exit(0);
+  }
+  print('\nAdd Employee Successfull...\n');
+  Map<String, dynamic> employee = {};
+  employee.addAll({
+    'id': id,
+    'name': name,
+    'age': age,
+    'phoneNumber': phoneNumber,
+    'position': position,
+    'salary': salary,
+    'descriptions': descriptions,
+    'permissions': permissions
+  });
+  employeeList.add(employee);
+  print(employeeList);
 }
