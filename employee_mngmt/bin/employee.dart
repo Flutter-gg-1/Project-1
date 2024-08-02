@@ -8,7 +8,7 @@ class Employee {
   String? firstName;
   String? lastName;
   late String? empID;
-  String? nationality;
+  static const String nationality = 'Saudi';
   String? dateOfBirth;
   String? gender;
 
@@ -20,6 +20,7 @@ class Employee {
   String? role;
   String? dept;
   String? jobDescription;
+  bool permission = false;
   int? salary;
 
   static List<Employee> listOfEmployees = [];
@@ -28,7 +29,6 @@ class Employee {
       {required this.firstName,
       required this.lastName,
       required this.role,
-      this.nationality,
       this.dateOfBirth,
       this.gender,
       this.phoneNumber,
@@ -55,10 +55,16 @@ class Employee {
     print('Department: $dept');
     print('Job Description: $jobDescription');
     print('Salary: $salary');
+    print('Permission: $permission');
   }
 
   String generateEmployeeID() {
     Random random = Random();
+
+    /*
+    Emplooyee ID is 5 digits
+    It cannot start with 0
+    */
 
     int firstDigit = random.nextInt(9) + 1; //Start with number other than 0
     String remainingDigits =
@@ -67,11 +73,19 @@ class Employee {
     return '$firstDigit$remainingDigits';
   }
 
-  setPassword() {
+  String setPassword() {
     stdout.write('Enter your new password');
     String password = stdin.readLineSync()!;
     String hashedPassword = sha256.convert(utf8.encode(password)).toString();
     this.password = hashedPassword;
     return hashedPassword;
+  }
+
+  int setSalary(int amount){
+    return salary = amount;
+  }
+
+  bool setPermission(){
+    return permission = true;
   }
 }
