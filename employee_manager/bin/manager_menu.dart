@@ -6,9 +6,11 @@ void managerMenu() {
   print('-'*30);
   print('| 2 |   Add a New Employee   |');
   print('-'*30);
-  print('| 3 |  Modify Employee Info  |');
+  print('| 3 |   Promote an Employee  |');
   print('-'*30);
-  print('| 4 |     Remove Employee    |');
+  print('| 4 |  Modify Employee Info  |');
+  print('-'*30);
+  print('| 5 |     Remove Employee    |');
   print('-'*30);
   print('| 0 |          EXIT          |');
   print('='*30);

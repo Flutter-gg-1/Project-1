@@ -16,6 +16,17 @@ class Employee {
       required this.permissions});
 
   // class behaviours
+  // function for promotion
+  void promote() {
+    salary+=1000;
+    print("Employee $name with ID $id earned a promotion ! 🎉");
+  }
+
+  // function to assign permissions
+  void addPermission(String permission) {
+    permissions.add(permission);
+  }
+
   // function to display employee info
   void display() {
     print('*' * 30);

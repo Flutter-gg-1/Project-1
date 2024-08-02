@@ -39,8 +39,17 @@ void main() {
       employees[id] = employee;
       print("Employee ${employee.name} is added to employees list ✅\n${employee.name}'s ID is $id");
 
-      // modify employee info
+      // promote an employee
       case '3' :
+      if(employees.isEmpty) {
+        print("You have not added any employees yet");
+        break;
+      }
+      int id = getInputID(employees);
+      employees[id]!.promote();
+      
+      // modify employee info
+      case '4' :
       if(employees.isEmpty) {
         print("You have not added any employees yet");
         break;
@@ -49,7 +58,7 @@ void main() {
       modifyInfo(id:id, employees:employees);
 
       // remove employee
-      case '4' :
+      case '5' :
       if(employees.isEmpty) {
         print("You have not added any employees yet");
         break;
