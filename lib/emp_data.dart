@@ -21,9 +21,10 @@ getEmployee(var id) {
   for (var emp in emps) {
     if (emp.id == id) {
       return emp;
+    } else {
+      return false;
     }
   }
-  return false;
 }
 
 void printAllEmployees() {

@@ -3,17 +3,18 @@ import "package:ems/emp_data.dart";
 import "package:ems/employee.dart";
 
 interface() {
-  late int id;
-  dynamic user;
+  int id = -1;
+  late dynamic user;
 
   print("Login");
   print("Input your id");
 
   do {
+    String userInput = stdin.readLineSync()!;
     try {
-      id = int.parse(stdin.readLineSync()!);
+      id = int.parse(userInput);
     } catch (e) {
-      print("Enter only number");
+      print("it not valid id");
     }
 
     user = getEmployee(id);
@@ -22,4 +23,5 @@ interface() {
     }
   } while (user == false);
   user as Employee;
-  }
+  user.printEmployeeInfo();
+}
