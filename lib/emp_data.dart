@@ -5,26 +5,24 @@ import 'package:ems/employee.dart';
 import 'global.dart';
 
 void addEmployee(Employee emp) {
-  late int id;
   if (emps.isEmpty) {
-    id = 1;
+    emp.id = 1;
   } else {
-    id = emps.last.id + 1;
-    emp.id = id;
+    emp.id = emps.last.id + 1;
     emps.add(emp);
     print("add was seccuss");
     emp.printEmployeeInfo();
   }
 }
 
-getEmployee(var id) {
-  for (var emp in emps) {
+getEmployee(int id) {
+  for (Employee emp in emps) {
+    emp.printEmployeeInfo();
     if (emp.id == id) {
       return emp;
-    } else {
-      return false;
     }
   }
+  return false;
 }
 
 void printAllEmployees() {

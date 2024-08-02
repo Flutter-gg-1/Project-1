@@ -12,7 +12,10 @@ interface() {
   */
   int id = -1;
   late dynamic user;
-
+  print("users");
+  for (Employee emp in emps) {
+    emp.printEmployeeInfo();
+  }
   print("Login");
   print("Input your id");
 
@@ -31,35 +34,58 @@ interface() {
   } while (user == false);
   // after initialize a user cast the variable as employee
   user as Employee;
-
-  user.printEmployeeInfo();
-
-  if (user.permission == PermissionLevel.admin.toString()) {
-    print("1- Add User");
-    String userInput = stdin.readLineSync() ?? "0";
-    switch (userInput) {
-      case == "1":
-        print("Employee name");
-        String name = stdin.readLineSync()!;
-
-        print("Salary");
-        int salary = 0;
-        salary = int.parse(stdin.readLineSync()!);
-
-        print("what is the job description");
-        String jobDescriptions = stdin.readLineSync()!;
-
-        print("select on of these permission");
-        print("1- admin 2- dev 3- it");
-        String permission = getPermission(stdin.readLineSync() ?? "3");
-
-        addEmployee(Employee(
-            id: 0,
-            name: name,
-            salary: salary,
-            jobDescriptions: jobDescriptions,
-            permission: permission));
-        break;
+  while (true) {
+    if (user.permission == PermissionLevel.admin.toString().split(".").last) {
+      adminPage();
+    } else {
+      employeePage();
     }
   }
+}
+
+void adminPage() {
+  print("*****ADMIN*****");
+  print("1- Add User  0-logout");
+  String userInput = stdin.readLineSync() ?? "0";
+  switch (userInput) {
+    case == "1":
+      add();
+      break;
+    case == "0":
+      interface();
+      break;
+  }
+}
+
+employeePage() {
+  print("0-logout");
+  String userInput = stdin.readLineSync() ?? "0";
+  switch (userInput) {
+    case == "0":
+      interface();
+      break;
+  }
+}
+
+void add() {
+  print("Employee name");
+  String name = stdin.readLineSync()!;
+
+  print("Salary");
+  int salary = 0;
+  salary = int.parse(stdin.readLineSync()!);
+
+  print("what is the job description");
+  String jobDescriptions = stdin.readLineSync()!;
+
+  print("select on of these permission");
+  print("1- admin 2- dev 3- it");
+  String permission = getPermission(stdin.readLineSync() ?? "3");
+  Employee newEmp = Employee(
+      id: 0,
+      name: name,
+      salary: salary,
+      jobDescriptions: jobDescriptions,
+      permission: permission);
+  addEmployee(newEmp);
 }
