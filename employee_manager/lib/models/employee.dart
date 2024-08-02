@@ -22,11 +22,6 @@ class Employee {
     print("Employee $name with ID $id earned a promotion ! 🎉");
   }
 
-  // function to assign permissions
-  void addPermission(String permission) {
-    permissions.add(permission);
-  }
-
   // function to display employee info
   void display() {
     print('*' * 30);

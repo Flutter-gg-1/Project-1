@@ -6,7 +6,7 @@ double getInputSalary() {
   String? salary = stdin.readLineSync();
   // salary validation
   while (salary!.isEmpty || double.tryParse(salary) == null) {
-    print("ERROR !! : Invalid Salary\n");
+    print("ERROR !! : Invalid Salary ❌\n");
     stdout.write("Enter employee salary in SR : ");
     salary = stdin.readLineSync();
   }

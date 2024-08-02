@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'app_menu.dart';
 import 'get_input_salary.dart'; // function to get salary input from user
 import 'get_input_job_desc.dart'; // function to get job description input from user
 import 'get_input_permissions.dart'; // function to get permissions input from user
@@ -9,12 +10,7 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
   while_modify:
   while (true) {
     print('What modification do you want to perform on employee $id ?');
-    print('1- salary');
-    print('2- job description');
-    print('3- add permission');
-    print('4- delete permission');
-    print('0- back to main menu');
-    print("*"*30);
+    appMenu(modify:true);
     stdout.write("Choose an option : ");
     String? modifyChoice = stdin.readLineSync();
 
@@ -26,21 +22,21 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
       // modify salary
       case '1':
         employee.salary = getInputSalary();
-        print("Salary is updated successfully ✅");
+        print("Salary is updated successfully ✅\n");
 
       // modify job description
       case '2':
         employee.jobDesc = getInputJobDesc();
-        print("Job description is updated successfully ✅");
+        print("Job description is updated successfully ✅\n");
 
       // add permission if possible
       case '3':
         if (employee.permissions.isEmpty) {
           employee.permissions = getInputPermissions(name: employee.name);
-          print("Job description is updated successfully ✅");
+          print("Permissions are updated successfully ✅\n");
         }
         else if (employee.permissions.length == 3) {
-          print("ERROR !! : Employee $id has maximum amount of permissions ❌");
+          print("ERROR !! : Employee $id has maximum amount of permissions ❌\n");
         }
         else {
           stdout.write("Enter a permission : ");
@@ -64,10 +60,10 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
             index = stdin.readLineSync();
           }
           employee.permissions.removeAt(int.parse(index)-1);
-          print("Permission removed successfully ✅");
+          print("Permission removed successfully ✅\n");
         }
         else {
-          print("ERROR !! : Employee $id has no permissions ❌");
+          print("ERROR !! : Employee $id has no permissions ❌\n");
         }
     }
   }

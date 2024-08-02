@@ -7,7 +7,7 @@ String getInputName() {
   String? name = stdin.readLineSync();
   // name validation
   while (name!.isEmpty || !name.contains(RegExp('^[a-zA-Z ]+\$'))) {
-    print("ERROR !! : Invalid Name\n");
+    print("ERROR !! : Invalid Name ❌\n");
     stdout.write("Enter employee name : ");
     name = stdin.readLineSync();
   }

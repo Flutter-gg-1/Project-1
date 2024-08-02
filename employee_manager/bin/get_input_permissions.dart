@@ -8,11 +8,11 @@ List getInputPermissions({required String name}) {
   // number validation
   while (numOfPermissions!.isEmpty ||
       !['0', '1', '2', '3'].contains(numOfPermissions)) {
-    print("ERROR !! : Invalid number\n");
+    print("ERROR !! : Invalid number ❌\n");
     stdout.write("How many permissions does $name have (0-3) ? : ");
     numOfPermissions = stdin.readLineSync();
   }
-  // add permissions if exist
+  // add permissions
   for (int i = 0; i < int.parse(numOfPermissions); i++) {
     stdout.write("Enter permission ${i + 1} : ");
     permissions.add(stdin.readLineSync());

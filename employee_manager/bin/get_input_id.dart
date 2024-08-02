@@ -6,7 +6,7 @@ int getInputID(Map employees) {
   String? id = stdin.readLineSync();
   // id validation
   while (id!.isEmpty || int.tryParse(id) == null || !employees.containsKey(int.parse(id))) {
-    print("ERROR !! : Invalid ID\n");
+    print("ERROR !! : Invalid ID ❌\n");
     stdout.write("Enter employee ID : ");
     id = stdin.readLineSync();
   }

@@ -6,7 +6,7 @@ String getInputJobDesc() {
   String? jobDesc = stdin.readLineSync();
   // job description validation
   while (jobDesc!.isEmpty) {
-    print("ERROR !! : Invalid job description\n");
+    print("ERROR !! : Invalid job description ❌\n");
     stdout.write("Enter employee job description : ");
     jobDesc = stdin.readLineSync();
   }
