@@ -1,74 +1,45 @@
 import 'dart:io';
 
 import '../mock_storage/storage.dart';
-import '../model/employee.dart';
+import 'home_print_messages.dart';
 
 class Home {
+  // Creates an instance of the mock storage
   var storage = Storage();
-
+  // Flag tp Terminate the app
   var shouldExit = false;
 
   /* MARK: - FUNCTIONS */
-  // App Lifecycle
-  void runApp() {
-    showInstructions();
-    do {
-      print('');
-      var userInput = stdin.readLineSync();
 
-      if (userInput == 'q') {
-        terminateMsg();
-        shouldExit = true;
-      } else if (userInput == 'i') {
-        showInstructions();
+  // App Home
+  void runApp() {
+    do {
+      if (storage.currentUser == null) {
+        storage.signIn();
       } else {
+        homeMsg();
+        var userInput = stdin.readLineSync();
         handleUserInput(userInput ?? '');
       }
     } while (!shouldExit);
   }
 
-  Employee? auth() {
-    do {
-      for (var employee in storage.employees) {
-        employee.showEmployeeDeatails();
-      }
-      print('Who are you? Enter your ID to login');
-      var userInput = stdin.readLineSync();
-      storage.currentUser =
-          storage.employees.firstWhere((e) => e.id.toString() == userInput!);
-    } while (storage.currentUser == null);
-    return null;
-  }
-
-  // Print instructions for user input
-  void showInstructions() => print('''
-
-        Common Functions:
-          1 | Show my Info
-          2 | Edit my Info
-
-          i | For instructions
-          s | SignOut
-          q | For terminating the app
-
-        Manager Functions:
-          new | Add New Employee
-          le  | List Employees
-          lm  | List Managers
-
-      ''');
-
   // Cases for user input
   void handleUserInput(String str) {
+    var user = storage.currentUser;
     switch (str) {
       case '1':
-        print('');
+        (user != null) ? user.showEmployeeDeatails() : userError();
       case '2':
         print('');
       case 'i':
-        print('');
+        showInstructions();
       case 's':
-        storage.currentUser = null;
+        signOutMsg();
+        storage.signOut();
+      case 'q':
+        terminateMsg();
+        shouldExit = true;
       case 'new':
         print('');
       case 'le':
@@ -80,15 +51,4 @@ class Home {
         unknownInput();
     }
   }
-
-  /* Simple Print Functions */
-  // SignOut
-  void signOutMsg() => print('Signed Out');
-  // Terminate App
-  void terminateMsg() => print('APP TERMINATED!');
-  // Unknow Input
-  void unknownInput() => print('ERROR: UNKNOWN INPUT!');
-  // Access Rightss
-  void accessDenied() => print(
-      'Access Denied! \nYou do not have permissions to view the requested data!');
 }
