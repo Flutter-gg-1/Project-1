@@ -2,12 +2,12 @@ import 'dart:io'; // function to interact with user
 import 'package:employee_manager/models/employee.dart'; // employee class
 
 // function to add a new employee
-Employee addEmployee() {
+Employee addEmployee({required int id}) {
   // ask manager to enter employee name
   stdout.write("Enter employee name : ");
   String? name = stdin.readLineSync();
   // name validation
-  while(name!.isEmpty || !name.contains(RegExp('^[a-zA-Z]+\$'))) {
+  while(name!.isEmpty || !name.contains(RegExp('^[a-zA-Z ]+\$'))) {
     print("ERROR !! : Invalid Name\n");
     stdout.write("Enter employee name : ");
     name = stdin.readLineSync();
@@ -50,5 +50,5 @@ Employee addEmployee() {
   }
 
   // finally, return an instance of class employee with above inputs
-  return Employee(name: name, salary: double.parse(salary), jobDesc: jobDesc, permissions: permissions);
+  return Employee(id:id, name: name, salary: double.parse(salary), jobDesc: jobDesc, permissions: permissions);
 }
