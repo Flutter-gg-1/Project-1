@@ -3,7 +3,6 @@ import 'dart:math';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 
-
 class Employee {
   String? firstName;
   String? lastName;
@@ -20,42 +19,37 @@ class Employee {
   String? role;
   String? dept;
   String? jobDescription;
-  bool permission = false;
+  static List<Employee> permissionList = [];
   int? salary;
 
   static List<Employee> listOfEmployees = [];
 
-  Employee(
-      {required this.firstName,
-      required this.lastName,
-      required this.role,
-      this.dateOfBirth,
-      this.gender,
-      this.phoneNumber,
-      this.email,
-      this.address,
-      this.dept,
-      this.jobDescription,
-      this.salary}) {
+  Employee({
+    required this.firstName,
+    required this.lastName,
+    required this.role,
+  }) {
     empID = generateEmployeeID();
     password = setPassword();
+    fillEmployeeInformation(this);
     listOfEmployees.add(empID as Employee);
+    print('Employee $empID Added Successfully!!');
   }
 
-  viewInfo() {
-    print('Name: $firstName $lastName');
-    print('id: $empID');
+  static viewInfo(Employee emp) {
+    print('Name: ${emp.firstName} ${emp.lastName}');
+    print('id: ${emp.empID}');
     print('Nationality: $nationality');
-    print('Date of Birth: $dateOfBirth');
-    print('Gender: $gender');
-    print('Phone Number: $phoneNumber');
-    print('Email: $email');
-    print('Address: $address');
-    print('role: $role');
-    print('Department: $dept');
-    print('Job Description: $jobDescription');
-    print('Salary: $salary');
-    print('Permission: $permission');
+    print('Date of Birth: ${emp.dateOfBirth}');
+    print('Gender: ${emp.gender}');
+    print('Phone Number: ${emp.phoneNumber}');
+    print('Email: ${emp.email}');
+    print('Address: ${emp.address}');
+    print('role: ${emp.role}');
+    print('Department: ${emp.dept}');
+    print('Job Description: ${emp.jobDescription}');
+    print('Salary: ${emp.salary}');
+    print('Permission to Modify: ${permissionList.contains(emp)}');
   }
 
   String generateEmployeeID() {
@@ -73,6 +67,26 @@ class Employee {
     return '$firstDigit$remainingDigits';
   }
 
+  fillEmployeeInformation(Employee emp) {
+    print('Fill in the following');
+    stdout.write('Date of Birth: ');
+    emp.dateOfBirth = stdin.readLineSync();
+    stdout.write('Gender: ');
+    emp.gender = stdin.readLineSync();
+    stdout.write('Phone Number: ');
+    emp.phoneNumber = stdin.readLineSync();
+    stdout.write('Email: ');
+    emp.email = stdin.readLineSync();
+    stdout.write('Address: ');
+    emp.address = stdin.readLineSync();
+    stdout.write('Department: ');
+    emp.dept = stdin.readLineSync();
+    stdout.write('Job Description: ');
+    emp.jobDescription = stdin.readLineSync();
+    stdout.write('Salary: ');
+    emp.salary = int.parse(stdin.readLineSync()!);
+  }
+
   String setPassword() {
     stdout.write('Enter your new password');
     String password = stdin.readLineSync()!;
@@ -81,11 +95,11 @@ class Employee {
     return hashedPassword;
   }
 
-  int setSalary(int amount){
+  int setSalary(int amount) {
     return salary = amount;
   }
 
-  bool setPermission(){
-    return permission = true;
+  addToPermission(Employee emp) {
+    Employee.permissionList.add(emp);
   }
 }
