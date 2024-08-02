@@ -41,11 +41,22 @@ void main() {
 
       // modify employee info
       case '3' :
-      int id = getInputID();
+      if(employees.isEmpty) {
+        print("You have not added any employees yet");
+        break;
+      }
+      int id = getInputID(employees);
       modifyInfo(id:id, employees:employees);
 
-      case '4' :
       // remove employee
+      case '4' :
+      if(employees.isEmpty) {
+        print("You have not added any employees yet");
+        break;
+      }
+      int id = getInputID(employees);
+      employees.remove(id);
+      print("Employee $id is removed successfully ✅");
 
       default :
       print("ERROR !! : Invalid choice ❌\n");
