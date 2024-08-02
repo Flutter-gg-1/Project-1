@@ -1,11 +1,11 @@
 import "employee.dart";
 
-Employee admin = Employee(
+final Employee admin = Employee(
     id: 1,
     name: "admin",
     salary: 0,
     jobDescriptions: "admin of the system",
     permission: PermissionLevel.admin.toString().split(".").last);
-List<Employee> emps = [admin];
+final List<Employee> emps = [admin];
 
 enum PermissionLevel { admin, dev, it }

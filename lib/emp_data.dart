@@ -59,7 +59,7 @@ Employee edit(Employee emp) {
     //change salary
     case == "3":
       print("input salary");
-      int salary = int.parse(stdin.readLineSync()!);
+      double salary = double.parse(stdin.readLineSync()!);
       emp.salary = salary;
       return emp;
     //chage permission

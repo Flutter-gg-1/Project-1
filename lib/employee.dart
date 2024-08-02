@@ -2,7 +2,7 @@ class Employee {
   late int id;
   late String name;
   late String jobDescriptions;
-  late int salary;
+  late double salary;
   late String permission;
   Employee(
       {required this.id,

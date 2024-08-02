@@ -72,8 +72,8 @@ void add() {
   String name = stdin.readLineSync()!;
 
   print("Salary");
-  int salary = 0;
-  salary = int.parse(stdin.readLineSync()!);
+  double salary = 0;
+  salary = double.parse(stdin.readLineSync()!);
 
   print("what is the job description");
   String jobDescriptions = stdin.readLineSync()!;
