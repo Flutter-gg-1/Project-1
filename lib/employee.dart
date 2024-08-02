@@ -12,7 +12,9 @@ class Employee {
       required this.permission});
 
   void printEmployeeInfo() {
+    print("*******************");
     print(
         "ID:$id\nName: $name\nJob description: $jobDescriptions\nSalary: $salary\nPermission: $permission ");
+    print("*******************");
   }
 }

@@ -1,8 +1,5 @@
-import 'dart:async';
 import 'dart:io';
-
 import 'package:ems/employee.dart';
-
 import 'global.dart';
 
 void addEmployee(Employee emp) {
@@ -11,14 +8,13 @@ void addEmployee(Employee emp) {
   } else {
     emp.id = emps.last.id + 1;
     emps.add(emp);
-    print("add was seccuss");
+    print("add was seccuss!!");
     emp.printEmployeeInfo();
   }
 }
 
 getEmployee(int id) {
   for (Employee emp in emps) {
-    emp.printEmployeeInfo();
     if (emp.id == id) {
       return emp;
     }
@@ -28,7 +24,6 @@ getEmployee(int id) {
 
 void printAllEmployees() {
   for (var emp in emps) {
-    print("* " * 12);
     emp.printEmployeeInfo();
   }
 }
@@ -48,7 +43,7 @@ void allEmployees() {
 }
 
 Employee edit(Employee emp) {
-  print("1- name 2- edit job description 3- salary 4- permissions");
+  print("1- name | 2- edit job description | 3- salary | 4- permissions");
   var eidtOption = stdin.readLineSync()!;
   switch (eidtOption) {
     //change name

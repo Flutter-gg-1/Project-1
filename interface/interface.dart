@@ -13,11 +13,8 @@ interface() {
   */
   int id = -1;
   late dynamic user;
-  print("users");
-  for (Employee emp in emps) {
-    emp.printEmployeeInfo();
-  }
-  print("Login");
+  print("*****Login*****");
+  //the defult admin is 1
   print("Input your id");
 
   do {
@@ -25,16 +22,18 @@ interface() {
     try {
       id = int.parse(userInput);
     } catch (e) {
-      print("it not valid id");
+      print("it not valid id DX...");
     }
 
     user = getEmployee(id);
     if (user == false) {
-      print("The user does not exitst");
+      print("The user does not exitst DX....");
     }
   } while (user == false);
   // after initialize a user cast the variable as employee
   user as Employee;
+
+  //seprate normal user and admin
   while (true) {
     if (user.permission == PermissionLevel.admin.toString().split(".").last) {
       adminPage(user);
@@ -46,7 +45,7 @@ interface() {
 
 void adminPage(Employee user) {
   print("*****ADMIN*****");
-  print("1- Add employee 2- edit employee  0-logout");
+  print("1- Add employee |2- edit employee| 3 Show all employee  |0-logout");
   String userInput = stdin.readLineSync() ?? "0";
   switch (userInput) {
     case == "1":
@@ -63,17 +62,20 @@ void adminPage(Employee user) {
         try {
           empId = int.parse(stdin.readLineSync()!);
         } catch (e) {
-          print("it not valid id");
+          print("it not valid id DX...");
         }
 
         editEmp = getEmployee(empId);
         if (editEmp == false) {
-          print("The user does not exitst");
+          print("The user does not exitst DX...");
         }
       } while (editEmp == false);
 
       editEmployee(empId);
 
+      break;
+    case == "3":
+      allEmployees();
       break;
     case == "0":
       interface();
@@ -82,7 +84,7 @@ void adminPage(Employee user) {
 }
 
 employeePage(Employee user) {
-  print("1-show my info 0-logout");
+  print("1-show my  | info 0-logout");
   String userInput = stdin.readLineSync() ?? "0";
   switch (userInput) {
     case == "1":
@@ -99,7 +101,7 @@ void add() {
   print("Employee name");
   String name = stdin.readLineSync()!;
 
-  print("Salary");
+  print("Salary  *Only numbers*");
   double salary = 0;
   salary = double.parse(stdin.readLineSync()!);
 
@@ -107,7 +109,7 @@ void add() {
   String jobDescriptions = stdin.readLineSync()!;
 
   print("select on of these permission");
-  print("1- admin 2- dev 3- it");
+  print("1- admin |2- dev |3- it");
   String permission = getPermission(stdin.readLineSync() ?? "3");
   Employee newEmp = Employee(
       id: 0,
