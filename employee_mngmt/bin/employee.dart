@@ -3,6 +3,7 @@ import 'dart:math';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import 'department.dart';
+import 'employee_mngmt.dart';
 
 class Employee {
   String? firstName;
@@ -20,7 +21,6 @@ class Employee {
   String? role;
   Department? dept;
   String? jobDescription;
-  static List<Employee> permissionList = [];
   int? salary;
 
   static List<Employee> listOfEmployees = [];
@@ -52,6 +52,19 @@ class Employee {
       return null;
     }
   }
+  // static bool getPermissions(String empID) {
+  //   for (int i = 0; i < listOfEmployees.length; i++) {
+  //     if (listOfEmployees[i].empID == empID) {
+  //       employeeIndex = i;
+  //       break;
+  //     }
+  //   }
+  //   if (employeeIndex > 0) {
+  //     return listOfEmployees[employeeIndex];
+  //   } else {
+  //     return null;
+  //   }
+  // }
 
   static viewInfo(Employee? emp) {
     if (emp == null) {
@@ -70,7 +83,7 @@ class Employee {
     print('Department: ${emp.dept!.deptName}');
     print('Job Description: ${emp.jobDescription}');
     print('Salary: ${emp.salary}');
-    print('Permission to Modify: ${permissionList.contains(emp)}');
+    print('Permission to Modify: ${listOfFiles[2].containsValue("empID")}');
   }
 
   String generateEmployeeID() {
@@ -133,9 +146,7 @@ class Employee {
 
     temp.add(newPermission);
     String update = jsonEncode(temp);
-    await file.writeAsString(update, mode: FileMode.append);
-
-    Employee.permissionList.add(emp);
+    file.writeAsStringSync(update, mode: FileMode.write);
   }
 
   static Future<void> updateEmployeeList(Employee emp) async {
