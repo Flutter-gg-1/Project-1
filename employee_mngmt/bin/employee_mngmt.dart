@@ -1,45 +1,19 @@
-import 'dart:convert';
 import 'dart:io';
-import 'package:crypto/crypto.dart';
-
 import 'employee.dart';
 import 'exit_method.dart';
+import '../login/logging_in.dart';
 
 void main(List<String> arguments) async {
   bool isExit = false;
-  File file = File('login/employee.json');
-  String records = await file.readAsString();
-  List employees = jsonDecode(records);
+
   do {
-    print('\n---Welcome to The Employee Management System---');
+    String userID = await login();
 
-    print('Enter your Login credentials: ');
-    stdout.write('ID: ');
-    String id = stdin.readLineSync()!;
-    stdout.write('password: ');
-    String password = stdin.readLineSync()!;
-    String hash = sha256.convert(utf8.encode(password)).toString();
-
-    bool loginSuccess = false;
-    String userName = '';
-    for (var employee in employees) {
-      if (employee['empID'] == id && employee['passwordHash'] == password) {
-        loginSuccess = true;
-        userName = '${employee['firstName']}';
-        break;
-      }
-    }
-
-    if (loginSuccess) {
-      print('\n---Welcome $userName---');
-    } else {
-      print('Login failed');
+    if (userID == '0') {
       continue;
     }
 
-    // Employee? registeredUser;
-
-    if (userName == 'Admin') {
+    if (userID == '1000') {
       print('1: Add Employee');
       print('2: Choose Employee');
       print('0: Exit');
@@ -102,20 +76,17 @@ void main(List<String> arguments) async {
       print('3: View Department ID');
       print('0: Exit\n');
 
-      //change later after login logic
-      Employee emp =
-          Employee(firstName: 'firstName', lastName: 'lastName', role: 'role');
-
       stdout.write('\nEnter your choice: ');
       String? choice = stdin.readLineSync();
 
       switch (choice) {
         case '1':
-          Employee.viewInfo(emp);
+          Employee.viewInfo(Employee.getEmployee(userID));
         case '2':
-          Employee.setPassword(emp);
+          Employee.setPassword(Employee.getEmployee(userID)!);
         case '3':
-          print('Department Id = ${emp.dept!.deptName}');
+          print(
+              'Department Id = ${Employee.getEmployee(userID)!.dept!.deptName}');
         case '0' || '':
           isExit = exitMethod();
         default:

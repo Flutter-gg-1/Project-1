@@ -1,0 +1,17 @@
+[
+    {
+        "firstName": "Admin",
+        "lastName": "Admin",
+        "empID": "1000",
+        "nationality": "Saudi",
+        "role": "Admin",
+        "dateOfBirth": "Admin",
+        "gender": "Male",
+        "phoneNumber": "-",
+        "email": "admin@admin.com",
+        "address": "Saudi Arabia",
+        "dept": "Management",
+        "jobDescription": "Admin",
+        "salary": 0
+    }
+]

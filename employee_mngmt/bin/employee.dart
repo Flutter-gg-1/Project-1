@@ -34,6 +34,7 @@ class Employee {
     password = setPassword(this);
     fillEmployeeInformation(this);
     listOfEmployees.add(this);
+    updateEmployeeList(this);
     print('Employee $empID Added Successfully!!');
   }
 
@@ -120,7 +121,68 @@ class Employee {
     return emp.salary = amount;
   }
 
-  static void addToPermission(Employee emp) {
+  static void addToPermission(Employee emp) async {
+    File file = File('bin/lists/permission.json');
+    String records = await file.readAsString();
+    List temp = jsonDecode(records);
+
+    Map<String, dynamic> newPermission = {
+      'empID': emp.empID,
+      'permission': true
+    };
+
+    temp.add(newPermission);
+    String update = jsonEncode(temp);
+    await file.writeAsString(update, mode: FileMode.append);
+
     Employee.permissionList.add(emp);
+  }
+
+  static Future<void> updateEmployeeList(Employee emp) async {
+    File file = File('bin/lists/employee.json');
+    String records = file.readAsStringSync();
+    List temp = jsonDecode(records);
+
+    Map<String, dynamic> newEmployee = {
+      'firstName': emp.firstName,
+      'lastName': emp.lastName,
+      'empID': emp.empID,
+      'nationality': nationality,
+      'role': emp.role,
+      'dateOfBirth': emp.dateOfBirth,
+      'gender': emp.gender,
+      'phoneNumber': emp.phoneNumber,
+      'email': emp.email,
+      'address': emp.address,
+      'dept': emp.dept!.deptName,
+      'jobDescription': emp.jobDescription,
+      'salary': emp.salary,
+    };
+
+    temp.add(newEmployee);
+
+    //update json file
+    String update = jsonEncode(temp);
+    await file.writeAsString(update, mode: FileMode.write);
+
+    Map<String, dynamic> newLogin = {
+      'empID': emp.empID,
+      'passwordHash': emp.password
+    };
+
+    File loginFile = File('login/login.json');
+    String loginRecords = await loginFile.readAsString();
+    print('String loginRecords $loginRecords');
+
+    temp.clear();
+    print('temp $temp');
+    temp = jsonDecode(loginRecords);
+    print('temp $temp');
+    temp.add(newLogin);
+    print('temp $temp');
+
+    //update json file
+    String updateLogin = jsonEncode(temp);
+    await loginFile.writeAsString(updateLogin, mode: FileMode.write);
   }
 }
