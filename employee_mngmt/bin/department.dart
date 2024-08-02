@@ -5,8 +5,8 @@ class Department {
   String? deptName;
   String? deptID;
   int? numberOfEmployees;
-  List<Employee>? listOfEmployees;
-  List<Department> listOfDept = [];
+  List<Employee> listOfEmployees = [];
+  static List<Department> listOfDept = [];
 
   Department({required this.deptName}) {
     deptID = generateDeptID(deptName);
