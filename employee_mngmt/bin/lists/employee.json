@@ -1,17 +1,1 @@
-[
-    {
-        "firstName": "Admin",
-        "lastName": "Admin",
-        "empID": "1000",
-        "nationality": "Saudi",
-        "role": "Admin",
-        "dateOfBirth": "Admin",
-        "gender": "Male",
-        "phoneNumber": "-",
-        "email": "admin@admin.com",
-        "address": "Saudi Arabia",
-        "dept": "Management",
-        "jobDescription": "Admin",
-        "salary": 0
-    }
-]
+[{"firstName":"Admin","lastName":"Admin","empID":"1000","nationality":"Saudi","role":"Admin","dateOfBirth":"Admin","gender":"Male","phoneNumber":"-","email":"admin@admin.com","address":"Saudi Arabia","dept":"Management","jobDescription":"Admin","salary":0},{"firstName":"a","lastName":"a","empID":"39879","nationality":"Saudi","role":"a","dateOfBirth":"a","gender":"a","phoneNumber":"a","email":"a","address":"a","dept":"a","jobDescription":"a","salary":0}]

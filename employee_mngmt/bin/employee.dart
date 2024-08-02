@@ -139,9 +139,7 @@ class Employee {
   }
 
   static Future<void> updateEmployeeList(Employee emp) async {
-    File file = File('bin/lists/employee.json');
-    String records = file.readAsStringSync();
-    List temp = jsonDecode(records);
+    //Update employee.json
 
     Map<String, dynamic> newEmployee = {
       'firstName': emp.firstName,
@@ -159,30 +157,28 @@ class Employee {
       'salary': emp.salary,
     };
 
-    temp.add(newEmployee);
+    File file = File('bin/lists/employee.json');
+    String records = file.readAsStringSync();
+    List temp = jsonDecode(records);
 
     //update json file
+    temp.add(newEmployee);
     String update = jsonEncode(temp);
-    await file.writeAsString(update, mode: FileMode.write);
+    file.writeAsStringSync(update, mode: FileMode.write);
 
+    //Update login.json
     Map<String, dynamic> newLogin = {
       'empID': emp.empID,
       'passwordHash': emp.password
     };
 
-    File loginFile = File('login/login.json');
-    String loginRecords = await loginFile.readAsString();
-    print('String loginRecords $loginRecords');
-
-    temp.clear();
-    print('temp $temp');
-    temp = jsonDecode(loginRecords);
-    print('temp $temp');
-    temp.add(newLogin);
-    print('temp $temp');
+    File loginFile = File('bin/lists/login.json');
+    String loginRecords = loginFile.readAsStringSync();
+    List temp2 = jsonDecode(loginRecords);
 
     //update json file
-    String updateLogin = jsonEncode(temp);
-    await loginFile.writeAsString(updateLogin, mode: FileMode.write);
+    temp2.add(newLogin);
+    String updateLogin = jsonEncode(temp2);
+    loginFile.writeAsStringSync(updateLogin, mode: FileMode.write);
   }
 }
