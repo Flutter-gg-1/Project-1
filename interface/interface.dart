@@ -4,7 +4,7 @@ import "package:ems/employee.dart";
 
 interface() {
   late int id;
-  var user;
+  dynamic user;
 
   print("Login");
   print("Input your id");
