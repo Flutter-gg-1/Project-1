@@ -5,15 +5,15 @@ import '../all_file.dart';
 void addEmployee() {
   print('\n_____________# Add Employee #___________\n');
   print('Employee ID will be generated automatically');
-  int? id = Random().nextInt(1000);
+  final int id = Random().nextInt(1000);
   print('Enter Employee Name: ');
-  String? name = stdin.readLineSync();
+  final String? name = stdin.readLineSync();
   print('Enter Employee Age: ');
-  int? age = int.parse(stdin.readLineSync()!);
+  final int? age = int.parse(stdin.readLineSync()!);
   print('Enter Employee Phone Number: ');
-  String? phoneNumber = stdin.readLineSync();
+  final String? phoneNumber = stdin.readLineSync();
   print('Enter Employee Position: ');
-  String? position = stdin.readLineSync();
+  final String? position = stdin.readLineSync();
   print('Enter Employee Salary: ');
   int? salary = int.parse(stdin.readLineSync()!);
   print('Enter Employee descriptions: ');
@@ -50,4 +50,29 @@ void addEmployee() {
   });
   employeeList.add(employee);
   print(employeeList);
+
+  print('\n1. Add Employee  2. Delete Employee  3. Update Employee  4. Employee Dashboard  5. Exit\n');
+  print('Enter your choice: ');
+  int? choice = int.parse(stdin.readLineSync()!);
+  switch(choice){
+    case 1:
+      addEmployee();
+      break;
+    case 2:
+      deleteEmployee();
+      break;
+    case 3:
+      updateEmployee();
+      break;
+    case 4:
+      emp();
+      break;
+    case 5:
+      print('Exit...');
+      exit(0);
+    default:
+      print('Invalid choice , Exit...');
+      exit(0);
+  }
+
 }
