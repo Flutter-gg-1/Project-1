@@ -5,6 +5,7 @@ void employeeManager(){
   print('Dashboard of Employee Manager');
   print('1. Manage Employee  2. Supervisor');
   print('3. Workers   4. Main Dashboard');
+  print('to exit press 0');
   stdout.write('Enter your choice: ');
   int? choice = int.parse(stdin.readLineSync()!);
   switch(choice){
@@ -20,7 +21,11 @@ void employeeManager(){
     case 4:
       mainDashboard();
       break;
+    case 0:
+      print('Exit...');
+      exit(0);
     default:
-      print('Invalid choice');
+      print('Invalid choice , Exit...');
+      exit(0);
   }
 }
