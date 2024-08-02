@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:math';
-import '../all_file.dart';
+import '../core/all_file.dart';
 
 void addEmployee() {
   print('\n_____________# Add Employee #___________\n');
@@ -20,23 +20,9 @@ void addEmployee() {
   String? descriptions = stdin.readLineSync();
   print('Enter Employee permissions: ');
   print('1. Manager  2. Workers  3. Supervisor ');
-  int? perInput = int.parse(stdin.readLineSync()!);
-  String? permissions;
-  switch (perInput) {
-    case 1:
-      permissions = 'Manager';
-      break;
-    case 2:
-      permissions = 'Workers';
-      break;
-    case 3:
-      permissions = 'Supervisor';
-      break;
-    default:
-      print('Invalid choice , Exit...');
-      exit(0);
-  }
-  print('\nAdd Employee Successfull...\n');
+  //permissions function call for show permissions values
+  String? permissions = showPermissions();
+  print('\nAdd Employee Successful...\n');
   Map<String, dynamic> employee = {};
   employee.addAll({
     'id': id,
@@ -51,28 +37,9 @@ void addEmployee() {
   employeeList.add(employee);
   print(employeeList);
 
-  print('\n1. Add Employee  2. Delete Employee  3. Update Employee  4. Employee Dashboard  5. Exit\n');
-  print('Enter your choice: ');
-  int? choice = int.parse(stdin.readLineSync()!);
-  switch(choice){
-    case 1:
-      addEmployee();
-      break;
-    case 2:
-      deleteEmployee();
-      break;
-    case 3:
-      updateEmployee();
-      break;
-    case 4:
-      emp();
-      break;
-    case 5:
-      print('Exit...');
-      exit(0);
-    default:
-      print('Invalid choice , Exit...');
-      exit(0);
-  }
+  //showPrompt function call for next operation
+  showPrompt();
 
 }
+
+

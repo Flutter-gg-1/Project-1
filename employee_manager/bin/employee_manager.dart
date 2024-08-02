@@ -1,4 +1,4 @@
-import 'all_file.dart';
+import 'core/all_file.dart';
 void main() {
   mainDashboard();
 }

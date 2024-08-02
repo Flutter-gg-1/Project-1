@@ -1,10 +1,10 @@
 // Main Dashboard
 import 'dart:io';
-import 'all_file.dart';
+import 'core/all_file.dart';
 void mainDashboard(){
   print('\n______________########## Main Dashboard ##########___________');
   print('1. Employee Manager  2. Employee Profile  3. Exit');
-  stdout.write('Enter your choice: \n');
+  print('Enter your choice: \n');
   int? choice = int.parse(stdin.readLineSync()!);
   switch(choice){
     case 1:
