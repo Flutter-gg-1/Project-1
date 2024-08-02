@@ -2,6 +2,8 @@
 import 'dart:io';             // library used to interact with user
 import 'manager_menu.dart';   // function to print manager's menu
 import 'add_employee.dart';   // function to add a new employee
+import 'get_input_id.dart';   // function to get input id from user
+import 'modify_info.dart';    // function to modify employee info
 import 'package:employee_manager/models/employee.dart'; // employee class
 
 void main() {
@@ -37,14 +39,16 @@ void main() {
       employees[id] = employee;
       print("Employee ${employee.name} is added to employees list ✅\n${employee.name}'s ID is $id");
 
-      case '3' :
       // modify employee info
+      case '3' :
+      int id = getInputID();
+      modifyInfo(id:id, employees:employees);
 
       case '4' :
       // remove employee
 
       default :
-      print("ERROR !! : Invalid choice\n");
+      print("ERROR !! : Invalid choice ❌\n");
     }
   }
 }
