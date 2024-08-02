@@ -78,14 +78,11 @@ Employee edit(Employee emp) {
 String getPermission(var permission) {
   switch (permission) {
     case == "1":
-      PermissionLevel.admin.toString();
-      break;
+      return PermissionLevel.admin.toString().split(".").last;
     case == "2":
-      PermissionLevel.dev.toString();
-      break;
+      return PermissionLevel.dev.toString().split(".").last;
     case == "3":
-      PermissionLevel.it.toString();
-      break;
+      return PermissionLevel.it.toString().split(".").last;
   }
-  return PermissionLevel.it.toString();
+  return PermissionLevel.it.toString().split(".").last;
 }
