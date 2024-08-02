@@ -3,7 +3,7 @@ import 'dart:io';
 import 'core/all_file.dart';
 void mainDashboard(){
   print('\n______________########## Main Dashboard ##########___________');
-  print('1. Employee Manager  2. Employee Profile  3. Exit');
+  print('1. Employee Manager  2. Employees Information  3. Exit');
   print('Enter your choice: \n');
   int? choice = int.parse(stdin.readLineSync()!);
   switch(choice){
@@ -11,7 +11,7 @@ void mainDashboard(){
       employeeManager();
       break;
     case 2:
-      supervisorEmployee();
+      print('\n_____________########## All Employees Information ##########___________\n');
       break;
     case 3:
       print('Exit...');
