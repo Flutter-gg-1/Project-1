@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:ems/employee.dart';
@@ -37,6 +38,12 @@ void editEmployee(int id) {
     if (emp.id == id) {
       emp = edit(emp);
     }
+  }
+}
+
+void allEmployees() {
+  for (Employee emp in emps) {
+    emp.printEmployeeInfo();
   }
 }
 

@@ -7,7 +7,8 @@ interface() {
   /*
   the defult of id is -1 to 
   make sure if the user input
-  null value the employee function search
+  null or out of bound value the 
+  employee function search
   will return false 
   */
   int id = -1;
@@ -45,11 +46,34 @@ interface() {
 
 void adminPage() {
   print("*****ADMIN*****");
-  print("1- Add User  0-logout");
+  print("1- Add employee 2- edit employee  0-logout");
   String userInput = stdin.readLineSync() ?? "0";
   switch (userInput) {
     case == "1":
       add();
+      break;
+    case == "2":
+      allEmployees();
+      print("input employee id to edit");
+
+      late int empId;
+      late var editEmp;
+
+      do {
+        try {
+          empId = int.parse(stdin.readLineSync()!);
+        } catch (e) {
+          print("it not valid id");
+        }
+
+        editEmp = getEmployee(empId);
+        if (editEmp == false) {
+          print("The user does not exitst");
+        }
+      } while (editEmp == false);
+
+      editEmployee(empId);
+
       break;
     case == "0":
       interface();
