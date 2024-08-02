@@ -36,7 +36,26 @@ class Employee {
     print('Employee $empID Added Successfully!!');
   }
 
-  static viewInfo(Employee emp) {
+  static Employee? getEmployee(String empID) {
+    int employeeIndex = -1;
+    for (int i = 0; i < listOfEmployees.length; i++) {
+      if (listOfEmployees[i].empID == empID) {
+        employeeIndex = i;
+        break;
+      }
+    }
+    if (employeeIndex > 0) {
+      return listOfEmployees[employeeIndex];
+    }else{
+      return null;
+    }
+  }
+
+  static viewInfo(Employee? emp) {
+    if(emp == null){
+      print('Employee Not Found!!');
+      return;
+    }
     print('Name: ${emp.firstName} ${emp.lastName}');
     print('id: ${emp.empID}');
     print('Nationality: $nationality');
@@ -95,11 +114,11 @@ class Employee {
     return hashedPassword;
   }
 
-  int setSalary(int amount) {
-    return salary = amount;
+  static int setSalary(Employee emp, int amount) {
+    return emp.salary = amount;
   }
 
-  addToPermission(Employee emp) {
+  static void addToPermission(Employee emp) {
     Employee.permissionList.add(emp);
   }
 }

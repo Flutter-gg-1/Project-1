@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'employee.dart';
+import 'exit_method.dart';
 
 void main(List<String> arguments) {
   bool isExit = false;
@@ -16,9 +17,9 @@ void main(List<String> arguments) {
     Employee? registeredUser;
 
     if (Employee.permissionList.contains(registeredUser)) {
-      print('1: View information');
-      print('2: Add employee');
-      print('3: Set Salary');
+      print('1: Add Employee');
+      print('2: View information');
+      print('3: Update Salary');
       print('4: Set Permissoins');
       print('0: Exit');
 
@@ -27,16 +28,6 @@ void main(List<String> arguments) {
 
       switch (choice) {
         case '1':
-          stdout.write('Enter Employee ID');
-          String? empID = stdin.readLineSync();
-          Employee? emp;
-          for (int i = 0; i < Employee.listOfEmployees.length; i++) {
-            if (Employee.listOfEmployees[i].empID == empID) {
-              emp = Employee.listOfEmployees[i];
-            }
-          }
-          Employee.viewInfo(emp!);
-        case '2':
           print('To add a new Employee, complete the following');
           String? firstName;
           String? lastName;
@@ -50,9 +41,28 @@ void main(List<String> arguments) {
           role = stdin.readLineSync();
 
           Employee(firstName: firstName, lastName: lastName, role: role);
+
+        case '2':
+          stdout.write('Enter Employee ID');
+          String? empID = stdin.readLineSync();
+          Employee.viewInfo(Employee.getEmployee(empID!));
         case '3':
+          stdout.write('Enter Employee ID');
+          String? empID = stdin.readLineSync();
+          stdout.write('Enter New Salary');
+          int? salary = int.parse(stdin.readLineSync()!);
+          Employee.setSalary(Employee.getEmployee(empID!)!, salary);
         case '4':
+          stdout.write('Enter Employee ID');
+          String? empID = stdin.readLineSync();
+          stdout.write(
+              'Are you sure you want to give permission to Employee $empID? y/n');
+          String? answer = stdin.readLineSync();
+          if (answer!.toLowerCase() == 'y') {
+            Employee.addToPermission(Employee.getEmployee(empID!)!);
+          }
         case '0' || '':
+        isExit = exitMethod();
         default:
       }
     } else {
