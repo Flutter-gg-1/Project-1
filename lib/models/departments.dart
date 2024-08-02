@@ -43,6 +43,8 @@ addEmp({ required String name ,required double salary ,required String permissio
 
   });
 
+  print(lisEmployees);
+
 }
 
 
