@@ -38,11 +38,11 @@ class Storage {
         .toList();
   }
 
+  // Sign in is simply by entering the employee ID into the console
+  // Then assigning the employee to the currentUser var
   void signIn() {
     do {
-      for (var employee in employees) {
-        employee.showEmployeeDeatails();
-      }
+      fetchAllEmployees();
       print('Who are you? Enter your ID to login');
       var userInput = stdin.readLineSync();
       var temp = employees.firstWhere((e) => e.id.toString() == userInput!,
@@ -58,7 +58,25 @@ class Storage {
     } while (currentUser == null);
   }
 
+  // Reset the current user
   void signOut() => currentUser = null;
 
+  // Function Logic is in edit_employee.dart
   void editEmployee({required Employee user}) => user.editDetails();
+
+  // Print the list of employees with relevant data
+  void fetchAllEmployees({bool isShort = true}) {
+    for (var employee in employees) {
+      currentUser == null
+          ? employee.showEmployeeDeatails(short: isShort)
+          : employee.showEmployeeDeatails(
+              fullAccess: currentUser!.hasAccess() || employee == currentUser,
+              short: isShort);
+    }
+  }
+
+  // Manager Functions
+  void editOtherEmployees() {
+    ColorfulPrint.magenta('Select an Employee ID to edit');
+  }
 }

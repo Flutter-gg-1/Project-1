@@ -29,7 +29,9 @@ class Home {
     var user = storage.currentUser;
     switch (str) {
       case '1':
-        (user != null) ? user.showEmployeeDeatails() : userError();
+        (user != null)
+            ? user.showEmployeeDeatails(fullAccess: true, short: false)
+            : userError();
       case '2':
         if (user != null) {
           storage.editEmployee(user: user);
@@ -45,7 +47,7 @@ class Home {
       case 'new':
         print('');
       case 'le':
-        print('');
+        storage.fetchAllEmployees(isShort: false);
       case 'lm':
         print('');
 
