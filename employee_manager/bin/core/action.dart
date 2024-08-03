@@ -1,10 +1,18 @@
 import 'dart:io';
 import 'all_file.dart';
+
+void printMyValue(var value) {
+  print(value);
+}
+
 void showPrompt() {
-  print('\n1. Add Employee  2. Delete Employee  3. Update Employee  4. Main Dashboard  5. Exit\n');
-  print('Enter your choice: ');
+  const String prompt =
+      '\n1. Add Employee  2. Delete Employee  3. Update Employee  4. Main Dashboard  5. Exit\n';
+  print(prompt);
+  const String prompt1 = 'Enter your choice: ';
+  print(prompt1);
   int? choice = int.parse(stdin.readLineSync()!);
-  switch(choice){
+  switch (choice) {
     case 1:
       addEmployee();
       break;
