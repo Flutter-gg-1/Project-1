@@ -31,25 +31,7 @@ addNewEmployee({
         element["other_allowances"] != "" ||
         element["job_title"] != "" ||
         element["job_description"] != "") {
-      double housingAllowance = (element["basic_salary"] * 0.25);
-      double transportAllowance = (element["basic_salary"] * 0.10);
-      double gosi = ((element["basic_salary"] + housingAllowance) * 0.0975);
       element["id"] = startID++;
-      element["housing_allowance"] = housingAllowance;
-      element["transport_allowance"] = transportAllowance;
-      element["gosi"] = gosi;
-      double totalSalaryBeforeGosi = element["basic_salary"] +
-          element["housing_allowance"] +
-          element["transport_allowance"] +
-          element["other_allowances"];
-
-      element["total_salary_before_gosi"] = totalSalaryBeforeGosi;
-      double totalSalaryAfterGosi = (element["basic_salary"] +
-              element["housing_allowance"] +
-              element["transport_allowance"] +
-              element["other_allowances"]) -
-          element["gosi"];
-      element["total_salary_after_gosi"] = totalSalaryAfterGosi;
       displayAllEmployee(newEmployee);
       allEmployee.add(element);
     } else {

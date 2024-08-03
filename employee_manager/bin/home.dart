@@ -4,6 +4,7 @@ import './global_variabels.dart';
 import './add_new_employee.dart';
 import './display_all_employee.dart';
 import './update_employee.dart';
+import './update_permission.dart';
 
 class Home {
   static void instruction() {
@@ -24,6 +25,16 @@ class Home {
 
     5 | Update Basic Salary
     6 | Update Job Description
+  
+  
+  ''');
+  }
+
+  static void employeeUpdatePermission() {
+    print('''
+
+    1 | Admin
+    2 | User
   
   
   ''');
@@ -87,6 +98,11 @@ class Home {
 
       case '4':
         print("Assign permission to an employee");
+        String updateEmployeeID = stdin.readLineSync().toString();
+        updateEmployeePermission(employeeID: updateEmployeeID);
+        stdin.readLineSync();
+        Home.instruction();
+
       case 'C':
         print("Exit");
         isExit = true;
