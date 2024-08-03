@@ -10,7 +10,7 @@ void modifyEmpInfo(){
   String? jobDesc;
   print("\n\n\n\n");
   print(line);
-  print("Add Employee Id To modify His Data:");
+  print("Enter Employee Id To modify His Data:");
   String? id = stdin.readLineSync();
   for(Map<String,dynamic> employee in emoployeesList){
   if (employee['id']==id){

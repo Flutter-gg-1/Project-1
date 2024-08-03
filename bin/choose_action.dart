@@ -4,6 +4,7 @@ import 'add_employee.dart';
 import 'messages.dart';
 import 'display_employee_info.dart';
 import 'modify_employee_infp.dart';
+import 'display_all_employees.dart';
 void chooseAction(){
   print(line);
   print(next);
@@ -19,7 +20,7 @@ void chooseAction(){
         case '3':
         modifyEmpInfo();
         case '4':
-        //
+        displayAllEmp();
         default:
       print(tryAgain);
       choice = stdin.readLineSync();   }
