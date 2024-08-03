@@ -12,7 +12,7 @@ displayEmployee({required String? employeeId}) {
       break;
     }
   }
-  // if employee number exists employee dat will be printed
+  // if employee number exists employee data will be printed
   if (employee.isNotEmpty) {
     print("\n");
     print("* Employee name is  ${employee["employee_name"]}");

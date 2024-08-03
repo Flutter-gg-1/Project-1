@@ -68,19 +68,26 @@ void main() {
         }
         break;
 
+      //Display employee data
       case "1":
         print("* Enter employee ID:");
         String? employeeIdInput = stdin.readLineSync();
         displayEmployee(employeeId: employeeIdInput);
         break;
 
+      //Updat salary ,permissions, and job description
       case "2":
+        print("* Enter employee ID:");
+        String? employeeIdInput = stdin.readLineSync();
+        dataUpdate(employeeId: employeeIdInput);
         break;
 
+      //List All Employees
       case "3":
-      displayAllEmployee(employeesDisplay: employeesList);
+        displayAllEmployee(employeesDisplay: employeesList);
         break;
 
+      //Exit
       case "q" || "Q":
         isExit = exitMethod();
         break;
