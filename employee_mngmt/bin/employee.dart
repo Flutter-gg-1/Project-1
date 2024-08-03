@@ -77,7 +77,7 @@ class Employee {
 
   static Map<String, dynamic> fillEmployeeInformation(String? empID) {
     Map<String, dynamic> map = {};
-    print('Fill in the following\n');
+    print(white('Fill in the following\n'));
 
     stdout.write(cyan('First Name: '));
     map['firstName'] = stdin.readLineSync();

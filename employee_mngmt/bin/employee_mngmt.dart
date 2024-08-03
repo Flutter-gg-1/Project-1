@@ -5,7 +5,7 @@ import 'auth/auth.dart';
 import './file_mngmt/file_manager.dart';
 import 'package:ansicolor/ansicolor.dart';
 
-AnsiPen white = AnsiPen()..white(bold: true, bg: true);
+AnsiPen white = AnsiPen()..rgb(r: 1, g: 0.576, b: 0);
 AnsiPen cyan = AnsiPen()..cyan(bold: true);
 AnsiPen green = AnsiPen()..green(bold: true);
 AnsiPen yellow = AnsiPen()..yellow(bold: true);
@@ -23,7 +23,8 @@ void main(List<String> arguments) async {
     if (userID != '0') {
       for (var i = 0; i < listOfFiles[2].length; i++) {
         if (listOfFiles[2][i].containsValue(userID)) {
-          print(green('---Welcome ${Employee.getEmployee(userID)!.firstName}---'));
+          print(green(
+              '---Welcome ${Employee.getEmployee(userID)!.firstName}---'));
           print(yellow('\n1: Add Employee'));
           print(yellow('2: Choose Employee'));
           print(yellow('0: Exit'));
@@ -33,7 +34,7 @@ void main(List<String> arguments) async {
 
           switch (choice) {
             case '1':
-              print(white('To add a new Employee, complete the following\n'));
+              print(white('Add a New Employee'));
               Map<String, dynamic> map = Employee.fillEmployeeInformation(null);
               String empID = Employee.storeInfo(Employee.fromMap(map));
               print(green('Employee $empID Added Successfully!!'));
