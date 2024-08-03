@@ -12,7 +12,7 @@ void addEmployee() {
   final String phoneNumber = stdin.readLineSync()!;
   print('Enter Employee Position: ');
   final String position = stdin.readLineSync()!;
-  print('Enter Position descriptions: ');
+  print('Enter Position Descriptions: ');
   String descriptions = stdin.readLineSync()!;
   print('Enter Employee Salary: ');
   int? salary = int.parse(stdin.readLineSync()!);

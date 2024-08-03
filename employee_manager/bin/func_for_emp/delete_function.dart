@@ -5,6 +5,10 @@ deleteEmployeeFunction({required int uid}) {
     if (element['id'].toString().trim() == uid.toString().trim()) {
       print(element);
       employeeList.remove(element);
+      print('\nn_____________# Employee Deleted Successfully #___________\n');
+      break;
+    } else {
+      print('****** Employee Not Found ******');
       break;
     }
   }
