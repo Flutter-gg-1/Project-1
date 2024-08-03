@@ -1,7 +1,8 @@
 
 import 'dart:io';
 import 'exit_function.dart';
-
+import 'add_employee.dart';
+import 'messages.dart';
 void main(List<String> arguments) {
   print("~~~~~~~~~~Welcome Admin~~~~~~~~~~");
   print("Please Choose What To Do Next:");
@@ -11,7 +12,7 @@ void main(List<String> arguments) {
   while(choice != '6'){
       switch (choice){
         case '1':
-        //
+        addEmployeea();
         case '2':
         //
         case '3':
@@ -21,7 +22,7 @@ void main(List<String> arguments) {
         case '5':
         //
         default:
-      print("Please Enter A Valid Option");
+      print(tryAgain);
       choice = stdin.readLineSync();   }
     }
     //Exit function when choice is 6
