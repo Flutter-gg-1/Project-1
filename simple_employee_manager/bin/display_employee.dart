@@ -21,7 +21,7 @@ displayEmployee({required String? employeeId}) {
     print("* Employee permissions is  ${employee["employee_permissions"]}");
     print("* Employee job description is  ${employee["job_description"]}");
     print("* Employee start date is  ${employee["start_date"]}");
-    print("* Employee work day is  ${employee["work_day"]}");
+    print("* Employee work days is  ${employee["work_day"]}");
     print("\n");
   } else {
     print("XXXXX Employee ID $employeeId is not found! XXXXX");

@@ -36,7 +36,7 @@ void main() {
         print("* Enter emplyee description:");
         String? descriptionInput = stdin.readLineSync();
         print(
-            "* Select employee permissionsat least one spearated by (,): {Read, Write, Execute or Delete } :");
+            "* Select employee permissions  least one spearated by (,): {Read, Write, Execute or Delete } :");
         String? permissionsInput = stdin.readLineSync();
         Set<String> permissions = {};
         if (permissionsInput!.isNotEmpty) {
@@ -47,7 +47,7 @@ void main() {
             if (permissionsType.contains(element)) {
               permissions.add(element);
             } else {
-              print('Invalid permission: $element');
+              print('XXX Invalid permission: $element');
             }
           }
         }
@@ -69,10 +69,10 @@ void main() {
           }
         } else {
           if (salaryInput <= 5000) {
-            print("Salary must be more than 5000");
+            print("XXX Salary must be more than 5000");
           }
           if (permissions.isEmpty) {
-            print("At least one permission must be selected");
+            print("XXX At least one permission must be selected");
           }
         }
         break;
