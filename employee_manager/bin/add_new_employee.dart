@@ -53,7 +53,7 @@ addNewEmployee({
       displayAllEmployee(newEmployee);
       allEmployee.add(element);
     } else {
-      print("Please fill all requierment fields");
+      print("O_O! No data");
     }
   }
 }

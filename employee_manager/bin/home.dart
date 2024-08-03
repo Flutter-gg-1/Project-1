@@ -3,6 +3,7 @@ import 'dart:io';
 import './global_variabels.dart';
 import './add_new_employee.dart';
 import './display_all_employee.dart';
+import './update_employee.dart';
 
 class Home {
   static void instruction() {
@@ -13,6 +14,16 @@ class Home {
     3 | Update an employee
     4 | Assign permission to an employee
     C | Exit
+  
+  
+  ''');
+  }
+
+  static void employeeUpdateList() {
+    print('''
+
+    5 | Update Basic Salary
+    6 | Update Job Description
   
   
   ''');
@@ -59,16 +70,21 @@ class Home {
         } else {
           print("PLease fill all fields!");
           print("click 1 to re enter again");
+          Home.instruction();
+
           str = "1";
         }
       case '2':
         displayAllEmployee(allEmployee);
         stdin.readLineSync();
-
         Home.instruction();
-
       case '3':
         print("Update an employee");
+        String updateEmployeeID = stdin.readLineSync().toString();
+        updateEmployee(employeeID: updateEmployeeID);
+        stdin.readLineSync();
+        Home.instruction();
+
       case '4':
         print("Assign permission to an employee");
       case 'C':

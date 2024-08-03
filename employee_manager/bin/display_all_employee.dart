@@ -2,6 +2,25 @@ import './global_variabels.dart';
 
 displayAllEmployee(List<Map<String, dynamic>> getEmployees) {
   for (var element in getEmployees) {
+    num housingAllowance = (element["basic_salary"] * 0.25);
+    double transportAllowance = (element["basic_salary"] * 0.10);
+    double gosi = ((element["basic_salary"] + housingAllowance) * 0.0975);
+    element["housing_allowance"] = housingAllowance;
+    element["transport_allowance"] = transportAllowance;
+    element["gosi"] = gosi;
+
+    double totalSalaryBeforeGosi = element["basic_salary"] +
+        element["housing_allowance"] +
+        element["transport_allowance"] +
+        element["other_allowances"];
+    double totalSalaryAfterGosi = (element["basic_salary"] +
+            element["housing_allowance"] +
+            element["transport_allowance"] +
+            element["other_allowances"]) -
+        element["gosi"];
+    element["total_salary_before_gosi"] = totalSalaryBeforeGosi;
+    element["total_salary_after_gosi"] = totalSalaryAfterGosi;
+
     print("\n\n\n\n");
 
     print("                         Display all employee             ");
