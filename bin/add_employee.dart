@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+import 'empolyee_list.dart';
 
 void addEmployeea(){
  Random random = Random();
@@ -19,7 +20,7 @@ void addEmployeea(){
     'Salary': name,
     'Job Description': jobDesc,
     };
-  //emoployeesList.add(account);
+  emoployeesList.add(employee);
   print("A New Employee Is Successfully Added, Employee ID is is $id");
   stdin.readLineSync();
  }
