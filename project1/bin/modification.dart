@@ -77,4 +77,5 @@ modifyEmployeeData({required int id}) {
   }
   printWithColor(
       text: "\nTo go back for main features (Press Enter)", color: "Black");
+      stdin.readLineSync();
 }

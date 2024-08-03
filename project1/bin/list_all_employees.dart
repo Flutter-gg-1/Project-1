@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'print_with_color.dart';
 /*
     This function for listing all employees
@@ -20,4 +22,5 @@ listAllEmployees({required List<dynamic> employeelist}) {
     printWithColor(text: "\nNo employee is present.", color: "Red");
   }
   printWithColor(text: "\nTo go back for main features (Press Enter)", color: "Black");
+  stdin.readLineSync();
 }

@@ -1,5 +1,6 @@
 import 'add_employee.dart';
 import 'print_with_color.dart';
+import 'dart:io';
 /*
     This function for displaying Employee's data from manager
  */
@@ -28,5 +29,5 @@ displayEmployeeData({required int id}) {
     print("ID $id not found");
     printWithColor(text: "\nTo go back for main features (Press Enter)", color: "Black");
   }
-
+  stdin.readLineSync();
 }

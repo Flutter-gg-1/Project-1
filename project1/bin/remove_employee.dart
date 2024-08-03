@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'add_employee.dart';
 import 'print_with_color.dart';
 /*
@@ -25,4 +27,5 @@ removeEmployee({required int id}){
     print("ID $id not found");
     printWithColor(text: "\nTo go back for main features (Press Enter)", color: "Black");
   }
+  stdin.readLineSync();
 }

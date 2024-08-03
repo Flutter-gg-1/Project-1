@@ -57,6 +57,5 @@ features(){
         print("Not a valid choice");
         printWithColor(text: "\nTo go back for main features (Press Enter)", color: "Black");
     }
-    stdin.readLineSync();
   } while (!exitMenu);
 }

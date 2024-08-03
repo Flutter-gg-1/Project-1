@@ -56,4 +56,5 @@ addEmplyee() {
   employees.add(employeesMap);
   printWithColor(text: "\nEmployee added successfuly", color: "Green");
   printWithColor(text: "\nTo go back for main features (Press Enter)", color: "Black");
+  stdin.readLineSync();
 }
