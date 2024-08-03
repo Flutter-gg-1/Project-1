@@ -4,7 +4,7 @@ This Function to print text with color in console
 void printWithColor({required dynamic text, String color = "Yellow"}) {
   switch (color) {
     case ('Black'):
-      print('\x1B[30m$text\x1B[0m');
+      print('\x1B[90m$text\x1B[0m');
       break;
     case ('Red'):
       print('\x1B[31m$text\x1B[0m');

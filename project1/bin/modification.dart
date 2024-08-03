@@ -12,10 +12,11 @@ modifyEmployeeData({required int id}) {
   int count = 0;
   // iterate each employee to find the specific employee for modifying his data
   for (var element in employees) {
-    bool permission = (element["permission"] == 'Admin' ||
-        element["permission"] == "admin" ||
-        element["permission"] == "Manager" ||
-        element["permission"] == "manager");
+    // modifying data only for employees who have a permission of write or execute
+    bool permission = (element["permission"] == 'Write' ||
+        element["permission"] == "write" ||
+        element["permission"] == "Execute" ||
+        element["permission"] == "execute");
     if (element["id"] == id && permission) {
       specifiicEmployee = element;
       break;

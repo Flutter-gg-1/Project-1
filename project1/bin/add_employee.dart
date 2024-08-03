@@ -7,6 +7,7 @@ import 'print_with_color.dart';
 
 // list for storing each employee and their data
 List<dynamic> employees = [];
+const permssionList = ["read", "write", "execute"];
 addEmplyee() {
   // collect data from user
   print("Employee name: ");
@@ -14,32 +15,17 @@ addEmplyee() {
   final id = Random().nextInt(9999999);
   print("Employee phone number: ");
   String? phone = stdin.readLineSync()!;
-  print("Employee permission: ");
+  print("Employee permission: $permssionList");
   String permission = stdin.readLineSync()!;
-  double salary = 0.0;
   /*
-
-  -------------Determine salary by permission-------------
-
-  if employee's permissin = admin 
-   ------salary = 12000-------
-
-  or if employee's permission = manager 
-    -------salary = 10000-------
-
-  or if employee's permission = employee
-      ------salary = 80000------
-  
+     checking if salary between 3000 and 15000
   */
-  if (permission == 'Admin' || permission == "admin") {
-    salary = 12000;
-    print("Employee Salary: $salary");
-  } else if (permission == "Manager" || permission == "manager") {
-    salary = 10000;
-    print("Employee Salary: $salary ");
-  } else {
-    salary = 8000;
-    print("Employee Salary: $salary");
+  print("Salary: ");
+  double salary = double.parse(stdin.readLineSync()!);
+  if(salary < 3000 || salary >= 150000){
+    printWithColor(text: "The salary must be between 3000 and 15000 " , color: "Red");
+    print("Salary: ");
+    salary = double.parse(stdin.readLineSync()!);
   }
   print("Employee description: ");
   String jobDescription = stdin.readLineSync()!;

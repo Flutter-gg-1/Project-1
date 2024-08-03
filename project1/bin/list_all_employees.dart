@@ -6,7 +6,7 @@ import 'print_with_color.dart';
 */
 listAllEmployees({required List<dynamic> employeelist}) {
   const featureName = "List of employees:";
-  printWithColor(text: "\t\t$featureName", color: 'Blue');
+  printWithColor(text: "\t\t$featureName", color: 'Cyan');
   //  iterate for each employee in list and show thier data
   for (var element in employeelist) {
     print("\nName: ${element["name"]}");
