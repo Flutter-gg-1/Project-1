@@ -27,6 +27,7 @@ class EmployeeManagerApp {
       print(blackPen('3. Modify Salary'));
       print(blackPen('4. Modify Job Description'));
       print(blackPen('5. Assign Permission'));
+      print(blackPen('6. Delete Employee'));
       print(blackPen('7. Exit'));
       print(blackPen(
           '-----------------------------------------------------------------'));
@@ -88,6 +89,17 @@ class EmployeeManagerApp {
           var permission = stdin.readLineSync()!;
           manager.assignPermission(name: empName, permission: permission);
           break;
+           case '6':
+        
+              print(bluePen('Enter employee name:'));
+              var empName = stdin.readLineSync()!;
+              print(bluePen('Are you sure you want to delete employee (y/n)'));
+              if (stdin.readLineSync()! == 'y') {
+                manager.deleteEmployee(name: empName);
+              }
+      
+
+            break;
 
         case '7':
           running = false;

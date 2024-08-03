@@ -7,6 +7,15 @@ final AnsiPen yallowPen = AnsiPen()..yellow();
 
 class EmployeeManager {
   List<Employee> employees = [];
+  bool isExists({required String name}) {
+    for (var employee in employees) {
+      if (employee.name == name) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 //add employe method
   void addEmployee({
     required String name,
@@ -14,15 +23,7 @@ class EmployeeManager {
     required List<String> permissions,
     required String jobDescription,
   }) {
-    //متغير يقوم بالبحث عنن متغير اذا موجود من
-    bool exists = false;
-    for (var employee in employees) {
-      if (employee.name == name) {
-        exists = true;
-        break;
-      }
-    }
-    if (exists) {
+    if (isExists(name: name)) {
       //اذا كان اسم الموظف موجود من قبل
       print(grayPen('Employee $name already exists.'));
     } else {
@@ -43,17 +44,32 @@ class EmployeeManager {
     required double newSalary,
   }) {
     //list عرفت متغير يبحث عن الموظف في
-    bool Found = false;
     for (var employee in employees) {
-      if (employee.name == name) {
-        Found = true;
+      if (isExists(name: name)) {
         //اذا وجده يقوم بتعديل الراتب
         employee.salary = newSalary;
         print(greenPen('Salary of $name updated to \$$newSalary.'));
         break;
       }
       //اذا غير موجود تطبع له هذه الرساله
-      if (!Found) {
+      else {
+        print(yallowPen('Employee $name not found.'));
+      }
+    }
+  }
+
+  void deleteEmployee({required String name}) {
+    // البحث عن الموظف مباشرة في قائمة employees
+
+    for (var employee in employees) {
+      if (isExists(name: name)) {
+        employees.remove(employee);
+        break; // أوقف البحث بعد العثور على الموظف
+      }
+
+      //اذا غير موجود تطبع له هذه الرساله
+
+      else {
         print(yallowPen('Employee $name not found.'));
       }
     }
@@ -64,10 +80,8 @@ class EmployeeManager {
     required String permission,
   }) {
     // البحث عن الموظف مباشرة في قائمة employees
-    bool Found = false;
     for (var employee in employees) {
-      if (employee.name == name) {
-        Found = true;
+      if (isExists(name: name)) {
         // التحقق مما إذا كانت الصلاحية موجودة بالفعل
         if (!employee.permissions.contains(permission)) {
           employee.permissions.add(permission);
@@ -76,12 +90,9 @@ class EmployeeManager {
           print(yallowPen('Permission $permission already exists for $name.'));
         }
         break; // أوقف البحث بعد العثور على الموظف
+      } else {
+        print(yallowPen('Employee $name not found.'));
       }
-    }
-    //اذا غير موجود تطبع له هذه الرساله
-
-    if (!Found) {
-      print(yallowPen('Employee $name not found.'));
     }
   }
 
