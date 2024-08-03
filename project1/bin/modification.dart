@@ -2,6 +2,7 @@ import 'dart:io';
 import 'add_employee.dart';
 import 'print_with_color.dart';
 import 'assign_permission.dart';
+import 'modify_salary.dart';
 
 /*
     This function for modifying employee's data
@@ -35,31 +36,7 @@ modifyEmployeeData({required int id}) {
     int input = int.parse(stdin.readLineSync()!);
     switch (input) {
       case 1:
-        /*
-      --------------------------modifying salary for overtime-------------------------------- 
-      the application give an overtime pay if overtime workin houre less than or equal 4 hours
-      if overtime working hour greater than 4 hours they will get the overtime pay for 4 hours
-      */
-        print("Enter overtime hours per day: ");
-        var overtime = int.parse(stdin.readLineSync()!);
-        print("How many days you worked for overtime: ");
-        var day = int.parse(stdin.readLineSync()!);
-        num newSalary = 0;
-        if (overtime <= 4) {
-          newSalary = (overtime * 50 * day) + specifiicEmployee["salary"];
-          specifiicEmployee["salary"] = newSalary;
-          employees[count] = specifiicEmployee;
-          printWithColor(
-              text:
-                  "The salary of employee ${specifiicEmployee["name"]} is: $newSalary",
-              color: "Green");
-        } else {
-          newSalary = (4 * 50 * day) + specifiicEmployee["salary"];
-          printWithColor(
-              text:
-                  "The salary of employee ${specifiicEmployee["name"]} is: $newSalary",
-              color: "Green");
-        }
+       modifySalary(id: id);
       case 2:
         assignPermission(id: id);
       case 3:

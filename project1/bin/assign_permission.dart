@@ -22,13 +22,6 @@ assignPermission({required int id}) {
     String? newPermission = stdin.readLineSync();
     specifiicEmployee["permission"] = newPermission;
     employees[count] = specifiicEmployee;
-    // if (newPermission == 'Admin' || newPermission == "admin") {
-    //   specifiicEmployee["salary"] = 12000;
-    // } else if (newPermission == "Manager" || newPermission == "manager") {
-    //   specifiicEmployee["salary"] = 10000;
-    // } else {
-    //   specifiicEmployee["salary"] = 8000;
-    // }
     printWithColor(
         text: "\nThe employee's permission updated succesfully!",
         color: "Green");
