@@ -1,6 +1,9 @@
 import 'dart:ffi';
 import 'dart:io';
 
+import 'package:project_1/function/add_dep.dart';
+import 'package:project_1/function/show_all_dep.dart';
+import 'package:project_1/function/switch_dep.dart';
 import 'package:project_1/global.dart';
 import 'package:project_1/models/departments.dart';
 
@@ -17,7 +20,8 @@ runApp(Departments mainDep) {
   const String op3 = "2: Show all Employee  :";
   const String op4 = "3: Add a New Departments :";
   const String op5 = "4: Show All Departments :";
-  const String op6 = "5: exit:";
+  const String op6 = "5: Switch to other department :";
+  const String op7 = "6: exit:";
 
   
 
@@ -27,7 +31,7 @@ runApp(Departments mainDep) {
 
   
 
-  while (op != "5") {
+  while (op != "6") {
 
     
     print("\n\n");
@@ -43,6 +47,8 @@ runApp(Departments mainDep) {
     print(op5);
     print("-" * 25);
     print(op6);
+    print("-" * 25);
+    print(op7);
 
     op = stdin.readLineSync()!;
 
@@ -137,12 +143,27 @@ whileBreak :
         break;
 
       case "3":
+      addDep();
         break;
 
       case "4":
+      showAllDep();
         break;
 
-      case "5":
+        case "5" :
+
+        Departments? tempDep = switchDep();
+
+        if(tempDep != null){
+
+          mainDep = tempDep;
+
+        }
+        
+
+        break;
+
+      case "6":
         break;
     }
   }
