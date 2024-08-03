@@ -36,6 +36,8 @@ class Home {
         if (user != null) {
           storage.editEmployee(user: user);
         }
+      case '3':
+        storage.fetchAllEmployees(isShort: false);
       case 'i':
         instructionsMsg();
       case 's':
@@ -46,8 +48,7 @@ class Home {
         shouldExit = true;
       case 'new':
         print('');
-      case 'le':
-        storage.fetchAllEmployees(isShort: false);
+
       case 'lm':
         print('');
 

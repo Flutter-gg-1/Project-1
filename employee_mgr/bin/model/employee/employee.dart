@@ -10,7 +10,7 @@ class Employee {
   int phoneNum;
   int age;
   double salary;
-  EmployeeStatus status;
+  EmployeeStatus state;
   // Employee Role is used for permissions and Access Rights
   EmployeeRole role;
 
@@ -20,7 +20,7 @@ class Employee {
       required this.age,
       required this.salary,
       this.role = EmployeeRole.employee,
-      this.status = EmployeeStatus.active});
+      this.state = EmployeeStatus.active});
 
   String salaryStr() => '${salary.toStringAsFixed(2)} SAR';
   String phoneStr() {
@@ -46,7 +46,7 @@ class Employee {
     Age:    \x1B[32m  $age              \x1B[0m
     Salary: \x1B[32m  ${fullAccess ? salaryStr() : '**'}    \x1B[0m
     Role:   \x1B[32m  ${role.name}      \x1B[0m
-    Status: \x1B[32m  ${fullAccess ? status.name : '**'}      \x1B[0m
+    Status: \x1B[32m  ${fullAccess ? state.name : '**'}      \x1B[0m
     \x1B[34m-----------------------------------\x1B[0m
     ''');
   }

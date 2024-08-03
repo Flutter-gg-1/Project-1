@@ -23,7 +23,7 @@ class Storage {
         age: 23,
         salary: 3564.12,
         role: EmployeeRole.employee,
-        status: EmployeeStatus.inActive),
+        state: EmployeeStatus.inActive),
   ];
 
   late List<Employee> employees;
@@ -31,10 +31,10 @@ class Storage {
 
   Storage() {
     employees = allEmployees
-        .where((element) => element.status == EmployeeStatus.active)
+        .where((emp) => emp.state == EmployeeStatus.active)
         .toList();
     inActiveEmployees = allEmployees
-        .where((element) => element.status == EmployeeStatus.inActive)
+        .where((emp) => emp.state == EmployeeStatus.inActive)
         .toList();
   }
 

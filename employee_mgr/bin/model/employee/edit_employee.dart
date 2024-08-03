@@ -1,8 +1,9 @@
 import 'dart:io';
 
-import '../utils/colorful_print.dart';
+import '../../utils/colorful_print.dart';
+import '../enums/employee_fields.dart';
 import 'employee.dart';
-import 'enums/employee_fields.dart';
+import 'validation_employee.dart';
 
 extension EditEmployee on Employee {
   void editDetails() {
@@ -74,47 +75,15 @@ extension EditEmployee on Employee {
       case EmployeeFields.phone:
         validateNewPhone(userInput ?? '');
       case EmployeeFields.age:
-        validateAge();
+        validateAge(userInput ?? '');
       case EmployeeFields.salary:
-        validateSalary();
+        validateSalary(userInput ?? '');
       case EmployeeFields.role:
-        validateSalary();
+        validateRole(userInput ?? '');
       case EmployeeFields.activeState:
-        validateActiveState();
+        validateActiveState(userInput ?? '');
       default:
         print('UNKNOWN ERROR!');
     }
   }
-
-  // For Data Validation
-  void validateNewName(String newName) {
-    if (newName.isEmpty) {
-      ColorfulPrint.red('ERROR: Name Cannot be empty!');
-    } else {
-      name = newName;
-      ColorfulPrint.green('Name updated successfully to $name');
-    }
-  }
-
-  void validateNewPhone(String newPhone) {
-    try {
-      var value = int.parse(newPhone);
-      if (newPhone.length != 10) {
-        ColorfulPrint.red('ERROR: Entry is not a 10 digits');
-      } else {
-        phoneNum = value;
-        ColorfulPrint.green('Phone updated successfully to ${phoneStr()}');
-      }
-    } catch (_) {
-      print('ERROR: Entry contains non-digit characters!');
-    }
-  }
-
-  void validateAge() {}
-
-  void validateSalary() {}
-
-  void validateRole() {}
-
-  void validateActiveState() {}
 }
