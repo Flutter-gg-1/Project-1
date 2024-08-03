@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'global_variabels.dart';
 import './display_all_employee.dart';
+import 'home.dart';
 
 addNewEmployee({
   required String empName,
@@ -37,5 +40,46 @@ addNewEmployee({
     } else {
       print("O_O! No data");
     }
+  }
+}
+
+inputNewEmployee() {
+  print("+++++++++++++++++++++++++++++++");
+  print("Add New Employee");
+  print("Employee Name :");
+  String inputEmployeeName = stdin.readLineSync().toString();
+  print("Employee National ID :");
+  String inputNationalID = stdin.readLineSync().toString();
+  print("Employee National Date of birth :");
+  String inputEmployeeDateOfBirth = stdin.readLineSync().toString();
+  print("Employee Job Title :");
+  String inputEmployeeJobTitle = stdin.readLineSync().toString();
+  print("Employee Job Description :");
+  String inputEmployeeJobDescription = stdin.readLineSync().toString();
+  print("Employee Basic Salary :");
+  var inputEmployeeJBasicSalary = int.parse(stdin.readLineSync().toString());
+  print("Employee Other Allowance :");
+  double inputEmployeeJOtherAllowance = double.parse(stdin.readLineSync()!);
+  if (inputEmployeeName != "" &&
+      inputNationalID != "" &&
+      inputEmployeeDateOfBirth != "" &&
+      inputEmployeeJobTitle != "" &&
+      inputEmployeeJobDescription != "" &&
+      inputEmployeeJBasicSalary > 0 &&
+      inputEmployeeJOtherAllowance >= 0) {
+    addNewEmployee(
+        empName: inputEmployeeName,
+        nationaID: inputNationalID,
+        dateOfBirth: inputEmployeeDateOfBirth,
+        jobTitle: inputEmployeeJobTitle,
+        jobDescription: inputEmployeeJobDescription,
+        basicSalary: inputEmployeeJBasicSalary,
+        otherAllowances: inputEmployeeJOtherAllowance);
+    stdin.readLineSync();
+    Home.instruction();
+  } else {
+    print("PLease fill all fields!");
+    print("click 1 to re enter again");
+    Home.instruction();
   }
 }

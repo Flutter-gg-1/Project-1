@@ -34,8 +34,8 @@ class Home {
   static void employeeUpdatePermission() {
     print('''
 
-    1 | Admin
-    2 | User
+    1 | ${empPermission[0]}
+    2 | ${empPermission[1]}
   
   
   ''');
@@ -44,48 +44,7 @@ class Home {
   static void userInput(String str) {
     switch (str) {
       case '1':
-        print("+++++++++++++++++++++++++++++++");
-        print("Add New Employee");
-        print("Employee Name :");
-        String inputEmployeeName = stdin.readLineSync().toString();
-        print("Employee National ID :");
-        String inputNationalID = stdin.readLineSync().toString();
-        print("Employee National Date of birth :");
-        String inputEmployeeDateOfBirth = stdin.readLineSync().toString();
-        print("Employee Job Title :");
-        String inputEmployeeJobTitle = stdin.readLineSync().toString();
-        print("Employee Job Description :");
-        String inputEmployeeJobDescription = stdin.readLineSync().toString();
-        print("Employee Basic Salary :");
-        var inputEmployeeJBasicSalary =
-            int.parse(stdin.readLineSync().toString());
-        print("Employee Other Allowance :");
-        double inputEmployeeJOtherAllowance =
-            double.parse(stdin.readLineSync()!);
-        if (inputEmployeeName != "" ||
-            inputNationalID != "" ||
-            inputEmployeeDateOfBirth != "" ||
-            inputEmployeeJobTitle != "" ||
-            inputEmployeeJobDescription != "" ||
-            inputEmployeeJBasicSalary > 0 ||
-            inputEmployeeJOtherAllowance >= 0) {
-          addNewEmployee(
-              empName: inputEmployeeName,
-              nationaID: inputNationalID,
-              dateOfBirth: inputEmployeeDateOfBirth,
-              jobTitle: inputEmployeeJobTitle,
-              jobDescription: inputEmployeeJobDescription,
-              basicSalary: inputEmployeeJBasicSalary,
-              otherAllowances: inputEmployeeJOtherAllowance);
-          stdin.readLineSync();
-          Home.instruction();
-        } else {
-          print("PLease fill all fields!");
-          print("click 1 to re enter again");
-          Home.instruction();
-
-          str = "1";
-        }
+        inputNewEmployee();
       case '2':
         displayAllEmployee(allEmployee);
         stdin.readLineSync();
