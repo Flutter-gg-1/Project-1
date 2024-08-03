@@ -1,5 +1,7 @@
+import 'dart:ffi';
 import 'dart:io';
 
+import 'package:project_1/global.dart';
 import 'package:project_1/models/departments.dart';
 
 // here where the app start
@@ -14,9 +16,11 @@ runApp(Departments mainDep) {
   const String op5 = "4: Show All Departments :";
   const String op6 = "5: exit:";
 
-  const String permR = "read";
-  const String permW = "wrtie";
-  const String permA = "admin";
+  
+
+
+  const String serId = "id";
+  const String serNAme = "name";
 
   
 
@@ -89,6 +93,36 @@ whileBreak :
         break;
 
       case "1":
+
+      print("*" * 50);
+
+
+       print("\n------ how you want to serch  ------\n");
+
+       print("0 -  $serNAme");
+        print("-" * 25);
+        print("1-  $serId");
+        print("-" * 25);
+        String serOp = stdin.readLineSync()!;
+whileBreak :
+       while(true){
+
+        switch(serOp){
+
+          case "0" :
+
+          break whileBreak;
+
+          case "1" :
+
+          break whileBreak;
+
+          default:
+          print("\n ----- eorr place chose betwen 0 or 1 ---- \n");
+        }
+
+       }
+
         break;
 
       case "2":
