@@ -2,6 +2,7 @@ import "dart:io";
 import "package:ems/emp_data.dart";
 import "package:ems/employee.dart";
 import "package:ems/global.dart";
+import 'package:ems/ui_messages.dart';
 
 interface() {
   /*
@@ -13,21 +14,21 @@ interface() {
   */
   int id = -1;
   late dynamic user;
-  print("*****Login*****");
+  print(loginMessage);
   //the defult admin is 1
-  print("Input your id");
+  print(inuptIDMessage);
 
   do {
     String userInput = stdin.readLineSync()!;
     try {
       id = int.parse(userInput);
     } catch (e) {
-      print("it not valid id DX...");
+      print(invalidID);
     }
 
     user = getEmployee(id);
     if (user == false) {
-      print("The user does not exitst DX....");
+      print(invalidUser);
     }
   } while (user == false);
   // after initialize a user cast the variable as employee
@@ -44,8 +45,8 @@ interface() {
 }
 
 void adminPage(Employee user) {
-  print("*****ADMIN*****");
-  print("1- Add employee |2- edit employee| 3 Show all employee  |0-logout");
+  print(adminMessage);
+  print(adminOptions);
   String userInput = stdin.readLineSync() ?? "0";
   switch (userInput) {
     case == "1":
@@ -53,7 +54,7 @@ void adminPage(Employee user) {
       break;
     case == "2":
       allEmployees();
-      print("input employee id to edit");
+      print(editIDInput);
 
       late int empId;
       late dynamic editEmp;
@@ -62,12 +63,12 @@ void adminPage(Employee user) {
         try {
           empId = int.parse(stdin.readLineSync()!);
         } catch (e) {
-          print("it not valid id DX...");
+          print(invalidID);
         }
 
         editEmp = getEmployee(empId);
         if (editEmp == false) {
-          print("The user does not exitst DX...");
+          print(invalidUser);
         }
       } while (editEmp == false);
 
@@ -84,7 +85,8 @@ void adminPage(Employee user) {
 }
 
 employeePage(Employee user) {
-  print("1-show my  | info 0-logout");
+  print(employeeMessage);
+  print(employeeOptions);
   String userInput = stdin.readLineSync() ?? "0";
   switch (userInput) {
     case == "1":
@@ -98,18 +100,18 @@ employeePage(Employee user) {
 }
 
 void add() {
-  print("Employee name");
+  print(employeeNameMessage);
   String name = stdin.readLineSync()!;
 
-  print("Salary  *Only numbers*");
+  print(inputSalaryMessage);
   double salary = 0;
   salary = double.parse(stdin.readLineSync()!);
 
-  print("what is the job description");
+  print(jobDescriptionMessage);
   String jobDescriptions = stdin.readLineSync()!;
 
-  print("select on of these permission");
-  print("1- admin |2- dev |3- it");
+  print(permissionMassge);
+  print(permissionType);
   String permission = getPermission(stdin.readLineSync() ?? "3");
   Employee newEmp = Employee(
       id: 0,

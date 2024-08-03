@@ -1,6 +1,6 @@
 import "employee.dart";
 
-//this the defult admin
+//Defult admin
 final Employee admin = Employee(
     id: 1,
     name: "admin",
@@ -10,3 +10,4 @@ final Employee admin = Employee(
 final List<Employee> emps = [admin];
 
 enum PermissionLevel { admin, dev, it }
+

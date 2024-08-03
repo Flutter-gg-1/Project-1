@@ -1,14 +1,14 @@
 import 'dart:io';
 import 'package:ems/employee.dart';
 import 'global.dart';
-
+import 'ui_messages.dart';
 void addEmployee(Employee emp) {
   if (emps.isEmpty) {
     emp.id = 1;
   } else {
     emp.id = emps.last.id + 1;
     emps.add(emp);
-    print("add was seccuss!!");
+    print(successAdd);
     emp.printEmployeeInfo();
   }
 }
@@ -43,31 +43,31 @@ void allEmployees() {
 }
 
 Employee edit(Employee emp) {
-  print("1- name | 2- edit job description | 3- salary | 4- permissions");
+  print(editOptions);
   var eidtOption = stdin.readLineSync()!;
   switch (eidtOption) {
     //change name
     case == "1":
-      print("input name");
+      print(employeeNameMessage);
       String name = stdin.readLineSync()!;
       emp.name = name;
       return emp;
     //change description
     case == "2":
-      print("input job description");
+      print(jobDescriptionMessage);
       String jobDescriptions = stdin.readLineSync()!;
       emp.jobDescriptions = jobDescriptions;
       return emp;
     //change salary
     case == "3":
-      print("input salary");
+      print(inputSalaryMessage);
       double salary = double.parse(stdin.readLineSync()!);
       emp.salary = salary;
       return emp;
     //chage permission
     case == "4":
-      print("select on of these permission");
-      print("1- admin 2- dev 3- it");
+      print(permissionMassge);
+      print(permissionType);
       String permission = getPermission(stdin.readLineSync()!);
       emp.permission = permission;
       return emp;
