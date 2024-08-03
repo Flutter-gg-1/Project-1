@@ -20,7 +20,18 @@ List getInputPermissions({required String name}) {
   // add permissions
   for (int i = 0; i < int.parse(numOfPermissions); i++) {
     stdout.write("Enter permission ${i + 1} : ");
-    permissions.add(stdin.readLineSync());
+    String? permission = stdin.readLineSync();
+    /*
+      permission validation :
+        1- shouldn't be empty
+        2- should contain letters
+    */
+    while(permission!.isEmpty || permission.contains(RegExp(r'[a-zA-Z]')) == false) {
+      print("ERROR !! : Invalid permission ❌\n");
+      stdout.write("Enter permission ${i + 1} : ");
+      permission = stdin.readLineSync();
+    }
+    permissions.add(permission);
   }
   return permissions;
 }

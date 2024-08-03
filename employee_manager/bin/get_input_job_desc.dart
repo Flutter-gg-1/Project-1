@@ -7,7 +7,7 @@ String getInputJobDesc() {
   String? jobDesc = stdin.readLineSync();
   
   // job description validation (shouldn't be empty)
-  while (jobDesc!.isEmpty) {
+  while (jobDesc!.isEmpty || jobDesc.contains(RegExp(r'[a-zA-Z]')) == false) {
     print("ERROR !! : Invalid job description ❌\n");
     stdout.write("Enter employee job description : ");
     jobDesc = stdin.readLineSync();
