@@ -86,7 +86,7 @@ The project will be evaluated based on the following criteria:
 
 - **Quality**: The overall quality of the project, including the coding style, organization, and ease of maintenance. Well-structured and readable code will be favorably evaluated.
 
-- **Use of Programming Concepts**: How well you utilize programming concepts such as classes, abstracts, functions, and other relevant techniques.
+- **Use of Programming Concepts**: How well you utilize programming concepts.
 
 
 #### Submission Details:
