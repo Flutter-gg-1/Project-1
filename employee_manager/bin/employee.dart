@@ -1,15 +1,16 @@
 import 'dart:io';
 import 'dart:math';
-
 import 'global_var.dart';
 
 class Employee {
-  int? id = Random().nextInt(9999);
+// Employee attrbute
+  final id = Random().nextInt(9999);
   String? name;
   int? salary;
   String? permissions;
   String? jopDescripiton;
 
+//Eempty constrctior
   Employee();
 
 //function to add employee
@@ -23,17 +24,32 @@ class Employee {
     print("Add employee jop descripiton:");
     jopDescripiton = stdin.readLineSync();
 
-    Map<String, dynamic> employeeinfo = {
-      "id": id,
-      "name": name,
-      "salary": salary,
-      "permissions": permissions,
-      "jopDescripiton": jopDescripiton
-    };
+//check that name cannot be empty
+    if (name == "") {
+      print("\n Name must not be empty!");
+    }
 
-    employees.add(employeeinfo);
+//check that salary cannot be less than 3000
+    else if (salary! < 3000) {
+      print("\n Salary must not be empty or less than 4000!");
+    }
+//check that permissions cannot be empty
+    else if (permissions == "") {
+      print("\n permissions must not be empty!");
+    }
 
-    print("\n Employee added successfully!");
+//add new employee
+    else {
+      Map<String, dynamic> employeeinfo = {
+        "id": id,
+        "name": name,
+        "salary": salary,
+        "permissions": permissions,
+        "jopDescripiton": jopDescripiton
+      };
+      employees.add(employeeinfo);
+      print("\n Employee added successfully!");
+    }
 
     stdin.readLineSync();
   }

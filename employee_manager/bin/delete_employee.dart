@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'global_var.dart';
 
+//function to delete employee with a specific ID
 deleteEmployee() {
   int initialLength = employees.length;
   print("Enter employee id to delete:");

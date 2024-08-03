@@ -9,12 +9,12 @@ void main(List<String> arguments) {
   bool isExit = false;
 
   do {
+    // Display functions Mnue for user to choose from
     print("\n \n \n -----Manange your employees-----");
     print("1. Add employee");
     print("2. Display employees info");
     print("3. Delete employee");
     print("4. Update employee info");
-    print("5. Permissions");
     print("Q. Exit");
 
     String input = stdin.readLineSync()!;

@@ -16,6 +16,7 @@ updateEmployee() {
   Map<String, dynamic> employee = {};
   int count = 0;
 
+//find the employee with the entered ID
   for (var element in employees) {
     if (element["id"] == empId) {
       employee = element;
@@ -31,8 +32,13 @@ updateEmployee() {
         if (employee.isNotEmpty) {
           print("Enter new name:");
           String? newName = stdin.readLineSync();
-          employee["name"] = newName;
-          employees[count] = employee;
+          if (newName != "") {
+            employee["name"] = newName;
+            employees[count] = employee;
+            print("Name updated successfully");
+          } else {
+            print("\n Name must not be empty!");
+          }
         } else {
           print('Employee with ID $empId not found.');
         }
@@ -46,8 +52,13 @@ updateEmployee() {
         if (employee.isNotEmpty) {
           print("Enter new salary:");
           int? newSalary = int.parse(stdin.readLineSync()!);
-          employee["salary"] = newSalary;
-          employees[count] = employee;
+          if (newSalary > 3000) {
+            employee["salary"] = newSalary;
+            employees[count] = employee;
+            print("Salary updated successfully");
+          } else {
+            print("\n Salary must not be empty or less than 3000!");
+          }
         } else {
           print('Employee with ID $empId not found.');
         }
@@ -60,8 +71,13 @@ updateEmployee() {
         if (employee.isNotEmpty) {
           print("Enter new Permissions:");
           String newPermissions = stdin.readLineSync()!;
-          employee["Permissions"] = newPermissions;
-          employees[count] = employee;
+          if (newPermissions != "") {
+            employee["permissions"] = newPermissions;
+            employees[count] = employee;
+            print("Permissions updated successfully");
+          } else {
+            print("\n Permissions must not be empty!");
+          }
         } else {
           print('Employee with ID $empId not found.');
         }
@@ -76,6 +92,7 @@ updateEmployee() {
           String? newjopDescripiton = stdin.readLineSync()!;
           employee["jopDescripiton"] = newjopDescripiton;
           employees[count] = employee;
+          print("Jop descripiton updated successfully");
         } else {
           print('Employee with ID $empId not found.');
         }

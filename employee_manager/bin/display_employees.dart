@@ -6,8 +6,10 @@ import 'global_var.dart';
 displayEmployee() {
   print("\n\n");
   print("1- Display all employees");
-  print("2- Display by ID");
+  print("2- Display employee by ID");
   String input = stdin.readLineSync()!;
+
+  //display all employee
   if (input == "1") {
     for (var element in employees) {
       print("-------------------------------");
@@ -19,7 +21,11 @@ displayEmployee() {
       print("-------------------------------");
       print('\n');
     }
-  } else if (input == "2") {
+    stdin.readLineSync();
+  }
+
+  //display employee with specific ID
+  else if (input == "2") {
     print("\nAdd employee ID to display");
     int inputId = int.parse(stdin.readLineSync()!);
     for (var element in employees) {
@@ -32,6 +38,8 @@ displayEmployee() {
         print("Jop descripiton: ${element["jopDescripiton"]}");
         print("-------------------------------");
         print('\n');
+
+        stdin.readLineSync();
       } else {
         print('Employee with ID $inputId not found.');
       }
