@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:convert';
 import '../employee.dart';
+import '../employee_mngmt.dart';
 
 readFiles(List<dynamic> files) {
   File empFile = File('bin/lists/employee.json');
@@ -9,7 +10,6 @@ readFiles(List<dynamic> files) {
 
   for (var i = 0; i < temp.length; i++) {
     Employee.listOfEmployees.add(Employee.fromMap(temp[i]));
-    print(Employee.listOfEmployees[i].empID);
   }
 
   files.add(temp);
@@ -88,4 +88,5 @@ void updateEmployeeInJson(Employee emp, String empID) {
       break;
     }
   }
+  readFiles(listOfFiles);
 }

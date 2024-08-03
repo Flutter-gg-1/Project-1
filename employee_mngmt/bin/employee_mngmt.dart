@@ -30,7 +30,7 @@ void main(List<String> arguments) async {
               Map<String, dynamic> map = Employee.fillEmployeeInformation(null);
               String firstName = Employee.storeInfo(Employee.fromMap(map));
               print('Employee $firstName Added Successfully!!');
-
+              stdin.readLineSync();
             case '2':
               stdout.write('Enter Employee ID: ');
               String? empID = stdin.readLineSync();
@@ -38,7 +38,8 @@ void main(List<String> arguments) async {
               print('\n1: View information');
               print('2: Update Employee Information');
               print('3: Update Salary');
-              print('4: Set Permissoins');
+              print('4: Update Job Description');
+              print('5: Set Permissoins');
 
               stdout.write('\nEnter your choice: ');
               String? choice = stdin.readLineSync();
@@ -46,21 +47,34 @@ void main(List<String> arguments) async {
               switch (choice) {
                 case '1':
                   Employee.viewInfo(Employee.getEmployee(empID!));
+                  stdin.readLineSync();
                 case '2':
                   updateEmployeeInJson(Employee.getEmployee(userID)!, userID);
+                  stdin.readLineSync();
                 case '3':
                   stdout.write('Enter New Salary: ');
                   int? salary = int.parse(stdin.readLineSync()!);
                   Employee.setSalary(Employee.getEmployee(empID!)!, salary);
                   print('Salary has been updated.');
+                  stdin.readLineSync();
                 case '4':
+                  stdout.write('Enter New job description: ');
+                  String? jobDescription = stdin.readLineSync();
+                  Employee.setJobDescription(
+                      Employee.getEmployee(empID!)!, jobDescription!);
+                  print('Job Description has been updated.');
+                  stdin.readLineSync();
+                case '5':
                   stdout.write(
                       'Are you sure you want to give permission to Employee $empID? y/n: ');
                   String? answer = stdin.readLineSync();
                   if (answer!.toLowerCase() == 'y') {
                     Employee.addToPermission(Employee.getEmployee(empID!)!);
                     print('Employee added to the list of Permissoins.');
+                  } else {
+                    print('Employee NOT added to the list of Permissoins.');
                   }
+                  stdin.readLineSync();
                 default:
               }
 
@@ -81,10 +95,13 @@ void main(List<String> arguments) async {
           switch (choice) {
             case '1':
               Employee.viewInfo(Employee.getEmployee(userID));
+              stdin.readLineSync();
             case '2':
               setPassword(Employee.getEmployee(userID)!);
+              stdin.readLineSync();
             case '3':
               updateEmployeeInJson(Employee.getEmployee(userID)!, userID);
+              stdin.readLineSync();
             case '0' || '':
               isExit = exitMethod();
             default:

@@ -8,7 +8,7 @@ Future<String> login() async {
   String records = await file.readAsString();
   List members = jsonDecode(records);
 
-  print('Enter your Login credentials\n');
+  print('\nEnter your Login credentials\n');
   stdout.write('ID: ');
   String userID = stdin.readLineSync()!;
   stdout.write('password: ');

@@ -3,6 +3,7 @@ import 'dart:math';
 import 'dart:convert';
 import 'auth/auth.dart';
 import './file_mngmt/file_manager.dart';
+import '../bin/employee_mngmt.dart';
 
 class Employee {
   String? firstName;
@@ -106,8 +107,6 @@ class Employee {
     return map;
   }
 
-  
-
   static updateEmployee(Employee emp, Map<String, dynamic> updatedInfo) {
     emp.firstName = updatedInfo['firstName'];
     emp.lastName = updatedInfo['lastName'];
@@ -141,8 +140,35 @@ class Employee {
     print('Salary: ${emp.salary}');
   }
 
-  static int setSalary(Employee emp, int amount) {
-    return emp.salary = amount;
+  static setSalary(Employee emp, int amount) {
+    int index = -1;
+    for (var i = 0; i < listOfFiles[0].length; i++) {
+      if (listOfFiles[0][i]['empID'] == emp.empID) {
+        listOfFiles[0][i]['salary'] = amount;
+        index = i;
+        break;
+      }
+    }
+    if (index > 0) {
+      updateEmployeeList(emp, updatedInfo: listOfFiles[0][index]);
+    }
+    emp.salary = amount;
+    readFiles(listOfFiles);
+  }
+
+  static setJobDescription(Employee emp, String jobDescription) {
+    int index = -1;
+    for (var i = 0; i < listOfFiles[0].length; i++) {
+      if (listOfFiles[0][i]['empID'] == emp.empID) {
+        listOfFiles[0][i]['jobDescription'] = jobDescription;
+        break;
+      }
+    }
+    if (index > 0) {
+      updateEmployeeList(emp, updatedInfo: listOfFiles[0][index]);
+    }
+    emp.jobDescription = jobDescription;
+    readFiles(listOfFiles);
   }
 
   static void addToPermission(Employee emp) async {
@@ -158,7 +184,6 @@ class Employee {
     temp.add(newPermission);
     String update = jsonEncode(temp);
     file.writeAsStringSync(update, mode: FileMode.write);
+    readFiles(listOfFiles);
   }
-
-  
 }
