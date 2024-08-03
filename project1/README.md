@@ -26,14 +26,14 @@ dart run
 ```
  the app's features and greeting message will be displayed to you, like the one in the picture below..
 
- <div style="width:40%; margin: auto;">
+ <div style="width:20%; margin: auto;">
 
 ![A caption goes here](images/home_screen.png) 
 </div>
 
  4. Select a number (for example, number 1) to add an employee, then complete the data
 
-<div style="width:40%; margin: auto;">
+<div style="width:20%; margin: auto;">
 
  ![add_employee](images/add_employee.png)
 </div>
@@ -42,7 +42,7 @@ dart run
  6. In order to access the feature 2, 3 and 5, you need the employee's ID.
  7. Select number 4 to obtain the employee's ID.
 
-<div style="width:40%; margin: auto;">
+<div style="width:20%; margin: auto;">
 
 ![list_all_employee](images/list_all_employee.png)
 </div>
@@ -52,7 +52,7 @@ dart run
 
  10. To change salary choose number 1, then a list containing to modify salary or adding an overtime pay
 
-<div style="width:40%; margin: auto;">
+<div style="width:20%; margin: auto;">
 
 ![modify_salary](images/modify_salary.png)
 </div>
@@ -60,14 +60,14 @@ dart run
  11. In order to modify the job description and permissions, navigate to the major features, choose number 5, and then choose the number you want of either.
  12. To remove an employee choose number 3, then enter employee's ID.
 
-<div style="width:40%; margin: auto;">
+<div style="width:20%; margin: auto;">
 
 ![remove_employee](images/remove_employee.png)
 </div>
 
  13. In order to check if employee removed form application, choose number 4 to list all employee.
 
-<div style="width:40%; margin: auto;">
+<div style="width:20%; margin: auto;">
 
 ![remove_employee](images/remove_employee.png)
 </div>
