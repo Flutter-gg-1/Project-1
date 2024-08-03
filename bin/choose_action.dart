@@ -3,7 +3,7 @@ import 'exit_function.dart';
 import 'add_employee.dart';
 import 'messages.dart';
 import 'display_employee_info.dart';
-
+import 'modify_employee_infp.dart';
 void chooseAction(){
   print(line);
   print(next);
@@ -17,7 +17,7 @@ void chooseAction(){
         case '2':
         displayEmpInfo();
         case '3':
-        //displayEmpInfo();
+        modifyEmpInfo();
         case '4':
         //
         default:
