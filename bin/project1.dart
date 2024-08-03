@@ -1,5 +1,6 @@
 
 import 'dart:io';
+import 'exit_function.dart';
 
 void main(List<String> arguments) {
   print("~~~~~~~~~~Welcome Admin~~~~~~~~~~");
@@ -24,5 +25,5 @@ void main(List<String> arguments) {
       choice = stdin.readLineSync();   }
     }
     //Exit function when choice is 6
-    //exitProgram();
+    exitProgram();
 }
