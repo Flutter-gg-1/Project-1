@@ -11,7 +11,7 @@ int getInputID(Map employees) {
       2- should be a number
       3- should exist in the employees map
   */
-  while (id!.isEmpty || int.tryParse(id) == null || !employees.containsKey(int.parse(id))) {
+  while (id!.isEmpty || int.tryParse(id) == null || employees.containsKey(int.parse(id)) == false) {
     print("ERROR !! : Invalid ID ❌\n");
     stdout.write("Enter employee ID : ");
     id = stdin.readLineSync();

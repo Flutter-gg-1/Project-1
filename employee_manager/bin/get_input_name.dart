@@ -16,7 +16,7 @@ String getInputName() {
         - ( *) : zero or more spaces (in case of last name)
         - [a-zA-Z]* : zero or more alphabets (in case of last name)
   */
-  while (name!.isEmpty || !name.contains(RegExp('^[a-zA-Z]+ *[a-zA-Z]*\$'))) {
+  while (name!.isEmpty || name.contains(RegExp('^[a-zA-Z]+ *[a-zA-Z]*\$')) == false) {
     print("ERROR !! : Invalid Name ❌\n");
     stdout.write("Enter employee name : ");
     name = stdin.readLineSync();

@@ -11,7 +11,7 @@ List getInputPermissions({required String name}) {
       1- shouldn't be empty
       2- should be either 0,1,2, or 3
   */
-  while (numOfPermissions!.isEmpty || !['0', '1', '2', '3'].contains(numOfPermissions)) {
+  while (numOfPermissions!.isEmpty || ['0','1','2','3'].contains(numOfPermissions) == false) {
     print("ERROR !! : Invalid number ❌\n");
     stdout.write("How many permissions does $name have (0-3) ? : ");
     numOfPermissions = stdin.readLineSync();

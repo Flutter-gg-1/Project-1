@@ -4,6 +4,7 @@ import 'app_menu.dart';       // function to print manager's menu
 import 'add_employee.dart';   // function to add a new employee
 import 'get_input_id.dart';   // function to get id input from user
 import 'modify_info.dart';    // function to modify employee info
+import 'view_employees.dart'; // function to view and filter employees
 import 'package:employee_manager/models/employee.dart'; // employee class
 
 void main() {
@@ -11,7 +12,7 @@ void main() {
   Map<int,Employee> employees = {};
   while_manage:
   while(true) {
-    appMenu(modify: false);
+    appMenu(mode: 'main');
     stdout.write("Choose an option : ");
     var option = stdin.readLineSync();
     if(['1','3','4','5'].contains(option) & employees.isEmpty) {
@@ -26,10 +27,7 @@ void main() {
 
       // view employees
       case '1' :
-        for(var employee in employees.values) {
-          employee.display();
-        }
-        print("\nTotal employees : ${employees.length}");
+        viewEmployees(employees: employees);
 
       // add employee
       case '2' :

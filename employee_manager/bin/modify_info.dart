@@ -12,7 +12,7 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
   while_modify:
   while (true) {
     print('What modification do you want to perform on employee $id ?');
-    appMenu(modify:true);
+    appMenu(mode:'modify');
     stdout.write("Choose an option : ");
     String? modifyChoice = stdin.readLineSync();
 
