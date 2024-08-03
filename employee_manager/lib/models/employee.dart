@@ -16,7 +16,16 @@ class Employee {
       required this.permissions});
 
   // class behaviours
-  // function for promotion
+  // function to print permissions
+  String getPermissions() {
+    String permissionsString = '\n';
+    for(int i=0; i<permissions.length; i++) {
+      permissionsString += 'Permission ${i+1} --> ${permissions[i]}\n';
+    }
+    return permissionsString;
+  }
+
+  // function to make promotion
   void promote() {
     salary+=1000;
     print("Employee $name with ID $id earned a promotion ! 🎉");
@@ -28,7 +37,7 @@ class Employee {
     print('Employee ID : $id');
     print('Employee Name : $name');
     print('Employee Salary : $salary');
-    print('Employee Permissions : ${permissions.isEmpty ? 'None' : permissions}');
     print('Employee Job Description : $jobDesc');
+    print('Employee Permissions : ${permissions.isEmpty ? 'None' : getPermissions()}');
   }
 }

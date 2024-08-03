@@ -51,13 +51,16 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
       case '4':
         if (employee.permissions.isNotEmpty) {
           print('current permissions : ');
-          for(int i=0; i<employee.permissions.length; i++) {
-            print('${i+1}-${employee.permissions[i]}');
-          }
+          employee.getPermissions();
           stdout.write("Enter a permission number to remove : ");
           String? index = stdin.readLineSync();
-
-          while(index!.isEmpty || !['1','2','3'].contains(index) || int.parse(index)>employee.permissions.length) {
+          /*
+            index validation :
+              1- shouldn't be empty
+              2- should be either 1,2,or 3
+              3- shouldn't be more than the permissions list length
+          */
+          while(index!.isEmpty || ['1','2','3'].contains(index) == false || int.parse(index)>employee.permissions.length) {
             print("ERROR !! : Invalid input ❌\n");
             stdout.write("Enter a permission number to remove : ");
             index = stdin.readLineSync();
