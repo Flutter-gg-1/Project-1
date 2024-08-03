@@ -1,6 +1,7 @@
 import 'dart:io';
+import 'messages.dart';
 
 exitProgram(){
-  print("Thank You For Using Our App, Good Bye.");
+  print(goodBye);
   exit(0);
 }
