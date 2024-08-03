@@ -69,7 +69,9 @@ void main() {
         break;
 
       case "1":
-        
+        print("* Enter employee ID:");
+        String? employeeIdInput = stdin.readLineSync();
+        displayEmployee(employeeId: employeeIdInput);
         break;
 
       case "2":
