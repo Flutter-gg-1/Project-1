@@ -8,13 +8,13 @@ void addEmployeea(){
 print("\n\n\n\n");
 print(line);
 
- Random random = Random();
+  Random random = Random();
   final id =random.nextInt(10000).toString(); 
   String? name;
   String? permission;
   String? salary;
   String? jobDesc;
-  //validate user inputs
+  //validate that inputs are not empty
   do{
   print("Add Employee Name:");
   name = stdin.readLineSync();
@@ -47,7 +47,7 @@ print(line);
   }
   }while(jobDesc=="" || jobDesc==null);
   
-
+  //add entered info to employee map
   Map<String,dynamic> employee ={
     'id': id,
     'Name': name,
@@ -55,6 +55,8 @@ print(line);
     'Salary': salary,
     'Job Description': jobDesc,
     };
+
+  //add added employee to employees list
   emoployeesList.add(employee);
   print("-A New Employee Is Successfully Added, Employee ID is $id-");
   stdin.readLineSync(); //for new line after display
