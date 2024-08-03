@@ -22,9 +22,8 @@ modifyEmployeeData({required int id}) {
     }
     count++;
   }
-  // display employee's data
   if (specifiicEmployee.isNotEmpty) {
-    // selecting what to to chang
+    // selecting what to to change
     printWithColor(text: "\t    what would you like to modify?\n", color: 'Cyan');
     print("[1] Slary");
     print("[2] Permission");
@@ -36,7 +35,7 @@ modifyEmployeeData({required int id}) {
     switch (input) {
       case 1:
         /*
-      modifying salary for overtime 
+      --------------------------modifying salary for overtime-------------------------------- 
       the application give an overtime pay if overtime workin houre less than or equal 4 hours
       if overtime working hour greater than 4 hours they will get the overtime pay for 4 hours
       */
