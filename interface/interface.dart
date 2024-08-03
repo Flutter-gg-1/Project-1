@@ -56,7 +56,7 @@ void adminPage(Employee user) {
       print("input employee id to edit");
 
       late int empId;
-      late var editEmp;
+      late dynamic editEmp;
 
       do {
         try {
