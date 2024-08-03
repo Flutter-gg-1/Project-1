@@ -22,6 +22,7 @@ void displayAllEmployee(
         "__________________________________________________________________\n");
     count++;
   }
+  print("Total number of employees is ${count -1}");
   //for new line after display
   stdin.readLineSync();
 }

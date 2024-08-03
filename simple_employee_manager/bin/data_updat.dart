@@ -46,7 +46,7 @@ dataUpdate({required String? employeeId}) {
       print(
           "* Job description updated successfully \n *The new job description is: $newJopDescription");
     } else if (userInput == "1") {
-      print("Enter new salary");
+      print("Enter new salary which must be more than 5000");
       String? newSalary = stdin.readLineSync();
       employee["employee_salary"] = newSalary;
       employeesList[count] = employee;

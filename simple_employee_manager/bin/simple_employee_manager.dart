@@ -13,7 +13,9 @@ void main() {
   do {
     print("\n\n\n\n\n");
     print(" _________________________________________________");
+    print("|                                                 |");
     print("|            Welcome to employee manger           |");
+    print("|                                                 |");
     print("|_________________________________________________|");
     print("\n");
     print("Select the opration you want by it is number: \n");
@@ -36,7 +38,7 @@ void main() {
         print("* Enter emplyee description:");
         String? descriptionInput = stdin.readLineSync();
         print(
-            "* Select employee permissions  least one spearated by (,): {Read, Write, Execute or Delete } :");
+            "* Select employee permissions at least one spearated by (,): {Read, Write, Execute or Delete } :");
         String? permissionsInput = stdin.readLineSync();
         Set<String> permissions = {};
         if (permissionsInput!.isNotEmpty) {
@@ -68,7 +70,7 @@ void main() {
             );
           }
         } else {
-          if (salaryInput <= 5000) {
+          if (salaryInput < 5000) {
             print("XXX Salary must be more than 5000");
           }
           if (permissions.isEmpty) {
