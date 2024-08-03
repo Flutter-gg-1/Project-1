@@ -79,29 +79,29 @@ class Employee {
     Map<String, dynamic> map = {};
     print('Fill in the following\n');
 
-    stdout.write('First Name: ');
+    stdout.write(cyan('First Name: '));
     map['firstName'] = stdin.readLineSync();
-    stdout.write('Last Name: ');
+    stdout.write(cyan('Last Name: '));
     map['lastName'] = stdin.readLineSync();
     map['empID'] = empID ?? Employee.generateEmployeeID();
     map['nationaliy'] = nationality;
-    stdout.write('Role: ');
+    stdout.write(cyan('Role: '));
     map['role'] = stdin.readLineSync();
-    stdout.write('Date of Birth: ');
+    stdout.write(cyan('Date of Birth: '));
     map['dateOfBirth'] = stdin.readLineSync();
-    stdout.write('Gender: ');
+    stdout.write(cyan('Gender: '));
     map['gender'] = stdin.readLineSync();
-    stdout.write('Phone Number: ');
+    stdout.write(cyan('Phone Number: '));
     map['phoneNumber'] = stdin.readLineSync();
-    stdout.write('Email: ');
+    stdout.write(cyan('Email: '));
     map['email'] = stdin.readLineSync();
-    stdout.write('Address: ');
+    stdout.write(cyan('Address: '));
     map['address'] = stdin.readLineSync();
-    stdout.write('Department: ');
+    stdout.write(cyan('Department: '));
     map['department'] = stdin.readLineSync();
-    stdout.write('Job Description: ');
+    stdout.write(cyan('Job Description: '));
     map['jobDescription'] = stdin.readLineSync();
-    stdout.write('Salary: ');
+    stdout.write(cyan('Salary: '));
     map['salary'] = int.parse(stdin.readLineSync()!);
 
     return map;
@@ -122,14 +122,14 @@ class Employee {
   }
 
   static deleteEmployee(Employee emp) {
-    stdout
-        .write('Are you sure you want to delete Employee ${emp.empID}?? y/n: ');
+    stdout.write(
+        white('Are you sure you want to delete Employee ${emp.empID}?? y/n: '));
     String answer = stdin.readLineSync()!;
     if (answer.toLowerCase() == 'y') {
       updateEmployeeInJson(emp, emp.empID!, isToDelete: true);
       updateLoginList(emp, isToDelete: true, empty: {});
     } else {
-      print('Employee Not deleted.');
+      print(white('Employee Not deleted.'));
     }
   }
 
@@ -138,18 +138,8 @@ class Employee {
       print('\nEmployee Not Found!!\n');
       return;
     }
-    print('Name: ${emp.firstName} ${emp.lastName}');
-    print('id: ${emp.empID}');
-    print('Nationality: $nationality');
-    print('Date of Birth: ${emp.dateOfBirth}');
-    print('Gender: ${emp.gender}');
-    print('PhoneNumber: ${emp.phoneNumber}');
-    print('Email: ${emp.email}');
-    print('Address: ${emp.address}');
-    print('role: ${emp.role}');
-    print('Department: ${emp.dept}');
-    print('Job Description: ${emp.jobDescription}');
-    print('Salary: ${emp.salary}');
+    print(blue(
+        'Name: ${emp.firstName} ${emp.lastName}\nid: ${emp.empID}\nNationality: $nationality\nDate of Birth: ${emp.dateOfBirth}\nGender: ${emp.gender}\nPhoneNumber: ${emp.phoneNumber}\nEmail: ${emp.email}\nAddress: ${emp.address}\nrole: ${emp.role}\nDepartment: ${emp.dept}\nJob Description: ${emp.jobDescription}\nSalary: ${emp.salary}'));
   }
 
   static setSalary(Employee emp, int amount) {

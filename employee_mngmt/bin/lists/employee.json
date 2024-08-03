@@ -1,1 +1,32 @@
-[{"firstName":"Admin","lastName":"Admin","empID":"1000","nationality":"Saudi","role":"Admin","dateOfBirth":"Admin","gender":"Male","phoneNumber":"-","email":"admin@admin.com","address":"Saudi Arabia","dept":"Management","jobDescription":"Admin","salary":0},{"firstName":"Abdulaziz","lastName":"Alamri","empID":"29859","nationaliy":"Saudi","role":"Trainiee","dateOfBirth":"30/03","gender":"male","phoneNumber":"0534087339","email":"a@gmail.com","address":"Riyadh","department":"IT","jobDescription":"Training","salary":12000}]
+[
+    {
+        "firstName": "Admin",
+        "lastName": "Admin",
+        "empID": "1000",
+        "nationality": "Saudi",
+        "role": "Admin",
+        "dateOfBirth": "Admin",
+        "gender": "Male",
+        "phoneNumber": "-",
+        "email": "admin@admin.com",
+        "address": "Saudi Arabia",
+        "dept": "Management",
+        "jobDescription": "Admin",
+        "salary": 0
+    },
+    {
+        "firstName": "Abdulaziz",
+        "lastName": "Alamri",
+        "empID": "29859",
+        "nationaliy": "Saudi",
+        "role": "Trainiee",
+        "dateOfBirth": "30/03",
+        "gender": "male",
+        "phoneNumber": "0534087339",
+        "email": "a@gmail.com",
+        "address": "Riyadh",
+        "department": "IT",
+        "jobDescription": "Training",
+        "salary": 12000
+    }
+]

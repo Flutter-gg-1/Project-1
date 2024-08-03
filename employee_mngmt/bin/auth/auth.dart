@@ -2,16 +2,17 @@ import 'dart:io';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
 import '../employee.dart';
+import '../employee_mngmt.dart';
 
 Future<String> login() async {
   File file = File('bin/lists/login.json');
   String records = await file.readAsString();
   List members = jsonDecode(records);
 
-  print('\nEnter your Login credentials\n');
-  stdout.write('ID: ');
+  print(blue('\nEnter your Login credentials\n'));
+  stdout.write(cyan('ID: '));
   String userID = stdin.readLineSync()!;
-  stdout.write('password: ');
+  stdout.write(cyan('password: '));
   String password = stdin.readLineSync()!;
   String hash = sha256.convert(utf8.encode(password)).toString();
 
@@ -26,7 +27,7 @@ Future<String> login() async {
   if (loginSuccess) {
     return userID;
   } else {
-    print('Login failed');
+    print(red('Login failed'));
     return '0';
   }
 }
@@ -67,7 +68,7 @@ updateLoginList(Employee emp,
 }
 
 String setPassword(Employee emp) {
-  stdout.write('\nEnter your new password: ');
+  stdout.write(cyan('\nEnter your new password: '));
   String password = stdin.readLineSync()!;
   String hashedPassword = sha256.convert(utf8.encode(password)).toString();
   emp.password = hashedPassword;

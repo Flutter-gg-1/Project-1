@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:convert';
 import '../employee.dart';
 import '../employee_mngmt.dart';
-import '../auth/auth.dart';
 
 readFiles(List<dynamic> files) {
   File empFile = File('bin/lists/employee.json');
@@ -90,7 +89,7 @@ void updateEmployeeInJson(Employee emp, String empID, {bool? isToDelete}) {
       Employee.updateEmployee(emp, updatedInfo);
       updateEmployeeList(Employee.getEmployee(empID)!,
           updatedInfo: updatedInfo);
-      print('\nEmployee Information updated successfully!!');
+      print(green('\nEmployee Information updated successfully!!'));
       break;
     }
   }

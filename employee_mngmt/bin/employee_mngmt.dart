@@ -3,7 +3,14 @@ import 'employee.dart';
 import 'package:employee_mngmt/exit_method.dart';
 import 'auth/auth.dart';
 import './file_mngmt/file_manager.dart';
+import 'package:ansicolor/ansicolor.dart';
 
+AnsiPen white = AnsiPen()..white(bold: true, bg: true);
+AnsiPen cyan = AnsiPen()..cyan(bold: true);
+AnsiPen green = AnsiPen()..green(bold: true);
+AnsiPen yellow = AnsiPen()..yellow(bold: true);
+AnsiPen blue = AnsiPen()..blue(bold: true);
+AnsiPen red = AnsiPen()..red(bold: true);
 List<dynamic> listOfFiles = [];
 
 void main(List<String> arguments) async {
@@ -16,33 +23,33 @@ void main(List<String> arguments) async {
     if (userID != '0') {
       for (var i = 0; i < listOfFiles[2].length; i++) {
         if (listOfFiles[2][i].containsValue(userID)) {
-          print('---Welcome ');
-          print('\n1: Add Employee');
-          print('2: Choose Employee');
-          print('0: Exit');
+          print(green('---Welcome ${Employee.getEmployee(userID)!.firstName}---'));
+          print(yellow('\n1: Add Employee'));
+          print(yellow('2: Choose Employee'));
+          print(yellow('0: Exit'));
 
-          stdout.write('\nEnter your choice: ');
+          stdout.write(cyan('\nEnter your choice: '));
           String? choice = stdin.readLineSync();
 
           switch (choice) {
             case '1':
-              print('To add a new Employee, complete the following\n');
+              print(white('To add a new Employee, complete the following\n'));
               Map<String, dynamic> map = Employee.fillEmployeeInformation(null);
               String empID = Employee.storeInfo(Employee.fromMap(map));
-              print('Employee $empID Added Successfully!!');
+              print(green('Employee $empID Added Successfully!!'));
               stdin.readLineSync();
             case '2':
-              stdout.write('Enter Employee ID: ');
+              stdout.write(cyan('Enter Employee ID: '));
               String? empID = stdin.readLineSync();
 
-              print('\n1: View information');
-              print('2: Update Employee Information');
-              print('3: Update Salary');
-              print('4: Update Job Description');
-              print('5: Set Permissoins');
-              print('6: Delete Employee');
+              print(yellow('\n1: View information'));
+              print(yellow('2: Update Employee Information'));
+              print(yellow('3: Update Salary'));
+              print(yellow('4: Update Job Description'));
+              print(yellow('5: Set Permissoins'));
+              print(yellow('6: Delete Employee'));
 
-              stdout.write('\nEnter your choice: ');
+              stdout.write(cyan('\nEnter your choice: '));
               String? choice = stdin.readLineSync();
 
               switch (choice) {
@@ -53,27 +60,28 @@ void main(List<String> arguments) async {
                   updateEmployeeInJson(Employee.getEmployee(userID)!, userID);
                   stdin.readLineSync();
                 case '3':
-                  stdout.write('Enter New Salary: ');
+                  stdout.write(cyan('Enter New Salary: '));
                   int? salary = int.parse(stdin.readLineSync()!);
                   Employee.setSalary(Employee.getEmployee(empID!)!, salary);
-                  print('Salary has been updated.');
+                  print(green('Salary has been updated.'));
                   stdin.readLineSync();
                 case '4':
-                  stdout.write('Enter New job description: ');
+                  stdout.write(cyan('Enter New job description: '));
                   String? jobDescription = stdin.readLineSync();
                   Employee.setJobDescription(
                       Employee.getEmployee(empID!)!, jobDescription!);
-                  print('Job Description has been updated.');
+                  print(green('Job Description has been updated.'));
                   stdin.readLineSync();
                 case '5':
-                  stdout.write(
-                      'Are you sure you want to give permission to Employee $empID? y/n: ');
+                  stdout.write(white(
+                      'Are you sure you want to give permission to Employee $empID? y/n: '));
                   String? answer = stdin.readLineSync();
                   if (answer!.toLowerCase() == 'y') {
                     Employee.addToPermission(Employee.getEmployee(empID!)!);
-                    print('Employee added to the list of Permissoins.');
+                    print(green('Employee added to the list of Permissoins.'));
                   } else {
-                    print('Employee NOT added to the list of Permissoins.');
+                    print(white(
+                        'Employee NOT added to the list of Permissoins.'));
                   }
                   stdin.readLineSync();
                 case '6':
@@ -87,12 +95,12 @@ void main(List<String> arguments) async {
           }
           break;
         } else {
-          print('\n1: View my Information');
-          print('2: Set password');
-          print('3: Update Information');
-          print('0: Exit');
+          print(yellow('\n1: View my Information'));
+          print(yellow('2: Set password'));
+          print(yellow('3: Update Information'));
+          print(yellow('0: Exit'));
 
-          stdout.write('\nEnter your choice: ');
+          stdout.write(cyan('\nEnter your choice: '));
           String? choice = stdin.readLineSync();
 
           switch (choice) {
