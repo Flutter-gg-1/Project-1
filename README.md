@@ -1,3 +1,4 @@
 ###  Simple Employee Manager
 ####
-![](assets/images/image.png)
+![Description of the image](assets/images/image.png)
+
