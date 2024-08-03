@@ -39,17 +39,28 @@ class Home {
         print("Employee Other Allowance :");
         double inputEmployeeJOtherAllowance =
             double.parse(stdin.readLineSync()!);
-        addNewEmployee(
-            empName: inputEmployeeName,
-            nationaID: inputNationalID,
-            dateOfBirth: inputEmployeeDateOfBirth,
-            jobTitle: inputEmployeeJobTitle,
-            jobDescription: inputEmployeeJobDescription,
-            basicSalary: inputEmployeeJBasicSalary,
-            otherAllowances: inputEmployeeJOtherAllowance);
-        stdin.readLineSync();
-        Home.instruction();
-
+        if (inputEmployeeName != "" ||
+            inputNationalID != "" ||
+            inputEmployeeDateOfBirth != "" ||
+            inputEmployeeJobTitle != "" ||
+            inputEmployeeJobDescription != "" ||
+            inputEmployeeJBasicSalary > 0 ||
+            inputEmployeeJOtherAllowance >= 0) {
+          addNewEmployee(
+              empName: inputEmployeeName,
+              nationaID: inputNationalID,
+              dateOfBirth: inputEmployeeDateOfBirth,
+              jobTitle: inputEmployeeJobTitle,
+              jobDescription: inputEmployeeJobDescription,
+              basicSalary: inputEmployeeJBasicSalary,
+              otherAllowances: inputEmployeeJOtherAllowance);
+          stdin.readLineSync();
+          Home.instruction();
+        } else {
+          print("PLease fill all fields!");
+          print("click 1 to re enter again");
+          str = "1";
+        }
       case '2':
         displayAllEmployee(allEmployee);
         stdin.readLineSync();

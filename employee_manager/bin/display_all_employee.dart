@@ -1,3 +1,5 @@
+import './global_variabels.dart';
+
 displayAllEmployee(List<Map<String, dynamic>> getEmployees) {
   for (var element in getEmployees) {
     print("\n\n\n\n");
@@ -17,7 +19,8 @@ Employee GOSI                     | ${element["gosi"]} SAR
 Employee total salary before GOSI | ${element["total_salary_before_gosi"]} SAR
 Employee total salary after GOSI  | ${element["total_salary_after_gosi"]} SAR 
 Employee Job Title                | ${element["job_title"]} 
-Employee Job Description          | ${element["job_description"]} 
+Employee Job Description          | ${element["job_description"]}
+Employee permssion                | ${element["employee_permssion"] == 1 ? empPermission[0] : empPermission[1]}
 ********************************************************************************
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -1,6 +1,7 @@
 bool isExit = false;
 
 int startID = 1001;
+const List empPermission = ["Admin", "User"];
 
 List<Map<String, dynamic>> allEmployee = [
   {
@@ -17,6 +18,7 @@ List<Map<String, dynamic>> allEmployee = [
     "total_salary_after_gosi": 12781.25,
     "job_title": "Developer",
     "job_description":
-        "Developers, also known as software developers or computer programmers, are responsible for developing, coding, installing, and maintaining software systems"
+        "Developers, also known as software developers or computer programmers, are responsible for developing, coding, installing.",
+    "employee_permssion": 1
   }
 ];
