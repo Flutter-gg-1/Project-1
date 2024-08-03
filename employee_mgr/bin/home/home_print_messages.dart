@@ -5,7 +5,7 @@ extension HomePrintMessages on Home {
   /* Simple Print Functions */
 
   // Print instructions for user input
-  void showInstructions() => ColorfulPrint.yellow('''
+  void instructionsMsg() => ColorfulPrint.yellow('''
   ---------------------------------------
     Common Functions:
       1 | Show my Info
@@ -35,8 +35,8 @@ extension HomePrintMessages on Home {
   // Terminate App
   void terminateMsg() => ColorfulPrint.red('APP TERMINATED!');
   // Unknow Input
-  void unknownInput() => ColorfulPrint.red('ERROR: UNKNOWN INPUT!');
+  void unknownInputMsg() => ColorfulPrint.red('ERROR: UNKNOWN INPUT!');
   // Access Rightss
-  void accessDenied() => ColorfulPrint.red(
+  void accessDeniedMsg() => ColorfulPrint.red(
       'Access Denied! \nYou do not have permissions to view the requested data!');
 }

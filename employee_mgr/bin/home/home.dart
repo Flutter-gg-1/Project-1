@@ -31,9 +31,11 @@ class Home {
       case '1':
         (user != null) ? user.showEmployeeDeatails() : userError();
       case '2':
-        print('');
+        if (user != null) {
+          storage.editEmployee(user: user);
+        }
       case 'i':
-        showInstructions();
+        instructionsMsg();
       case 's':
         signOutMsg();
         storage.signOut();
@@ -48,7 +50,7 @@ class Home {
         print('');
 
       default:
-        unknownInput();
+        unknownInputMsg();
     }
   }
 }
