@@ -1,7 +1,9 @@
 import 'dart:io';
+import 'delete_employee.dart';
 import 'display_employees.dart';
 import 'is_exit.dart';
 import 'employee.dart';
+import 'update_employee.dart';
 
 void main(List<String> arguments) {
   bool isExit = false;
@@ -11,9 +13,8 @@ void main(List<String> arguments) {
     print("1. Add employee");
     print("2. Display employees info");
     print("3. Delete employee");
-    print("4. Search for employee");
-    print("5. Update employee info");
-    print("6. Permissions");
+    print("4. Update employee info");
+    print("5. Permissions");
     print("Q. Exit");
 
     String input = stdin.readLineSync()!;
@@ -32,24 +33,15 @@ void main(List<String> arguments) {
         break;
       case "3":
         {
-          Employee emp = Employee();
-          print("Enter employee id to delete:");
-          int empId = int.parse(stdin.readLineSync()!);
-          emp.deleteEmployee(empId);
+          deleteEmployee();
         }
         break;
       case "4":
-        {}
+        {
+          updateEmployee();
+        }
         break;
-      case "5":
-        {}
-        break;
-      case "6":
-        {}
-        break;
-      case "7":
-        {}
-        break;
+
       case "q" || "Q":
         {
           isExit = exitcode();
