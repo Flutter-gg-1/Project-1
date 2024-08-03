@@ -9,6 +9,7 @@ import 'data_updat.dart';
 void main() {
   //variable
   bool isExit = false;
+  const String message = "* Enter employee ID:";
   do {
     print("\n\n\n\n\n");
     print(" _________________________________________________");
@@ -30,12 +31,12 @@ void main() {
       case "0":
         print("* Enter emplyee name:");
         String? nameInput = stdin.readLineSync();
-        print("* Enter emplyee salary:");
+        print("* Enter emplyee salary that at least 5000:");
         int salaryInput = int.parse(stdin.readLineSync()!);
         print("* Enter emplyee description:");
         String? descriptionInput = stdin.readLineSync();
         print(
-            "* Select employee permissions spearated by (,): {Read, Write, Execute or Delete } :");
+            "* Select employee permissionsat least one spearated by (,): {Read, Write, Execute or Delete } :");
         String? permissionsInput = stdin.readLineSync();
         Set<String> permissions = {};
         if (permissionsInput!.isNotEmpty) {
@@ -50,34 +51,42 @@ void main() {
             }
           }
         }
-
-        if (nameInput!.isNotEmpty || descriptionInput!.isNotEmpty) {
-          addEmployee(
-            name: nameInput,
-            salary: salaryInput,
-            description: descriptionInput,
-            permissions: permissions,
-          );
+        if (salaryInput >= 5000 && permissions.isNotEmpty) {
+          if (nameInput!.isNotEmpty || descriptionInput!.isNotEmpty) {
+            addEmployee(
+              name: nameInput,
+              salary: salaryInput,
+              description: descriptionInput,
+              permissions: permissions,
+            );
+          } else {
+            addEmployee(
+              name: "---",
+              salary: salaryInput,
+              description: "---",
+              permissions: permissions,
+            );
+          }
         } else {
-          addEmployee(
-            name: "---",
-            salary: 0,
-            description: "---",
-            permissions: {},
-          );
+          if (salaryInput <= 5000) {
+            print("Salary must be more than 5000");
+          }
+          if (permissions.isEmpty) {
+            print("At least one permission must be selected");
+          }
         }
         break;
 
       //Display employee data
       case "1":
-        print("* Enter employee ID:");
+        print(message);
         String? employeeIdInput = stdin.readLineSync();
         displayEmployee(employeeId: employeeIdInput);
         break;
 
       //Updat salary ,permissions, and job description
       case "2":
-        print("* Enter employee ID:");
+        print(message);
         String? employeeIdInput = stdin.readLineSync();
         dataUpdate(employeeId: employeeIdInput);
         break;
