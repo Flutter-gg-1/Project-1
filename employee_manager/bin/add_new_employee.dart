@@ -3,6 +3,7 @@ import 'dart:io';
 import 'global_variabels.dart';
 import './display_all_employee.dart';
 import 'home.dart';
+import './print_with_colors.dart';
 
 addNewEmployee({
   required String empName,
@@ -10,7 +11,7 @@ addNewEmployee({
   required String dateOfBirth,
   required String jobTitle,
   required String jobDescription,
-  required int basicSalary,
+  required double basicSalary,
   double otherAllowances = 0.0,
 }) {
   List<Map<String, dynamic>> newEmployee = [
@@ -38,14 +39,13 @@ addNewEmployee({
       displayAllEmployee(newEmployee);
       allEmployee.add(element);
     } else {
-      print("O_O! No data");
+      PrintWithColors.red("|||||||||||||O_O! No data founds|||||||||||||||");
     }
   }
 }
 
 inputNewEmployee() {
-  print("+++++++++++++++++++++++++++++++");
-  print("Add New Employee");
+  PrintWithColors.yellow("    |||||||||||||Add New Employee|||||||||||||||");
   print("Employee Name :");
   String inputEmployeeName = stdin.readLineSync().toString();
   print("Employee National ID :");
@@ -57,7 +57,8 @@ inputNewEmployee() {
   print("Employee Job Description :");
   String inputEmployeeJobDescription = stdin.readLineSync().toString();
   print("Employee Basic Salary :");
-  var inputEmployeeJBasicSalary = int.parse(stdin.readLineSync().toString());
+  double inputEmployeeJBasicSalary =
+      double.parse(stdin.readLineSync().toString());
   print("Employee Other Allowance :");
   double inputEmployeeJOtherAllowance = double.parse(stdin.readLineSync()!);
   if (inputEmployeeName != "" &&
@@ -78,8 +79,7 @@ inputNewEmployee() {
     stdin.readLineSync();
     Home.instruction();
   } else {
-    print("PLease fill all fields!");
-    print("click 1 to re enter again");
+    PrintWithColors.red("|||||||||||||Please fill the fields|||||||||||||||");
     Home.instruction();
   }
 }

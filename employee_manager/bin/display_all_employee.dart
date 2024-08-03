@@ -1,4 +1,5 @@
 import './global_variabels.dart';
+import './print_with_colors.dart';
 
 displayAllEmployee(List<Map<String, dynamic>> getEmployees) {
   for (var element in getEmployees) {
@@ -36,19 +37,23 @@ displayAllEmployee(List<Map<String, dynamic>> getEmployees) {
 
     print("\n\n\n\n");
 
-    print('''
+    PrintWithColors.cyan('''
 ********************************************************************************
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Employee ID                       | ${element["id"]} 
 Employee Name                     | ${element["employee_name"]} 
-Employee National ID              | ${element["national_id"]} 
+Employee National ID              | ${element["national_id"]}''');
+    PrintWithColors.green('''
 Employee Basic Salary             | ${element["basic_salary"]} SAR
 Employee Housing Allownce         | ${element["housing_allowance"]} SAR
 Employee Transport Allownce       | ${element["transport_allowance"]} SAR 
-Employee Other Allownce           | ${element["other_allowances"]} SAR
-Employee GOSI                     | ${element["gosi"]} SAR
-Employee total salary before GOSI | ${element["total_salary_before_gosi"]} SAR
-Employee total salary after GOSI  | ${element["total_salary_after_gosi"]} SAR 
+Employee Other Allownce           | ${element["other_allowances"]} SAR''');
+    PrintWithColors.red(
+        '''Employee GOSI                     | ${element["gosi"]} SAR
+Employee total salary before GOSI | ${element["total_salary_before_gosi"]} SAR''');
+    PrintWithColors.green('''
+Employee total salary after GOSI  | ${element["total_salary_after_gosi"]} SAR ''');
+    PrintWithColors.cyan('''
 Employee Job Title                | ${element["job_title"]} 
 Employee Job Description          | ${element["job_description"]}
 Employee permssion                | ${element["employee_permssion"] == 1 ? empPermission[0] : empPermission[1]}

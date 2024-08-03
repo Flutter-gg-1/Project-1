@@ -3,6 +3,7 @@ import 'dart:io';
 import 'global_variabels.dart';
 import './display_all_employee.dart';
 import 'home.dart';
+import './print_with_colors.dart';
 
 updateEmployeePermission({required String employeeID}) {
   List<Map<String, dynamic>> getEmployee = [];
@@ -19,7 +20,7 @@ updateEmployeePermission({required String employeeID}) {
           if (checkPermission == "Y" || checkPermission == "y") {
             getEmployee[0]["employee_permssion"] = 1;
 
-            print("Permission Updated To Admin :)");
+            PrintWithColors.green("Permission Updated To Admin :)");
           } else {
             print("O_O! Nothing to do it.");
           }
@@ -30,15 +31,18 @@ updateEmployeePermission({required String employeeID}) {
           if (checkPermission == "Y" || checkPermission == "y") {
             getEmployee[0]["employee_permssion"] = 2;
 
-            print("Permission Updated To User :)");
+            PrintWithColors.green("Permission Updated To User :)");
           } else {
-            print("O_O! Nothing to do it.");
+            PrintWithColors.red(
+                "|||||||||||||O_O! Nothing to do it!|||||||||||||||");
           }
         default:
-          Home.instruction();
+          PrintWithColors.red(
+              "    |||||||||||||Please choose one of them!|||||||||||||||");
+          break;
       }
     } else {
-      print("O_O!No id founded");
+      PrintWithColors.red("|||||||||||||O_O! No data founds|||||||||||||||");
     }
   }
 }
