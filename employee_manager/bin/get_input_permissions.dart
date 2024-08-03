@@ -31,7 +31,7 @@ List getInputPermissions({required String name}) {
       stdout.write("Enter permission ${i + 1} : ");
       permission = stdin.readLineSync();
     }
-    permissions.add(permission);
+    permissions.add(permission.toLowerCase());
   }
   return permissions;
 }

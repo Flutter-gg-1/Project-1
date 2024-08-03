@@ -27,13 +27,13 @@ void appMenu({required String mode}) {
     print("*" * 32);
   }
   if (mode == 'filter') {
-    print("*" * 35);
+    print("*" * 40);
     print('/   1 ----> view all employees         \\');
     print('/   2 ----> filter by name             \\');
     print('/   3 ----> filter by salary           \\');
     print('/   4 ----> filter by permissions      \\');
     print('/   5 ----> filter by job description  \\');
     print('/   0 ----> back to main menu          \\');
-    print("*" * 35);
+    print("*" * 40);
   }
 }

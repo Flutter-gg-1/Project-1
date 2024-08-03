@@ -12,5 +12,5 @@ String getInputJobDesc() {
     stdout.write("Enter employee job description : ");
     jobDesc = stdin.readLineSync();
   }
-  return jobDesc;
+  return jobDesc.toLowerCase();
 }

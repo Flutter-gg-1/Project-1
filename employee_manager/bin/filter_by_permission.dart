@@ -2,7 +2,7 @@
 List filterByPermission({required String permission, required Map employees}) {
   List filteredEmployees = [];
   for(var employee in employees.values) {
-    if(employee.permissions.contains(permission)) {
+    if(employee.permissions.contains(permission.toLowerCase())) {
       filteredEmployees.add(employee);
     }
   }

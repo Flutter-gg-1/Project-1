@@ -16,6 +16,7 @@ void viewEmployees({required Map employees}) {
     appMenu(mode: 'filter');
     stdout.write("Choose an option : ");
     String? viewChoice = stdin.readLineSync();
+    bool filtered = true;
     switch (viewChoice) {
       // back to main menu
       case '0':
@@ -24,9 +25,9 @@ void viewEmployees({required Map employees}) {
       // view all employees
       case '1':
         for (var employee in employees.values) {
-          employee.display();
+          filteredEmployees.add(employee);
+          filtered = false;
         }
-        print('Total Employees = ${employees.length}');
 
       // filter by name
       case '2':
@@ -61,6 +62,6 @@ void viewEmployees({required Map employees}) {
     for(var employee in filteredEmployees) {
       employee.display();
     }
-    print("Total filtered employees = ${filteredEmployees.length}");
+    print("Total${filtered ? ' filtered ' : ' '}employees = ${filteredEmployees.length}\n");
   }
 }

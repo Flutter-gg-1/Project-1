@@ -43,7 +43,7 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
         else {
           stdout.write("Enter a permission : ");
           String? permission = stdin.readLineSync();
-          employee.permissions.add(permission);
+          employee.permissions.add(permission!.toLowerCase());
           print("Permission added successfully ✅\n");
         }
 

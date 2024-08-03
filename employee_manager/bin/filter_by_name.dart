@@ -2,7 +2,7 @@
 List filterByName({required String name, required Map employees}) {
   List filteredEmployees = [];
   for(var employee in employees.values) {
-    if(employee.name.contains(name)) {
+    if(employee.name.toLowerCase().contains(name.toLowerCase())) {
       filteredEmployees.add(employee);
     }
   }

@@ -28,7 +28,7 @@ class Employee {
   // function to make promotion
   void promote() {
     salary+=1000;
-    print("Employee $name with ID $id earned a promotion ! 🎉");
+    print("Employee $name with ID $id earned a promotion ! 🎉\n");
   }
 
   // function to display employee info
