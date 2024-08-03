@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'employee.dart';
 import 'exit_method.dart';
 import '../login/logging_in.dart';
-import 'employee.dart';
 
 List<dynamic> listOfFiles = [];
 
@@ -27,8 +26,8 @@ void main(List<String> arguments) async {
 
           switch (choice) {
             case '1':
-              print('To add a new Employee, complete the following');
-              Map<String, dynamic> map = Employee.fillEmployeeInformation();
+              print('To add a new Employee, complete the following\n');
+              Map<String, dynamic> map = Employee.fillEmployeeInformation(null);
               String firstName = Employee.storeInfo(Employee.fromMap(map));
               print('Employee $firstName Added Successfully!!');
 
@@ -37,8 +36,9 @@ void main(List<String> arguments) async {
               String? empID = stdin.readLineSync();
 
               print('\n1: View information');
-              print('2: Update Salary');
-              print('3: Set Permissoins');
+              print('2: Update Employee Information');
+              print('3: Update Salary');
+              print('4: Set Permissoins');
 
               stdout.write('\nEnter your choice: ');
               String? choice = stdin.readLineSync();
@@ -47,11 +47,14 @@ void main(List<String> arguments) async {
                 case '1':
                   Employee.viewInfo(Employee.getEmployee(empID!));
                 case '2':
+                  Employee.updateEmployeeInJson(
+                      Employee.getEmployee(userID)!, userID);
+                case '3':
                   stdout.write('Enter New Salary: ');
                   int? salary = int.parse(stdin.readLineSync()!);
                   Employee.setSalary(Employee.getEmployee(empID!)!, salary);
                   print('Salary has been updated.');
-                case '3':
+                case '4':
                   stdout.write(
                       'Are you sure you want to give permission to Employee $empID? y/n: ');
                   String? answer = stdin.readLineSync();
@@ -68,9 +71,9 @@ void main(List<String> arguments) async {
           }
           break;
         } else {
-          print('1: View my Information');
+          print('\n1: View my Information');
           print('2: Set password');
-          print('3: View Department ID');
+          print('3: Update Information');
           print('0: Exit');
 
           stdout.write('\nEnter your choice: ');
@@ -82,8 +85,8 @@ void main(List<String> arguments) async {
             case '2':
               Employee.setPassword(Employee.getEmployee(userID)!);
             case '3':
-              print(
-                  'Department: ${Employee.getEmployee(userID)!.dept}');
+              Employee.updateEmployeeInJson(
+                  Employee.getEmployee(userID)!, userID);
             case '0' || '':
               isExit = exitMethod();
             default:
@@ -103,6 +106,7 @@ readFiles(List<dynamic> files) {
 
   for (var i = 0; i < temp.length; i++) {
     Employee.listOfEmployees.add(Employee.fromMap(temp[i]));
+    print(Employee.listOfEmployees[i].empID);
   }
 
   files.add(temp);
