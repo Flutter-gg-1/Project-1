@@ -78,6 +78,7 @@ void main() {
         break;
 
       case "3":
+      displayAllEmployee(employeesDisplay: employeesList);
         break;
 
       case "q" || "Q":
