@@ -2,8 +2,8 @@ import 'dart:io';
 import 'dart:math';
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
-import 'department.dart';
-import 'employee_mngmt.dart';
+// import 'department.dart';
+// import 'employee_mngmt.dart';
 
 class Employee {
   String? firstName;
@@ -19,52 +19,92 @@ class Employee {
   String? password;
 
   String? role;
-  Department? dept;
+  String? dept;
   String? jobDescription;
   int? salary;
 
   static List<Employee> listOfEmployees = [];
 
-  Employee({
-    required this.firstName,
-    required this.lastName,
-    required this.role,
-  }) {
-    empID = generateEmployeeID();
-    password = setPassword(this);
-    fillEmployeeInformation(this);
-    listOfEmployees.add(this);
-    updateEmployeeList(this);
-    print('Employee $empID Added Successfully!!');
+  Employee.fromMap(Map<String, dynamic> map) {
+    firstName = map['firstName'];
+    lastName = map['lastName'];
+    empID = map['empID'] ?? generateEmployeeID();
+    nationality;
+    role = map['role'];
+    dateOfBirth = map['dateOfBirth'];
+    gender = map['gender'];
+    phoneNumber = map['phoneNumber'];
+    email = map['email'];
+    address = map['address'];
+    dept = map['department'];
+    jobDescription = map['jobDescription'];
+    salary = map['salary'];
+  }
+
+  static String storeInfo(Employee emp) {
+    if (!listOfEmployees.contains(emp)) {
+      emp.password = setPassword(emp);
+      listOfEmployees.add(emp);
+      updateEmployeeList(emp);
+      return emp.firstName!;
+    }
+    return emp.firstName!;
+  }
+
+  static String generateEmployeeID() {
+    Random random = Random();
+
+    /*
+    Emplooyee ID is 5 digits
+    It cannot start with 0
+    */
+
+    int firstDigit = random.nextInt(9) + 1; //Start with number other than 0
+    String remainingDigits =
+        List.generate(4, (generate) => random.nextInt(10)).join();
+
+    return '$firstDigit$remainingDigits';
   }
 
   static Employee? getEmployee(String empID) {
-    int employeeIndex = -1;
-    for (int i = 0; i < listOfEmployees.length; i++) {
-      if (listOfEmployees[i].empID == empID) {
-        employeeIndex = i;
-        break;
+    for (var employee in listOfEmployees) {
+      if (employee.empID == empID) {
+        return employee;
       }
     }
-    if (employeeIndex > 0) {
-      return listOfEmployees[employeeIndex];
-    } else {
-      return null;
-    }
+    return null;
   }
-  // static bool getPermissions(String empID) {
-  //   for (int i = 0; i < listOfEmployees.length; i++) {
-  //     if (listOfEmployees[i].empID == empID) {
-  //       employeeIndex = i;
-  //       break;
-  //     }
-  //   }
-  //   if (employeeIndex > 0) {
-  //     return listOfEmployees[employeeIndex];
-  //   } else {
-  //     return null;
-  //   }
-  // }
+
+  static Map<String, dynamic> fillEmployeeInformation() {
+    Map<String, dynamic> map = {};
+    print('Fill in the following');
+
+    stdout.write('First Name: ');
+    map['firstName'] = stdin.readLineSync();
+    stdout.write('Last Name: ');
+    map['lastName'] = stdin.readLineSync();
+    map['empID'] = Employee.generateEmployeeID();
+    stdout.write('Role: ');
+    map['role'] = stdin.readLineSync();
+    stdout.write('Date of Birth: ');
+    map['dateOfBirth'] = stdin.readLineSync();
+    stdout.write('Gender: ');
+    map['gender'] = stdin.readLineSync();
+    stdout.write('Phone Number: ');
+    map['phone Number'] = stdin.readLineSync();
+    stdout.write('Email: ');
+    map['email'] = stdin.readLineSync();
+    stdout.write('Address: ');
+    map['address'] = stdin.readLineSync();
+    stdout.write('Department: ');
+    map['department'] = stdin.readLineSync();
+    stdout.write('Job Description: ');
+    map['jobDescription'] = stdin.readLineSync();
+    stdout.write('Salary: ');
+    map['salary'] = int.parse(stdin.readLineSync()!);
+
+    return map;
+  }
 
   static viewInfo(Employee? emp) {
     if (emp == null) {
@@ -80,46 +120,9 @@ class Employee {
     print('Email: ${emp.email}');
     print('Address: ${emp.address}');
     print('role: ${emp.role}');
-    print('Department: ${emp.dept!.deptName}');
+    print('Department: ${emp.dept}');
     print('Job Description: ${emp.jobDescription}');
     print('Salary: ${emp.salary}');
-    print('Permission to Modify: ${listOfFiles[2].containsValue("empID")}');
-  }
-
-  String generateEmployeeID() {
-    Random random = Random();
-
-    /*
-    Emplooyee ID is 5 digits
-    It cannot start with 0
-    */
-
-    int firstDigit = random.nextInt(9) + 1; //Start with number other than 0
-    String remainingDigits =
-        List.generate(4, (generate) => random.nextInt(10)).join();
-
-    return '$firstDigit$remainingDigits';
-  }
-
-  fillEmployeeInformation(Employee emp) {
-    print('Fill in the following');
-    stdout.write('Date of Birth: ');
-    emp.dateOfBirth = stdin.readLineSync();
-    stdout.write('Gender: ');
-    emp.gender = stdin.readLineSync();
-    stdout.write('Phone Number: ');
-    emp.phoneNumber = stdin.readLineSync();
-    stdout.write('Email: ');
-    emp.email = stdin.readLineSync();
-    stdout.write('Address: ');
-    emp.address = stdin.readLineSync();
-    stdout.write('Department: ');
-    Department department = Department(deptName: stdin.readLineSync());
-    emp.dept = department;
-    stdout.write('Job Description: ');
-    emp.jobDescription = stdin.readLineSync();
-    stdout.write('Salary: ');
-    emp.salary = int.parse(stdin.readLineSync()!);
   }
 
   static String setPassword(Employee emp) {
@@ -127,6 +130,7 @@ class Employee {
     String password = stdin.readLineSync()!;
     String hashedPassword = sha256.convert(utf8.encode(password)).toString();
     emp.password = hashedPassword;
+    emp.updateLoginList(emp);
     return hashedPassword;
   }
 
@@ -163,7 +167,7 @@ class Employee {
       'phoneNumber': emp.phoneNumber,
       'email': emp.email,
       'address': emp.address,
-      'dept': emp.dept!.deptName,
+      'department': emp.dept,
       'jobDescription': emp.jobDescription,
       'salary': emp.salary,
     };
@@ -172,11 +176,25 @@ class Employee {
     String records = file.readAsStringSync();
     List temp = jsonDecode(records);
 
+    // update existing employee
+    bool found = false;
+    for (int i = 0; i < temp.length; i++) {
+      if (temp[i]['empID'] == emp.empID) {
+        temp[i] = newEmployee;
+        found = true;
+        break;
+      }
+    }
+
     //update json file
-    temp.add(newEmployee);
+    if (!found) {
+      temp.add(newEmployee);
+    }
     String update = jsonEncode(temp);
     file.writeAsStringSync(update, mode: FileMode.write);
+  }
 
+  updateLoginList(Employee emp) {
     //Update login.json
     Map<String, dynamic> newLogin = {
       'empID': emp.empID,

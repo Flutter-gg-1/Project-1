@@ -13,5 +13,50 @@
         "dept": "Management",
         "jobDescription": "Admin",
         "salary": 0
+    },
+    {
+        "firstName": "Abdulaziz",
+        "lastName": "Alamri",
+        "empID": "15204",
+        "nationality": "Saudi",
+        "role": "Trainee",
+        "dateOfBirth": "30/03",
+        "gender": "male",
+        "phoneNumber": "055555555",
+        "email": "a@gmail.com",
+        "address": "Riyadh",
+        "dept": "IT",
+        "jobDescription": "Training",
+        "salary": 0
+    },
+    {
+        "firstName": "Basel",
+        "lastName": "Alolwi",
+        "empID": "92114",
+        "nationality": "Saudi",
+        "role": "Trainee",
+        "dateOfBirth": "12/12",
+        "gender": "male",
+        "phoneNumber": null,
+        "email": "b@gmail.com",
+        "address": "Riyadh",
+        "department": "IT",
+        "jobDescription": "Training",
+        "salary": 0
+    },
+    {
+        "firstName": "Khalid",
+        "lastName": "Alharbi",
+        "empID": "13796",
+        "nationality": "Saudi",
+        "role": "Student",
+        "dateOfBirth": "12/12",
+        "gender": "male",
+        "phoneNumber": null,
+        "email": "k@gmail.com",
+        "address": "Madinah",
+        "department": "Network",
+        "jobDescription": "Education",
+        "salary": 1000
     }
 ]

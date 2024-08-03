@@ -23,7 +23,6 @@ Future<String> login() async {
   }
 
   if (loginSuccess) {
-    print('\n---Welcome $userID---');
     return userID;
   } else {
     print('Login failed');

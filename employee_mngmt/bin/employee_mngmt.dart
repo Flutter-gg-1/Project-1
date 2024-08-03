@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'employee.dart';
 import 'exit_method.dart';
 import '../login/logging_in.dart';
+import 'employee.dart';
 
 List<dynamic> listOfFiles = [];
 
 void main(List<String> arguments) async {
   await readFiles(listOfFiles);
-  print(listOfFiles);
   bool isExit = false;
 
   String userID = await login();
@@ -17,7 +17,8 @@ void main(List<String> arguments) async {
     if (userID != '0') {
       for (var i = 0; i < listOfFiles[2].length; i++) {
         if (listOfFiles[2][i].containsValue(userID)) {
-          print('1: Add Employee');
+          print('---Welcome ');
+          print('\n1: Add Employee');
           print('2: Choose Employee');
           print('0: Exit');
 
@@ -27,24 +28,15 @@ void main(List<String> arguments) async {
           switch (choice) {
             case '1':
               print('To add a new Employee, complete the following');
-              String? firstName;
-              String? lastName;
-              String? role;
-
-              stdout.write('First Name: ');
-              firstName = stdin.readLineSync();
-              stdout.write('Last Name: ');
-              lastName = stdin.readLineSync();
-              stdout.write('Role: ');
-              role = stdin.readLineSync();
-
-              Employee(firstName: firstName, lastName: lastName, role: role);
+              Map<String, dynamic> map = Employee.fillEmployeeInformation();
+              String firstName = Employee.storeInfo(Employee.fromMap(map));
+              print('Employee $firstName Added Successfully!!');
 
             case '2':
               stdout.write('Enter Employee ID: ');
               String? empID = stdin.readLineSync();
 
-              print('1: \nView information');
+              print('\n1: View information');
               print('2: Update Salary');
               print('3: Set Permissoins');
 
@@ -67,6 +59,7 @@ void main(List<String> arguments) async {
                     Employee.addToPermission(Employee.getEmployee(empID!)!);
                     print('Employee added to the list of Permissoins.');
                   }
+                default:
               }
 
             case '0' || '':
@@ -78,7 +71,7 @@ void main(List<String> arguments) async {
           print('1: View my Information');
           print('2: Set password');
           print('3: View Department ID');
-          print('0: Exit\n');
+          print('0: Exit');
 
           stdout.write('\nEnter your choice: ');
           String? choice = stdin.readLineSync();
@@ -90,13 +83,15 @@ void main(List<String> arguments) async {
               Employee.setPassword(Employee.getEmployee(userID)!);
             case '3':
               print(
-                  'Department Id = ${Employee.getEmployee(userID)!.dept!.deptName}');
+                  'Department: ${Employee.getEmployee(userID)!.dept}');
             case '0' || '':
               isExit = exitMethod();
             default:
           }
         }
       }
+    } else {
+      isExit = exitMethod();
     }
   } while (!isExit);
 }
@@ -105,6 +100,10 @@ readFiles(List<dynamic> files) {
   File empFile = File('bin/lists/employee.json');
   String employees = empFile.readAsStringSync();
   List<dynamic> temp = jsonDecode(employees);
+
+  for (var i = 0; i < temp.length; i++) {
+    Employee.listOfEmployees.add(Employee.fromMap(temp[i]));
+  }
 
   files.add(temp);
   temp.clear;
