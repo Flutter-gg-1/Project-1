@@ -71,9 +71,9 @@ serEmp(bool withId){
    for(int i = 0 ; i < lisEmployees.length ; i++){
 
     if(lisEmployees[i]["id"].toString() == empId){
-
-
+      editemp(i);
       found = true;
+      break;
 
     }
    }
@@ -87,9 +87,10 @@ serEmp(bool withId){
     for(int i = 0 ; i < lisEmployees.length ; i++){
 
     if(lisEmployees[i]["name"].toString() == empName){
-
-
       found = true;
+      editemp(i);
+      break;
+      
 
     }
 
@@ -117,7 +118,13 @@ editemp(int index){
   String perOp = "permissions";
   String jobDecsOp = "jobDecs";
 
-  print("\n------ chose betwen the what you to edit ------\n");
+  
+
+whileBreak :
+        while(true)
+        {
+
+          print("\n------ chose betwen the what you to edit ------\n");
 
         print("0 -  $nameOp");
         print("-" * 25);
@@ -130,10 +137,6 @@ editemp(int index){
         print("4 - exit");
         print("-" * 25);
 
-whileBreak :
-        while(true)
-        {
-
           String op = stdin.readLineSync()!;
 
           switch(op){
@@ -144,7 +147,8 @@ whileBreak :
             String empName = stdin.readLineSync()!;
             lisEmployees[index]["name"] = empName;
 
-            break whileBreak;
+            // break whileBreak;
+            break;
 
 
             case "1" :
@@ -163,7 +167,8 @@ whileBreak :
               }
               else{
                 lisEmployees[index]["salary"] = preSalry + empSalry;
-                break whileBreak;
+                // break whileBreak;
+                break;
               }
 
               
@@ -171,7 +176,8 @@ whileBreak :
 
             }else{
               lisEmployees[index]["salary"] = preSalry + empSalry;
-              break whileBreak;
+              // break whileBreak;
+              break;
 
             }
 
@@ -195,31 +201,78 @@ whileBreak :
         switch(permissions){
           case "0" :
           lisEmployees[index]["permissions"] = permR  ;
-          break whileBreak;
+          // break whileBreak;
+          break;
 
          
 
           case "1" :
           lisEmployees[index]["permissions"] = permW  ;
-          break whileBreak;
+          // break whileBreak;
+          break;
           
           case "2" :
           lisEmployees[index]["permissions"] = permA  ;
-          break whileBreak;
+          // break whileBreak;
+          break;
           
 
           default :
           print("\n ####  erorr palce give permissions form the 3 option   #### \n ");
 
           
+
+
         }
+        break;
 
 
+          
+
+
+          case "3" :
+
+          print("\n------ give me the new jobDecs ------");
+            String jobDecs = stdin.readLineSync()!;
+            lisEmployees[index]["jobDecs"] = jobDecs;
+
+            // break whileBreak;
+            break;
+
+
+            case "4" :
             break whileBreak;
 
 
           }
 
+          print("#"*25);
+
+
+          
+
         }
+}
+
+
+
+showAllEmp(){
+
+  print("\n\n");
+print("#"*50);
+
+  for(var val in lisEmployees ){
+
+print("\n");
+    for(var key in val.keys){
+
+      print("$key ----->   ${val[key]}");
+    }
+  }
+
+
+
+  print("\n\n");
+ print("#"*50);
 }
 }

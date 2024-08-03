@@ -6,6 +6,9 @@ import 'package:project_1/models/departments.dart';
 
 // here where the app start
 runApp(Departments mainDep) {
+
+
+
 // op for switch betwhen the instruction
   String op = "1";
 
@@ -110,15 +113,18 @@ whileBreak :
         switch(serOp){
 
           case "0" :
+          mainDep.serEmp(false);
 
           break whileBreak;
 
           case "1" :
+          mainDep.serEmp(true);
 
           break whileBreak;
 
           default:
           print("\n ----- eorr place chose betwen 0 or 1 ---- \n");
+          serOp = stdin.readLineSync()!;
         }
 
        }
@@ -126,6 +132,8 @@ whileBreak :
         break;
 
       case "2":
+
+      mainDep.showAllEmp();
         break;
 
       case "3":
