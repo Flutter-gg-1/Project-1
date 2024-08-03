@@ -3,6 +3,7 @@ import '../core/all_file.dart';
 
 void addEmployee() {
   print('\n_____________# Add Employee #___________\n');
+  print('Employee ID & Age will be generated automatically...\n');
   print('Enter Employee Name: ');
   final String name = stdin.readLineSync()!;
   print('Enter Employee Birth Year(Gregorian date): ');
@@ -25,7 +26,7 @@ void addEmployee() {
     empSalary: salary,
     empDescription: descriptions,
   );
-  print('\nAdd Employee Successful...\n');
+  print('\nn_____________# Add Employee Successful #___________\n');
   //showPrompt function call for next operation
   showPrompt();
 }
