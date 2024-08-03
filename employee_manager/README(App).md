@@ -13,8 +13,6 @@ a simple application to manage employees where users can add new employees, assi
 
 ## how to use it
 * You **must** initially add an employee, you must repeat this process every time you start. Why? Because we store in a list, not in a database, **so you must pay attention to that**.
-
-
 ___
 
 ### choice Number 1
