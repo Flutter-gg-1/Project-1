@@ -10,7 +10,7 @@ extension HomePrintMessages on Home {
     Common Functions:
       my info  | Show my Info
       edit     | Edit my Info
-      list all | List Employees
+      list emp | List Employees
       signOut  | Sign Out
 
     Privilaged Functions:

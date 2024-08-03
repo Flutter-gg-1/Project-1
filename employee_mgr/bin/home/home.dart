@@ -40,7 +40,7 @@ class Home {
         if (user != null) {
           storage.editEmployee(user: user);
         }
-      case 'list':
+      case 'list emp':
         // List Employees
         storage.fetchEmployees(isShort: false);
       case 'signOut':
