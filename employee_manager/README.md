@@ -69,6 +69,7 @@ In this process, the menu will switch mode to `filter` mode where manager can se
 
 Filteration options :
 - None
+- Specific Employee
 - Filter by Name
 - Filter by Salary
 - Filter by Job Description
