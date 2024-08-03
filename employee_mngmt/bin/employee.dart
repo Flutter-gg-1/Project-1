@@ -1,7 +1,8 @@
 import 'dart:io';
 import 'dart:math';
 import 'dart:convert';
-import 'package:crypto/crypto.dart';
+import 'auth/auth.dart';
+import './file_mngmt/file_manager.dart';
 
 class Employee {
   String? firstName;
@@ -105,21 +106,7 @@ class Employee {
     return map;
   }
 
-  static void updateEmployeeInJson(Employee emp, String empID) {
-    File file = File('bin/lists/employee.json');
-    String records = file.readAsStringSync();
-    List<dynamic> employees = jsonDecode(records);
-
-    for (var i = 0; i < employees.length; i++) {
-      if (employees[i]['empID'] == empID) {
-        Map<String, dynamic> updatedInfo = fillEmployeeInformation(empID);
-        updateEmployee(emp, updatedInfo);
-        updateEmployeeList(getEmployee(empID)!, updatedInfo: updatedInfo);
-        print('\nEmployee Information updated successfully!!');
-        break;
-      }
-    }
-  }
+  
 
   static updateEmployee(Employee emp, Map<String, dynamic> updatedInfo) {
     emp.firstName = updatedInfo['firstName'];
@@ -154,15 +141,6 @@ class Employee {
     print('Salary: ${emp.salary}');
   }
 
-  static String setPassword(Employee emp) {
-    stdout.write('\nEnter your new password: ');
-    String password = stdin.readLineSync()!;
-    String hashedPassword = sha256.convert(utf8.encode(password)).toString();
-    emp.password = hashedPassword;
-    emp.updateLoginList(emp, hashedPassword: hashedPassword);
-    return hashedPassword;
-  }
-
   static int setSalary(Employee emp, int amount) {
     return emp.salary = amount;
   }
@@ -182,74 +160,5 @@ class Employee {
     file.writeAsStringSync(update, mode: FileMode.write);
   }
 
-  static Future<void> updateEmployeeList(Employee emp,
-      {Map<String, dynamic>? updatedInfo}) async {
-    //Update employee.json
-
-    Map<String, dynamic> newEmployee = {
-      'firstName': emp.firstName,
-      'lastName': emp.lastName,
-      'empID': emp.empID,
-      'nationality': nationality,
-      'role': emp.role,
-      'dateOfBirth': emp.dateOfBirth,
-      'gender': emp.gender,
-      'phoneNumber': emp.phoneNumber,
-      'email': emp.email,
-      'address': emp.address,
-      'department': emp.dept,
-      'jobDescription': emp.jobDescription,
-      'salary': emp.salary,
-    };
-
-    File file = File('bin/lists/employee.json');
-    String records = file.readAsStringSync();
-    List temp = jsonDecode(records);
-
-    // update existing employee
-    bool found = false;
-    for (int i = 0; i < temp.length; i++) {
-      if (temp[i]['empID'] == emp.empID) {
-        temp[i] = updatedInfo;
-        found = true;
-        break;
-      }
-    }
-
-    //update json file
-    if (!found) {
-      temp.add(newEmployee);
-    }
-    String update = jsonEncode(temp);
-    file.writeAsStringSync(update, mode: FileMode.write);
-  }
-
-  updateLoginList(Employee emp, {String? hashedPassword}) {
-    //Update login.json
-    Map<String, dynamic> newLogin = {
-      'empID': emp.empID,
-      'passwordHash': emp.password
-    };
-
-    File loginFile = File('bin/lists/login.json');
-    String loginRecords = loginFile.readAsStringSync();
-    List temp2 = jsonDecode(loginRecords);
-
-    // update existing login
-    bool found = false;
-    for (int i = 0; i < temp2.length; i++) {
-      if (temp2[i]['empID'] == emp.empID) {
-        temp2[i]['passwordHash'] = hashedPassword;
-        found = true;
-        break;
-      }
-    }
-
-    //update json file
-    if (!found) {
-      temp2.add(newLogin);
-    }
-    String updateLogin = jsonEncode(temp2);
-    loginFile.writeAsStringSync(updateLogin, mode: FileMode.write);
-  }
+  
 }

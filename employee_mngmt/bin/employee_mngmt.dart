@@ -1,8 +1,8 @@
 import 'dart:io';
-import 'dart:convert';
 import 'employee.dart';
-import 'exit_method.dart';
-import '../login/logging_in.dart';
+import 'package:employee_mngmt/exit_method.dart';
+import 'auth/auth.dart';
+import './file_mngmt/file_manager.dart';
 
 List<dynamic> listOfFiles = [];
 
@@ -47,8 +47,7 @@ void main(List<String> arguments) async {
                 case '1':
                   Employee.viewInfo(Employee.getEmployee(empID!));
                 case '2':
-                  Employee.updateEmployeeInJson(
-                      Employee.getEmployee(userID)!, userID);
+                  updateEmployeeInJson(Employee.getEmployee(userID)!, userID);
                 case '3':
                   stdout.write('Enter New Salary: ');
                   int? salary = int.parse(stdin.readLineSync()!);
@@ -83,10 +82,9 @@ void main(List<String> arguments) async {
             case '1':
               Employee.viewInfo(Employee.getEmployee(userID));
             case '2':
-              Employee.setPassword(Employee.getEmployee(userID)!);
+              setPassword(Employee.getEmployee(userID)!);
             case '3':
-              Employee.updateEmployeeInJson(
-                  Employee.getEmployee(userID)!, userID);
+              updateEmployeeInJson(Employee.getEmployee(userID)!, userID);
             case '0' || '':
               isExit = exitMethod();
             default:
@@ -97,32 +95,4 @@ void main(List<String> arguments) async {
       isExit = exitMethod();
     }
   } while (!isExit);
-}
-
-readFiles(List<dynamic> files) {
-  File empFile = File('bin/lists/employee.json');
-  String employees = empFile.readAsStringSync();
-  List<dynamic> temp = jsonDecode(employees);
-
-  for (var i = 0; i < temp.length; i++) {
-    Employee.listOfEmployees.add(Employee.fromMap(temp[i]));
-    print(Employee.listOfEmployees[i].empID);
-  }
-
-  files.add(temp);
-  temp.clear;
-
-  empFile = File('bin/lists/login.json');
-  String loginInfo = empFile.readAsStringSync();
-  temp = jsonDecode(loginInfo);
-
-  files.add(temp);
-  temp.clear;
-
-  empFile = File('bin/lists/permission.json');
-  String permissions = empFile.readAsStringSync();
-  temp = jsonDecode(permissions);
-
-  files.add(temp);
-  temp.clear;
 }
