@@ -3,13 +3,15 @@ import 'dart:math';
 import '../core/all_file.dart';
 
 void addEmployee() {
+  const int thisYear = 2024;
   print('\n_____________# Add Employee #___________\n');
   print('Employee ID will be generated automatically');
   final int id = Random().nextInt(1000);
   print('Enter Employee Name: ');
   final String? name = stdin.readLineSync();
-  print('Enter Employee Age: ');
-  final int? age = int.parse(stdin.readLineSync()!);
+  print('Enter Employee Birth Year(Gregorian date): ');
+  final int year = int.parse(stdin.readLineSync()!);
+  final int age = thisYear - year;
   print('Enter Employee Phone Number: ');
   final String? phoneNumber = stdin.readLineSync();
   print('Enter Employee Position: ');

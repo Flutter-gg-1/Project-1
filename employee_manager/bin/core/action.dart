@@ -2,10 +2,6 @@ import 'dart:io';
 import 'all_file.dart';
 
 void printMyValue(var value) {
-<<<<<<< HEAD
-=======
-  //print(value);
->>>>>>> Abdullah_Al-Shammari
   print(value);
 }
 
