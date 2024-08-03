@@ -71,6 +71,9 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
         else {
           print("ERROR !! : Employee $id has no permissions ❌\n");
         }
+      
+      // any else input
+      default : print("ERROR !! : Invalid choice ❌\n");
     }
   }
 }

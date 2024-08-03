@@ -54,14 +54,20 @@ void viewEmployees({required Map employees}) {
       case '5':
         String jobDescription = getInputJobDesc();
         filteredEmployees = filterByJobDesc(jobDesc:jobDescription, employees:employees);
+
+      // any else input
+      default :
+        print("ERROR !! : Invalid choice ❌\n");
+        continue;
     }
     if(filteredEmployees.isEmpty) {
-      print("No match found");
-      break;
+      print("ERROR !! : No match found ❌\n");
+      continue;
     }
     for(var employee in filteredEmployees) {
       employee.display();
     }
     print("Total${filtered ? ' filtered ' : ' '}employees = ${filteredEmployees.length}\n");
+    filteredEmployees.clear();
   }
 }
