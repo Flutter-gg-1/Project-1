@@ -22,8 +22,6 @@ addEmployeeFunction(
   print('1. Manager  2. Workers  3. Supervisor ');
   //permissions function call for show permissions values
   String? permissions = showPermissions();
-  print('\nAdd Employee Successful...\n');
-
   Map<String, dynamic> employee = {};
   employee.addAll({
     'id': id,
