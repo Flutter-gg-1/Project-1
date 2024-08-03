@@ -1,3 +1,4 @@
+// imports
 import 'dart:math';                   // library used to generate random employee id
 import 'get_input_name.dart';         // function to get name input from user
 import 'get_input_salary.dart';       // function to get salary input from user
@@ -8,14 +9,14 @@ import 'package:employee_manager/models/employee.dart'; // employee class
 // function to add a new employee
 List addEmployee({required Map<int, Employee> employees}) {
   // generate employee id
-  int id = Random().nextInt(9999999);
+  int id = Random().nextInt(999999);
 
   // generate new id if id already exists
   while (employees.containsKey(id)) {
-    id = Random().nextInt(9999999);
+    id = Random().nextInt(999999);
   }
 
-  // get employee info
+  // get employee info (name, salary, job desription, permissions)
   String name = getInputName();
   double salary = getInputSalary();
   String jobDesc = getInputJobDesc();

@@ -1,11 +1,13 @@
-import 'dart:io';
-import 'app_menu.dart';
-import 'get_input_salary.dart'; // function to get salary input from user
-import 'get_input_job_desc.dart'; // function to get job description input from user
-import 'get_input_permissions.dart'; // function to get permissions input from user
+// imports
+import 'dart:io';                     // library used to interact with user
+import 'app_menu.dart';               // function to print app menu
+import 'get_input_salary.dart';       // function to get salary input from user
+import 'get_input_job_desc.dart';     // function to get job description input from user
+import 'get_input_permissions.dart';  // function to get permissions input from user
 import 'package:employee_manager/models/employee.dart'; // employee class
 
 void modifyInfo({required int id, required Map<int, Employee> employees}) {
+  // get employee instance with the specified id
   Employee employee = employees[id]!;
   while_modify:
   while (true) {
@@ -40,8 +42,9 @@ void modifyInfo({required int id, required Map<int, Employee> employees}) {
         }
         else {
           stdout.write("Enter a permission : ");
-          employee.permissions.add(stdin.readLineSync());
-          print("Permission added successfully ✅");
+          String? permission = stdin.readLineSync();
+          employee.permissions.add(permission);
+          print("Permission added successfully ✅\n");
         }
 
       // remove permission if possible

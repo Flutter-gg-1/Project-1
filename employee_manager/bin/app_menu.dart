@@ -1,4 +1,4 @@
-// function to print app menu based on a boolean parameter
+// function to print app menu based on a boolean parameter (modification state)
 void appMenu({required bool modify}) {
   if (!modify) {
     print('=' * 30);
@@ -18,11 +18,12 @@ void appMenu({required bool modify}) {
     print('=' * 30);
   }
   else {
-    print('1- salary');
-    print('2- job description');
-    print('3- add permission');
-    print('4- delete permission');
-    print('0- back to main menu');
-    print("*" * 30);
+    print("*" * 32);
+    print('/   1 ----> salary             \\');
+    print('/   2 ----> job description    \\');
+    print('/   3 ----> add permission     \\');
+    print('/   4 ----> delete permission  \\');
+    print('/   0 ----> back to main menu  \\');
+    print("*" * 32);
   }
 }
