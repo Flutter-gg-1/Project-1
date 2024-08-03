@@ -8,7 +8,7 @@ import 'employee.dart';
 import 'validation_employee.dart';
 
 extension EditEmployee on Employee {
-  bool validateEntry() {
+  bool validEntry() {
     if (validateNewName(name) &&
         validateNewPhone(phoneNum) &&
         validateAge('$age') &&

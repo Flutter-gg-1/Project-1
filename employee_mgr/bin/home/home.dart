@@ -55,6 +55,10 @@ class Home {
         if (user != null) {
           user.hasAccess() ? storage.selectEmployeeToEdit() : accessDeniedMsg();
         }
+      case 'del e':
+        if (user != null) {
+          user.hasAccess() ? storage.deleteEmployee() : accessDeniedMsg();
+        }
       case 'q':
         // Terminate app (Quit)
         terminateMsg();

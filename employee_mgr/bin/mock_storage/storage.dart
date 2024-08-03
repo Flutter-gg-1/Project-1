@@ -47,7 +47,7 @@ class Storage {
       fetchEmployees();
       print('Who are you? Enter your ID to login');
       var userInput = stdin.readLineSync();
-      var temp = employees.firstWhere((e) => e.id.toString() == userInput!,
+      var temp = allEmployees.firstWhere((e) => e.id.toString() == userInput!,
           orElse: () => Employee(name: '', phoneNum: '', age: -1, salary: -1));
 
       // Check if user exists
@@ -81,9 +81,10 @@ class Storage {
   }
 
   // Manager Functions
+  /// Logic implemented here because an employee object is required to use validation functions
   void addNewEmployee() {
     var shouldExit = false;
-    ColorfulPrint.magenta('Creating a new Employee');
+    ColorfulPrint.magenta('Creating a New Employee');
     do {
       print('''
 
@@ -120,9 +121,12 @@ class Storage {
                 age: numAge,
                 salary: numSalary,
                 role: selectedRole);
-            newEmployee.validateEntry()
-                ? allEmployees.add(newEmployee)
-                : print('Could not add a new employee!');
+            if (newEmployee.validEntry()) {
+              allEmployees.add(newEmployee);
+              ColorfulPrint.green('New Employee Added!');
+            } else {
+              ColorfulPrint.red('Failed to add Employee!');
+            }
           } catch (_) {
             ColorfulPrint.red('ERROR: Invalid Input');
           }
@@ -133,13 +137,32 @@ class Storage {
 
   void selectEmployeeToEdit() {
     fetchEmployees(showAll: true);
-    ColorfulPrint.magenta('Select an Employee ID to edit');
+    ColorfulPrint.magenta('Select an Employee ID to Edit');
     var userInput = stdin.readLineSync();
     List<Employee> arr =
         allEmployees.where((emp) => emp.id.toString() == userInput!).toList();
     if (arr.isNotEmpty) {
       var employee = arr.first;
       editEmployee(user: employee);
+    } else {
+      ColorfulPrint.red('ERROR: No employee found under id: $userInput!');
+    }
+  }
+
+  void deleteEmployee() {
+    fetchEmployees(showAll: true);
+    ColorfulPrint.magenta('Select an Employee ID to Delete');
+    var userInput = stdin.readLineSync();
+    List<Employee> arr =
+        allEmployees.where((emp) => emp.id.toString() == userInput!).toList();
+    if (arr.isNotEmpty) {
+      var employee = arr.first;
+      if (employee.id == currentUser!.id) {
+        ColorfulPrint.red('ERROR: Cannot delete current user');
+      } else {
+        allEmployees.remove(employee);
+        ColorfulPrint.green('${employee.name} Deleted!');
+      }
     } else {
       ColorfulPrint.red('ERROR: No employee found under id: $userInput!');
     }

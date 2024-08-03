@@ -16,6 +16,7 @@ extension HomePrintMessages on Home {
     Privilaged Functions:
       new e | Add New Employee
       ed e  | Edit Existing Employee Details
+      del e | Delete an Employee
       
       quit  | Terminate app
   ---------------------------------------
