@@ -49,7 +49,7 @@ class Home {
         storage.signOut();
       case 'new e':
         if (user != null) {
-          user.hasAccess() ? storage.selectEmployeeToEdit() : accessDeniedMsg();
+          user.hasAccess() ? storage.addNewEmployee() : accessDeniedMsg();
         }
       case 'ed e':
         if (user != null) {

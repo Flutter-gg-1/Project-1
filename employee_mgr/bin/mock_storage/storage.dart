@@ -94,26 +94,38 @@ class Storage {
           e.g:
           \x1B[33mJohn Doe - 0501112222 - 45 - 800 - 1\x1B[0m
 
-
-          To cancel and go back enter 'b'
+          ----------------
+          \x1B[33mb | go back Home\x1B[0m
+          ----------------
+          
        ''');
 
       var userInput = stdin.readLineSync();
-      var arr = userInput!.split('-');
-      if (arr.length != 5) {
-        ColorfulPrint.red('ERROR: Invalid number of fields');
+
+      if (userInput == 'b') {
+        shouldExit = true;
       } else {
-        try {
-          var numAge = int.parse(arr[2]);
-          var numSalary = double.parse(arr[3]);
-          // addNew(
-          //     name: arr[0],
-          //     phoneNum: arr[1],
-          //     age: numAge,
-          //     salary: numSalary,
-          //     role: arr[4]);
-        } catch (_) {
-          ColorfulPrint.red('ERROR: Invalid Input');
+        var arr = userInput!.split('-');
+        if (arr.length != 5) {
+          ColorfulPrint.red('ERROR: Invalid number of fields');
+        } else {
+          try {
+            var numAge = int.parse(arr[2]);
+            var numSalary = double.parse(arr[3]);
+            var selectedRole =
+                arr[4] == '2' ? EmployeeRole.manager : EmployeeRole.employee;
+            var newEmployee = Employee(
+                name: arr[0],
+                phoneNum: arr[1],
+                age: numAge,
+                salary: numSalary,
+                role: selectedRole);
+            newEmployee.validateEntry()
+                ? allEmployees.add(newEmployee)
+                : print('Could not add a new employee!');
+          } catch (_) {
+            ColorfulPrint.red('ERROR: Invalid Input');
+          }
         }
       }
     } while (!shouldExit);

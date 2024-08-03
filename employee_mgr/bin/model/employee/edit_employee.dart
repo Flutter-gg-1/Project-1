@@ -8,17 +8,15 @@ import 'employee.dart';
 import 'validation_employee.dart';
 
 extension EditEmployee on Employee {
-  void addNew(
-      {required String newName,
-      required String newPhone,
-      required int newAge,
-      required double newSalary,
-      required String newRole}) {
-    validateNewName(newName);
-    validateNewPhone(newPhone);
-    validateAge('$newAge');
-    validateSalary('$newSalary');
-    validateRole(newRole);
+  bool validateEntry() {
+    if (validateNewName(name) &&
+        validateNewPhone(phoneNum) &&
+        validateAge('$age') &&
+        validateSalary('$salary')) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   void editDetails() {
