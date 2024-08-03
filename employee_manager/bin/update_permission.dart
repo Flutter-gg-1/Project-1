@@ -17,7 +17,7 @@ updateEmployeePermission({required String employeeID}) {
           print("Are you sure to change the permission ?(Y:Yes,other:No)");
           String checkPermission = stdin.readLineSync()!;
           if (checkPermission == "Y" || checkPermission == "y") {
-            getEmployee[0]["employee_permssion"] = "1";
+            getEmployee[0]["employee_permssion"] = 1;
 
             print("Permission Updated To Admin :)");
           } else {
@@ -28,7 +28,7 @@ updateEmployeePermission({required String employeeID}) {
           print("Are you sure to change the permission ?(Y:Yes,other:No)");
           var checkPermission = stdin.readLineSync();
           if (checkPermission == "Y" || checkPermission == "y") {
-            getEmployee[0]["employee_permssion"] = "2";
+            getEmployee[0]["employee_permssion"] = 2;
 
             print("Permission Updated To User :)");
           } else {
