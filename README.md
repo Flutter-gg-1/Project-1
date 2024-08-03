@@ -17,11 +17,11 @@
 
 2. 1 : to update employee info 
 ---
-*  update by name or id you 
+*  update by name or id  
 
 ![alt text](img/nameorid.png)
 
-* after that you can chose what you want to update the permissions you can only chose for list admin or read or write
+* after that you can chose what you want to update the permissions you can only chose form list admin or read or write
 
 ![alt text](img/editemp.png)
 
