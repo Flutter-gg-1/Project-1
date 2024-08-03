@@ -17,10 +17,11 @@ void addEmployeea(){
     'id': id,
     'Name': name,
     'Permission': permission,
-    'Salary': name,
+    'Salary': salary,
     'Job Description': jobDesc,
     };
   emoployeesList.add(employee);
   print("A New Employee Is Successfully Added, Employee ID is is $id");
-  stdin.readLineSync();
+  stdin.readLineSync(); //for new line after display
+  
  }
