@@ -35,7 +35,7 @@ void main() {
         int id = employeeInfo[0];
         Employee employee = employeeInfo[1];
         employees[id] = employee;
-        print("Employee ${employee.name} is added to employees list ✅\n${employee.name}'s ID is $id\n");
+        print("Employee ${employee.name} is added to the company ✅\n${employee.name}'s ID is $id\n");
 
       // promote an employee
       case '3' :

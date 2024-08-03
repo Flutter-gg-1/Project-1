@@ -12,7 +12,7 @@ void appMenu({required String mode}) {
     print('-' * 30);
     print('| 4 |  Modify Employee Info  |');
     print('-' * 30);
-    print('| 5 |     Remove Employee    |');
+    print('| 5 |   Remove an Employee   |');
     print('-' * 30);
     print('| 0 |          EXIT          |');
     print('=' * 30);
