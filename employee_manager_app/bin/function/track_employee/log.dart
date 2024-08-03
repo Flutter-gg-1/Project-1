@@ -1,4 +1,5 @@
-
+import'/Users/basel/Desktop/flutter bootcamp/assignments/Project-1/employee_manager_app/bin/models/storage.dart';
+import'/Users/basel/Desktop/flutter bootcamp/assignments/Project-1/employee_manager_app/bin/utlis/print_with_color.dart';
 class Track{
   static Map<String,List> log = {};
   static DateTime time = DateTime.now();
@@ -22,14 +23,20 @@ class Track{
 
 
    static void printLog({
+    required String employeeName,
     required String name,
     Function(List)? callback
   }){
+      String permission = Storage.info[name]?[3];
     List spicficUserLog = [];
    if (callback!=null) {
-     
-     spicficUserLog.addAll(log[name] ?? []);
+     if (Storage.info.containsKey(name)&&permission!='Permission : A') {
+       PrintWithColor.red('you do not have the acsses');
+     } else {
+       spicficUserLog.addAll(log[employeeName] ?? []);
      callback(spicficUserLog);
+     }
+     
    } 
   }
 }
