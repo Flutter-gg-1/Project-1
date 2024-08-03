@@ -1,7 +1,7 @@
-import '../utils/colorful_print.dart';
+import '../../utils/colorful_print.dart';
+import '../enums/employee_role.dart';
+import '../enums/employee_status.dart';
 import 'employee.dart';
-import 'enums/employee_role.dart';
-import 'enums/employee_status.dart';
 
 // Functions For Data Validation
 extension ValidationEmployee on Employee {
@@ -10,22 +10,22 @@ extension ValidationEmployee on Employee {
       ColorfulPrint.red('ERROR: Name Cannot be empty!');
     } else {
       name = newName;
-      ColorfulPrint.green('Name updated successfully to $name');
+      ColorfulPrint.green('Name: $name is a valid entry');
     }
   }
 
   void validateNewPhone(String newPhone) {
     try {
       newPhone = newPhone.replaceAll(' ', '').replaceAll('\n', '');
-      var value = int.parse(newPhone);
+      var _ = int.parse(newPhone);
       if (newPhone.length != 10) {
         ColorfulPrint.red('ERROR: Entry is not 10 digits');
       } else {
-        phoneNum = value;
-        ColorfulPrint.green('Phone updated successfully to ${phoneStr()}');
+        phoneNum = newPhone;
+        ColorfulPrint.green('Phone: ${phoneStr()} is a valid entry');
       }
     } catch (_) {
-      print('ERROR: Entry contains non-digit characters!');
+      ColorfulPrint.red('ERROR: Entry contains non-digit characters!');
     }
   }
 
@@ -37,10 +37,10 @@ extension ValidationEmployee on Employee {
         ColorfulPrint.red('ERROR: Enter a number between 10 and 80');
       } else {
         age = value;
-        ColorfulPrint.green('Age updated successfully to $age');
+        ColorfulPrint.green('Age: $age is a valid entry');
       }
     } catch (_) {
-      print('ERROR: Entry contains non-digit characters!');
+      ColorfulPrint.red('ERROR: Entry contains non-digit characters!');
     }
   }
 
@@ -52,10 +52,10 @@ extension ValidationEmployee on Employee {
         ColorfulPrint.red('ERROR: Enter a number between 500 and 100,000');
       } else {
         salary = value;
-        ColorfulPrint.green('Salary updated successfully to ${salaryStr()}');
+        ColorfulPrint.green('Salary ${salaryStr()} is a valid entry');
       }
     } catch (_) {
-      print('ERROR: Entry is not a number!');
+      ColorfulPrint.red('ERROR: Entry is not a number!');
     }
   }
 
@@ -63,10 +63,10 @@ extension ValidationEmployee on Employee {
     switch (newRole) {
       case '1':
         role = EmployeeRole.employee;
-        ColorfulPrint.green('Role updated successfully to ${role.name}');
+        ColorfulPrint.green('New Role selection is ${role.name}');
       case '2':
         role = EmployeeRole.manager;
-        ColorfulPrint.green('Role updated successfully to ${role.name}');
+        ColorfulPrint.green('New Role selection is ${role.name}');
       default:
         ColorfulPrint.red('ERROR: Invalid Input');
     }
@@ -76,10 +76,10 @@ extension ValidationEmployee on Employee {
     switch (newState) {
       case '1':
         state = EmployeeStatus.active;
-        ColorfulPrint.green('State updated successfully to ${state.name}');
+        ColorfulPrint.green('New State selection is ${state.name}');
       case '2':
         state = EmployeeStatus.inActive;
-        ColorfulPrint.green('State updated successfully to ${state.name}');
+        ColorfulPrint.green('New State selection is ${state.name}');
       default:
         ColorfulPrint.red('ERROR: Invalid Input');
     }

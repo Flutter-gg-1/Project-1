@@ -8,16 +8,16 @@ extension HomePrintMessages on Home {
   void instructionsMsg() => ColorfulPrint.yellow('''
   ---------------------------------------
     Common Functions:
-      1  | Show my Info
-      2  | Edit my Info
-      3  | List Employees
-
-      so | SignOut
-      q  | Terminate app
+      my | Show my Info
+      ed | Edit my Info
+      li | List Employees
+      so | Sign Out
 
     Privilaged Functions:
-      new | Add New Employee
-      lm  | List Managers
+      new e | Add New Employee
+      ed e  | Edit Existing Employee Details
+      
+      quit  | Terminate app
   ---------------------------------------
     ''');
 
@@ -27,6 +27,8 @@ extension HomePrintMessages on Home {
     * Welcome to FANTASY LAND! *
 
     Logged in as: ${storage.currentUser == null ? '' : storage.currentUser!.name}
+    Role: ${storage.currentUser == null ? '' : storage.currentUser!.role.name}
+    
     Enter 'i' for Instructions
   -------------------------------------
     ''');

@@ -5,12 +5,11 @@ import 'home_print_messages.dart';
 
 class Home {
   // Creates an instance of the mock storage
-  var storage = Storage();
+  var storage = Storage.shared;
   // Flag tp Terminate the app
   var shouldExit = false;
 
   /* MARK: - FUNCTIONS */
-
   // App Home
   void runApp() {
     do {
@@ -26,32 +25,40 @@ class Home {
 
   // Cases for user input
   void handleUserInput(String str) {
-    var user = storage.currentUser;
+    var user = Storage.shared.currentUser;
     switch (str) {
-      case '1':
+      case 'i':
+        // Instructions
+        instructionsMsg();
+      case 'my':
+        // My Info
         (user != null)
-            ? user.showEmployeeDeatails(fullAccess: true, short: false)
+            ? user.showEmployeeDetails(fullAccess: true, short: false)
             : userError();
-      case '2':
+      case 'ed':
+        // Edit My Info
         if (user != null) {
           storage.editEmployee(user: user);
         }
-      case '3':
-        storage.fetchAllEmployees(isShort: false);
-      case 'i':
-        instructionsMsg();
-      case 's':
+      case 'li':
+        // List Employees
+        storage.fetchEmployees(isShort: false);
+      case 'so':
+        // Sign Out
         signOutMsg();
         storage.signOut();
+      case 'new e':
+        if (user != null) {
+          user.hasAccess() ? storage.selectEmployeeToEdit() : accessDeniedMsg();
+        }
+      case 'ed e':
+        if (user != null) {
+          user.hasAccess() ? storage.selectEmployeeToEdit() : accessDeniedMsg();
+        }
       case 'q':
+        // Terminate app (Quit)
         terminateMsg();
         shouldExit = true;
-      case 'new':
-        print('');
-
-      case 'lm':
-        print('');
-
       default:
         unknownInputMsg();
     }
