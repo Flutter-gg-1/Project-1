@@ -41,13 +41,15 @@ diseplayEmployee(){
 
 diseplayEmployeeLog(){
   PrintWithColor.blue('=========Employees Log==========');
-  PrintWithColor.green('enter the employee name : ');
-  String employeeName =stdin.readLineSync().toString().trim();
   PrintWithColor.green('enter the YOUR name : ');
   String name =stdin.readLineSync().toString().trim();
+  PrintWithColor.green('enter the employee name : ');
+  String employeeName =stdin.readLineSync().toString().trim();
+  
   //use clausers to check if the emplyee log exiest
   log.Track.printLog(employeeName: employeeName,name: name,callback: (p0) {
    if (log.Track.log.containsKey(employeeName)) {
+      PrintWithColor.red('$employeeName log :\n');
       for (var element in p0) {
         PrintWithColor.purple(element);
       } 

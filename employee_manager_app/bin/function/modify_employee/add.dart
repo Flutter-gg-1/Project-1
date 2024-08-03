@@ -8,9 +8,9 @@ String name = stdin.readLineSync().toString().trim();
 PrintWithColor.green('enter the salary :');
 double salary = double.parse(stdin.readLineSync().toString().trim());
 PrintWithColor.green('enter the job title :');
-String jobDescription = stdin.readLineSync().toString().trim();
-PrintWithColor.green('enter the job description :');
 String jobTitle = stdin.readLineSync().toString().trim();
+PrintWithColor.green('enter the job description :');
+String jobDescription = stdin.readLineSync().toString().trim();
 PrintWithColor.green('enter the permission :');
 String permission = stdin.readLineSync().toString().trim();
 
@@ -23,5 +23,6 @@ Storage.info.addAll({
     ]});
     log.Track.addToLog(name: name, opration:'add a new employee'); 
     PrintWithColor.green('Employee $name has been created with info :');
-    print('${Storage.info[name]}');   
+    print('${Storage.info[name]}');    
+
 }

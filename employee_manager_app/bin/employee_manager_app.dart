@@ -1,17 +1,11 @@
-import 'models/employee.dart';
+import './utlis/menu.dart';
+import './utlis/print_with_color.dart';
 void main(List<String> arguments) {
- Employee test = Employee();
+Menu display = Menu();
 
- test.addEmployee();
- test.addEmployee();
-
-
-//  test.modifyEmployee();
-//  test.modifyEmployee();
-
-
-
-
- test.diseplayEmployeeLog();
- test.diseplayEmployeeLog();
+while (true) {
+  PrintWithColor.blue('\n\n================Employee Manager===================');
+  display.menu();
+  
+}
 }

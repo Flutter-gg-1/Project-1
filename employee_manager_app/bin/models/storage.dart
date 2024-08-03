@@ -1,3 +1,3 @@
 class Storage{
-  static Map<String,List> info= {};
+  static final Map<String,List> info= {};
 }

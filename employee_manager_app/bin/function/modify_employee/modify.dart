@@ -12,7 +12,7 @@ modify(){
       modifySalary();
       break;
     case '2':
-      PrintWithColor.red('Permission type = A , B , C');
+      PrintWithColor.red('Note : Permission types are A , B , C');
       modifyPermission();
       break;
     case '3':
