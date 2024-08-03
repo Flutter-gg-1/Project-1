@@ -1,1 +1,1 @@
-enum EmployeeFields { name, phone, age, salary, role, activeState }
+enum EmployeeFields { name, phone, age, jobDesc, salary, role, activeState }

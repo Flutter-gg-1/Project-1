@@ -30,32 +30,32 @@ class Home {
       case 'i':
         // Instructions
         instructionsMsg();
-      case 'my':
+      case 'my info':
         // My Info
         (user != null)
             ? user.showEmployeeDetails(fullAccess: true, short: false)
             : userError();
-      case 'ed':
+      case 'edit':
         // Edit My Info
         if (user != null) {
           storage.editEmployee(user: user);
         }
-      case 'li':
+      case 'list':
         // List Employees
         storage.fetchEmployees(isShort: false);
-      case 'so':
+      case 'signOut':
         // Sign Out
         signOutMsg();
         storage.signOut();
-      case 'new e':
+      case 'new emp':
         if (user != null) {
           user.hasAccess() ? storage.addNewEmployee() : accessDeniedMsg();
         }
-      case 'ed e':
+      case 'edit emp':
         if (user != null) {
           user.hasAccess() ? storage.selectEmployeeToEdit() : accessDeniedMsg();
         }
-      case 'del e':
+      case 'del emp':
         if (user != null) {
           user.hasAccess() ? storage.deleteEmployee() : accessDeniedMsg();
         }

@@ -52,6 +52,17 @@ extension ValidationEmployee on Employee {
     }
   }
 
+  bool validateJobDesc(String newJobDesc) {
+    if (newJobDesc.isEmpty) {
+      ColorfulPrint.red('ERROR: Job Desc. Cannot be empty!');
+      return false;
+    } else {
+      jobDescription = newJobDesc;
+      ColorfulPrint.green('Job Desc.: $jobDescription is a valid entry');
+      return true;
+    }
+  }
+
   bool validateSalary(String newSalary) {
     try {
       newSalary = newSalary.replaceAll(' ', '').replaceAll(',', '');

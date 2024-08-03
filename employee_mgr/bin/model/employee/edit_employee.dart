@@ -12,6 +12,7 @@ extension EditEmployee on Employee {
     if (validateNewName(name) &&
         validateNewPhone(phoneNum) &&
         validateAge('$age') &&
+        validateJobDesc(jobDescription) &&
         validateSalary('$salary')) {
       return true;
     } else {
@@ -30,9 +31,10 @@ extension EditEmployee on Employee {
       1 | Name
       2 | Phone
       3 | Age
-      4 | Salary
-      5 | Role
-      6 | Active State
+      4 | Job Desc.
+      5 | Salary
+      6 | Role
+      7 | Active State
 
       b | Back to Home
 
@@ -56,21 +58,29 @@ extension EditEmployee on Employee {
       case '4':
         (currentUser.role == EmployeeRole.manager)
             ? currentUser.id == id
-                ? print('You cannot change your own Salary!')
-                : editField(fieldName: EmployeeFields.salary)
+                ? ColorfulPrint.red(
+                    'You cannot change your own Job Description!')
+                : editField(fieldName: EmployeeFields.jobDesc)
             : ColorfulPrint.red(
                 'You do not have Access Rights to edit this field');
       case '5':
         (currentUser.role == EmployeeRole.manager)
             ? currentUser.id == id
-                ? print('You cannot change your own Role!')
-                : editField(fieldName: EmployeeFields.role, selectionEdit: true)
+                ? ColorfulPrint.red('You cannot change your own Salary!')
+                : editField(fieldName: EmployeeFields.salary)
             : ColorfulPrint.red(
                 'You do not have Access Rights to edit this field');
       case '6':
         (currentUser.role == EmployeeRole.manager)
             ? currentUser.id == id
-                ? print('You cannot DeActivate your self!')
+                ? ColorfulPrint.red('You cannot change your own Role!')
+                : editField(fieldName: EmployeeFields.role, selectionEdit: true)
+            : ColorfulPrint.red(
+                'You do not have Access Rights to edit this field');
+      case '7':
+        (currentUser.role == EmployeeRole.manager)
+            ? currentUser.id == id
+                ? ColorfulPrint.red('You cannot DeActivate your self!')
                 : editField(
                     fieldName: EmployeeFields.activeState, selectionEdit: true)
             : ColorfulPrint.red(
@@ -106,6 +116,8 @@ extension EditEmployee on Employee {
         validateNewPhone(userInput ?? '');
       case EmployeeFields.age:
         validateAge(userInput ?? '');
+      case EmployeeFields.jobDesc:
+        validateJobDesc(userInput ?? '');
       case EmployeeFields.salary:
         validateSalary(userInput ?? '');
       case EmployeeFields.role:

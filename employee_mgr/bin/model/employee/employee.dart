@@ -9,6 +9,7 @@ class Employee {
   String name;
   String phoneNum;
   int age;
+  String jobDescription;
   double salary;
   EmployeeStatus state;
   // Employee Role is used for permissions and Access Rights
@@ -18,6 +19,7 @@ class Employee {
       {required this.name,
       required this.phoneNum,
       required this.age,
+      required this.jobDescription,
       required this.salary,
       this.role = EmployeeRole.employee,
       this.state = EmployeeStatus.active});
@@ -38,14 +40,15 @@ class Employee {
   void detailedPrint(bool fullAccess) {
     print('''
     \x1B[34m-----------------------------------\x1B[0m
-    Company:\x1B[32m  $companyName  \x1B[0m
-    Id:     \x1B[32m  $id \x1B[0m
-    Name:   \x1B[32m  $name \x1B[0m
-    Phone:  \x1B[32m  ${phoneStr()} \x1B[0m
-    Age:    \x1B[32m  ${fullAccess ? age : '**'}  \x1B[0m
-    Salary: \x1B[32m  ${fullAccess ? salaryStr() : '**'}  \x1B[0m
-    Role:   \x1B[32m  ${role.name}  \x1B[0m
-    Status: \x1B[32m  ${state.name}  \x1B[0m
+    Company:  \x1B[32m  $companyName  \x1B[0m
+    Id:       \x1B[32m  $id \x1B[0m
+    Name:     \x1B[32m  $name \x1B[0m
+    Phone:    \x1B[32m  ${phoneStr()} \x1B[0m
+    Age:      \x1B[32m  ${fullAccess ? age : '**'}  \x1B[0m
+    Job Desc. \x1B[32m  $jobDescription \x1B[0m
+    Salary:   \x1B[32m  ${fullAccess ? salaryStr() : '**'}  \x1B[0m
+    Role:     \x1B[32m  ${role.name}  \x1B[0m
+    Status:   \x1B[32m  ${state.name}  \x1B[0m
     \x1B[34m-----------------------------------\x1B[0m
     ''');
   }

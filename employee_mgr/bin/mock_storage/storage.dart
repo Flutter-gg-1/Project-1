@@ -23,19 +23,22 @@ class Storage {
           Employee(
               name: 'John Doe',
               phoneNum: '1235557799',
-              age: 24,
-              salary: 4320.64),
+              age: 26,
+              jobDescription: 'Technician',
+              salary: 7320.64),
           Employee(
-              name: 'Richard Smith',
+              name: 'Charls Legend',
               phoneNum: '1234446688',
-              age: 32,
-              salary: 7810.64,
+              age: 45,
+              jobDescription: 'Big Boss',
+              salary: 45810.64,
               role: EmployeeRole.manager),
           Employee(
               name: 'Jack Sparrow',
               phoneNum: '1234446688',
               age: 23,
-              salary: 3564.12,
+              jobDescription: 'Sales Executive',
+              salary: 14564.12,
               role: EmployeeRole.employee,
               state: EmployeeStatus.inActive),
         ];
@@ -48,7 +51,8 @@ class Storage {
       print('Who are you? Enter your ID to login');
       var userInput = stdin.readLineSync();
       var temp = allEmployees.firstWhere((e) => e.id.toString() == userInput!,
-          orElse: () => Employee(name: '', phoneNum: '', age: -1, salary: -1));
+          orElse: () => Employee(
+              name: '', phoneNum: '', age: -1, jobDescription: '', salary: -1));
 
       // Check if user exists
       currentUser = temp.name.isEmpty ? null : temp;
@@ -88,16 +92,15 @@ class Storage {
     do {
       print('''
 
-          Enter the details in the following format: 
-          \x1B[33mName  -  Phone   -  Age  -  Salary   -  Role\x1B[0m
-                 (numbers)  (number) (number) (1 = employee, 2 = mgr)
+  Enter the details in the following format: 
+  \x1B[33mName\x1B[0m -  \x1B[33mPhone\x1B[0m - \x1B[33mAge\x1B[0m - \x1B[33mJob Desc.\x1B[0m - \x1B[33mSalary\x1B[0m - \x1B[33mRole\x1B[0m(m = mgr, e = emp)
 
-          e.g:
-          \x1B[33mJohn Doe - 0501112222 - 45 - 800 - 1\x1B[0m
+  e.g:
+  \x1B[33mJohn Doe - 0501112222 - 45  - Accountant - 800 - e\x1B[0m
 
-          ----------------
-          \x1B[33mb | go back Home\x1B[0m
-          ----------------
+  ----------------
+  \x1B[35mb | go back Home\x1B[0m
+  ----------------
           
        ''');
 
@@ -107,18 +110,20 @@ class Storage {
         shouldExit = true;
       } else {
         var arr = userInput!.split('-');
-        if (arr.length != 5) {
-          ColorfulPrint.red('ERROR: Invalid number of fields');
+        if (arr.length != 6) {
+          ColorfulPrint.red(
+              'ERROR: Invalid number of fields\n make sure you follow the rquired format');
         } else {
           try {
             var numAge = int.parse(arr[2]);
-            var numSalary = double.parse(arr[3]);
+            var numSalary = double.parse(arr[4]);
             var selectedRole =
-                arr[4] == '2' ? EmployeeRole.manager : EmployeeRole.employee;
+                arr[5] == 'm' ? EmployeeRole.manager : EmployeeRole.employee;
             var newEmployee = Employee(
                 name: arr[0],
                 phoneNum: arr[1],
                 age: numAge,
+                jobDescription: arr[4],
                 salary: numSalary,
                 role: selectedRole);
             if (newEmployee.validEntry()) {
@@ -128,7 +133,8 @@ class Storage {
               ColorfulPrint.red('Failed to add Employee!');
             }
           } catch (_) {
-            ColorfulPrint.red('ERROR: Invalid Input');
+            ColorfulPrint.red(
+                'ERROR: Invalid Input. Age and Salary fields are numbers only');
           }
         }
       }

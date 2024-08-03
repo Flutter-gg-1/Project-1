@@ -8,17 +8,17 @@ extension HomePrintMessages on Home {
   void instructionsMsg() => ColorfulPrint.yellow('''
   ---------------------------------------
     Common Functions:
-      my | Show my Info
-      ed | Edit my Info
-      li | List Employees
-      so | Sign Out
+      my info  | Show my Info
+      edit     | Edit my Info
+      list all | List Employees
+      signOut  | Sign Out
 
     Privilaged Functions:
-      new e | Add New Employee
-      ed e  | Edit Existing Employee Details
-      del e | Delete an Employee
-      
-      quit  | Terminate app
+      new emp  | Add New Employee
+      edit emp | Edit Existing Employee Details
+      del emp  | Delete an Employee
+  ---------------------------------------
+      q        | Terminate app
   ---------------------------------------
     ''');
 
