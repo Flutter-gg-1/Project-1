@@ -35,11 +35,9 @@ void addEmployee() {
     'permissions': permissions
   });
   employeeList.add(employee);
-  print(employeeList);
+  // printMyValue function call for show employee list
+  printMyValue(employeeList);
 
   //showPrompt function call for next operation
   showPrompt();
-
 }
-
-
