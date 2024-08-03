@@ -27,7 +27,7 @@ addEmplyee() {
     print("Salary: ");
     salary = double.parse(stdin.readLineSync()!);
   }
-  print("Employee description: ");
+  print("Employee job description: ");
   String jobDescription = stdin.readLineSync()!;
 // map for storing emloyee's data
   Map<String, dynamic> employeesMap = {
