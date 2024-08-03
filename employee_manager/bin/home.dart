@@ -14,6 +14,7 @@ class Home {
     2 | Display all employees
     3 | Update an employee
     4 | Assign permission to an employee
+    5 | List all employee
     C | Exit
   
   
@@ -100,6 +101,11 @@ class Home {
         print("Assign permission to an employee");
         String updateEmployeeID = stdin.readLineSync().toString();
         updateEmployeePermission(employeeID: updateEmployeeID);
+        stdin.readLineSync();
+        Home.instruction();
+      case '5':
+        print("List all employee:");
+        print(allEmployee);
         stdin.readLineSync();
         Home.instruction();
 
