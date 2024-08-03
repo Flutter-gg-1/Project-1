@@ -28,8 +28,10 @@ runApp(Departments mainDep) {
 
   const String serId = "id";
   const String serNAme = "name";
-
-  
+  print("\n\n");
+print("#"*50);
+  print("\nwelocme to Employee Manger App \n");
+  print("#"*50);
 
   while (op != "6") {
 
@@ -159,7 +161,7 @@ whileBreak :
           mainDep = tempDep;
 
         }
-        
+
 
         break;
 
