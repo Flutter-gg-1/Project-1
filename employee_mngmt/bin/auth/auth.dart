@@ -31,7 +31,8 @@ Future<String> login() async {
   }
 }
 
-updateLoginList(Employee emp, {String? hashedPassword}) {
+updateLoginList(Employee emp,
+    {String? hashedPassword, bool? isToDelete, Map<String, dynamic>? empty}) {
   //Update login.json
   Map<String, dynamic> newLogin = {
     'empID': emp.empID,
@@ -46,6 +47,11 @@ updateLoginList(Employee emp, {String? hashedPassword}) {
   bool found = false;
   for (int i = 0; i < temp2.length; i++) {
     if (temp2[i]['empID'] == emp.empID) {
+      if (isToDelete != null) {
+        found = true;
+        temp2[i] = empty;
+        break;
+      }
       temp2[i]['passwordHash'] = hashedPassword;
       found = true;
       break;

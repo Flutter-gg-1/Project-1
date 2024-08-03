@@ -46,9 +46,9 @@ class Employee {
       emp.password = setPassword(emp);
       listOfEmployees.add(emp);
       updateEmployeeList(emp);
-      return emp.firstName!;
+      return emp.empID!;
     }
-    return emp.firstName!;
+    return emp.empID!;
   }
 
   static String generateEmployeeID() {
@@ -119,6 +119,18 @@ class Employee {
     emp.dept = updatedInfo['department'];
     emp.jobDescription = updatedInfo['jobDescription'];
     emp.salary = updatedInfo['salary'];
+  }
+
+  static deleteEmployee(Employee emp) {
+    stdout
+        .write('Are you sure you want to delete Employee ${emp.empID}?? y/n: ');
+    String answer = stdin.readLineSync()!;
+    if (answer.toLowerCase() == 'y') {
+      updateEmployeeInJson(emp, emp.empID!, isToDelete: true);
+      updateLoginList(emp, isToDelete: true, empty: {});
+    } else {
+      print('Employee Not deleted.');
+    }
   }
 
   static viewInfo(Employee? emp) {

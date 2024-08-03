@@ -28,8 +28,8 @@ void main(List<String> arguments) async {
             case '1':
               print('To add a new Employee, complete the following\n');
               Map<String, dynamic> map = Employee.fillEmployeeInformation(null);
-              String firstName = Employee.storeInfo(Employee.fromMap(map));
-              print('Employee $firstName Added Successfully!!');
+              String empID = Employee.storeInfo(Employee.fromMap(map));
+              print('Employee $empID Added Successfully!!');
               stdin.readLineSync();
             case '2':
               stdout.write('Enter Employee ID: ');
@@ -40,6 +40,7 @@ void main(List<String> arguments) async {
               print('3: Update Salary');
               print('4: Update Job Description');
               print('5: Set Permissoins');
+              print('6: Delete Employee');
 
               stdout.write('\nEnter your choice: ');
               String? choice = stdin.readLineSync();
@@ -75,6 +76,8 @@ void main(List<String> arguments) async {
                     print('Employee NOT added to the list of Permissoins.');
                   }
                   stdin.readLineSync();
+                case '6':
+                  Employee.deleteEmployee(Employee.getEmployee(empID!)!);
                 default:
               }
 

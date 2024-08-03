@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:convert';
 import '../employee.dart';
 import '../employee_mngmt.dart';
+import '../auth/auth.dart';
 
 readFiles(List<dynamic> files) {
   File empFile = File('bin/lists/employee.json');
@@ -72,13 +73,18 @@ Future<void> updateEmployeeList(Employee emp,
   file.writeAsStringSync(update, mode: FileMode.write);
 }
 
-void updateEmployeeInJson(Employee emp, String empID) {
+void updateEmployeeInJson(Employee emp, String empID, {bool? isToDelete}) {
   File file = File('bin/lists/employee.json');
   String records = file.readAsStringSync();
   List<dynamic> employees = jsonDecode(records);
 
   for (var i = 0; i < employees.length; i++) {
     if (employees[i]['empID'] == empID) {
+      if (isToDelete != null) {
+        Employee.listOfEmployees.remove(emp);
+        updateEmployeeList(emp, updatedInfo: {});
+        return;
+      }
       Map<String, dynamic> updatedInfo =
           Employee.fillEmployeeInformation(empID);
       Employee.updateEmployee(emp, updatedInfo);

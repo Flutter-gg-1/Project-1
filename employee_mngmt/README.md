@@ -10,7 +10,8 @@ The Employee Management System is a console-based application built using Dart. 
 - **Employee** view, update information including password.
 
 - **Authentication:** Secure login with hashed passwords.
-- **File Management:** Get data using JSON files for employees, logins, and permissions.
+- **File Management:** Store data using JSON files for employees, logins, and permissions.
+- **File Reading** Every time the program runs, it read json files and users can start using it.
 - **Password Management:** Update passwords with SHA-256 hashing for security.
 
 
@@ -51,13 +52,9 @@ The Employee Management System is a console-based application built using Dart. 
 
 ![Give Employee Permission to Modify](../employee_mngmt/images/Admin2.5.png)
 
+- Enter 6 to Delete Employee
+
+![Delete Employee](../employee_mngmt/images/Admin2.6.png)
+
+
 - Enter 0 to Exit
-
-
-
-
-
-
-
-
-
