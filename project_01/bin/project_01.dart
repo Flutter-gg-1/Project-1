@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'employee_manager.dart';
 
 void main() {
   while (true) {
@@ -15,6 +16,7 @@ void main() {
 
     switch (choice) {
       case "1":
+        addEmployee();
         break;
       case "2":
         break;
