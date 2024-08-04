@@ -1,25 +1,21 @@
 import 'dart:io';
 import 'employee.dart';
-import 'print_info.dart';
 
-// List to store employee data
 List<Employee> employees = [];
 
 void addEmployee() {
-  // Add New Employee information
-  print("\nAdd New Employee\n");
   print("Enter employee name:");
   String name = stdin.readLineSync() ?? "";
 
   print("Enter employee salary:");
-  double salary = double.tryParse(stdin.readLineSync() ?? "") ?? 0;
+  double salary = double.tryParse(stdin.readLineSync() ?? "") ?? 0.0;
 
   print("Enter job description:");
   String jobDescription = stdin.readLineSync() ?? "";
 
-  print("Enter permissions:");
+  print("Enter permissions (comma separated):");
   Set<String> permissions =
-      (stdin.readLineSync() ?? "").split("").map((e) => e.trim()).toSet();
+      (stdin.readLineSync() ?? "").split(',').map((e) => e.trim()).toSet();
 
   Employee newEmployee = Employee(
       name: name,
@@ -27,41 +23,85 @@ void addEmployee() {
       jobDescription: jobDescription,
       permissions: permissions);
   employees.add(newEmployee);
-
-  // Validate input
-  if (name != "" &&
-      salary != 0 &&
-      jobDescription != "" &&
-      permissions.isNotEmpty) {
-    print("Employee added successfully.");
-  } else {
-    print("Invalid input. Please try again.");
-  }
+  print("Employee added successfully.");
 }
 
 void assignPermissions() {
-  // Assign permissions to an employee
   print("Enter employee name to assign permissions:");
   String name = stdin.readLineSync() ?? "";
 
-  // Find employee by name
   Employee? employee = findEmployeeByName(name);
   if (employee == null) {
     print("Employee not found.");
     return;
   }
 
-  // Display employee permissions
-  print("Enter permissions to assign:");
+  print("Enter new permissions (comma separated):");
   Set<String> newPermissions =
-      (stdin.readLineSync() ?? "").split(" ").map((e) => e.trim()).toSet();
+      (stdin.readLineSync() ?? "").split(',').map((e) => e.trim()).toSet();
 
-  // Update employee permissions
   employee.permissions = newPermissions;
   print("Permissions updated successfully.");
 }
 
-//This function is used to find an employee by name
+void displayEmployeeData() {
+  print("Enter employee name to display data:");
+  String name = stdin.readLineSync() ?? "";
+
+  Employee? employee = findEmployeeByName(name);
+  if (employee == null) {
+    print("Employee not found.");
+    return;
+  }
+
+  printEmployeeDetails(employee);
+}
+
+void modifySalary() {
+  print("Enter employee name to modify salary:");
+  String name = stdin.readLineSync() ?? "";
+
+  Employee? employee = findEmployeeByName(name);
+  if (employee == null) {
+    print("Employee not found.");
+    return;
+  }
+
+  print("Enter new salary:");
+  double newSalary =
+      double.tryParse(stdin.readLineSync() ?? "") ?? employee.salary;
+
+  employee.salary = newSalary;
+  print("Salary updated successfully.");
+}
+
+void modifyJobDescription() {
+  print("Enter employee name to modify job description:");
+  String name = stdin.readLineSync() ?? "";
+
+  Employee? employee = findEmployeeByName(name);
+  if (employee == null) {
+    print("Employee not found.");
+    return;
+  }
+
+  print("Enter new job description:");
+  String newJobDescription = stdin.readLineSync() ?? employee.jobDescription;
+
+  employee.jobDescription = newJobDescription;
+  print("Job description updated successfully.");
+}
+
+void listAllEmployees() {
+  if (employees.isEmpty) {
+    print("No employees found.");
+  } else {
+    for (var employee in employees) {
+      printEmployeeDetails(employee);
+    }
+  }
+}
+
 Employee? findEmployeeByName(String name) {
   for (var employee in employees) {
     if (employee.name == name) {
@@ -71,16 +111,9 @@ Employee? findEmployeeByName(String name) {
   return null;
 }
 
-//This function will display the employee data
-void displayEmployeeData() {
-  print("Enter employee name to display data:");
-  String name = stdin.readLineSync() ?? "";
-
-  // Find employee by name
-  Employee? employee = findEmployeeByName(name);
-  if (employee == null) {
-    print("Employee not found.");
-    return;
-  }
-  printEmployeeDetails(employee);
+void printEmployeeDetails(Employee employee) {
+  print("Name: ${employee.name}");
+  print("Salary: \$${employee.salary.toStringAsFixed(2)}");
+  print("Job Description: ${employee.jobDescription}");
+  print("Permissions: ${employee.permissions.join(', ')}");
 }
