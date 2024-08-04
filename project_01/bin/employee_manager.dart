@@ -37,3 +37,35 @@ void addEmployee() {
     print("Invalid input. Please try again.");
   }
 }
+
+void assignPermissions() {
+  // Assign permissions to an employee
+  print("Enter employee name to assign permissions:");
+  String name = stdin.readLineSync() ?? "";
+
+  // Find employee by name
+  Employee? employee = findEmployeeByName(name);
+  if (employee == null) {
+    print("Employee not found.");
+    return;
+  }
+
+  // Display employee permissions
+  print("Enter permissions to assign:");
+  Set<String> newPermissions =
+      (stdin.readLineSync() ?? "").split(" ").map((e) => e.trim()).toSet();
+
+  // Update employee permissions
+  employee.permissions = newPermissions;
+  print("Permissions updated successfully.");
+}
+
+//This function is used to find an employee by name
+Employee? findEmployeeByName(String name) {
+  for (var employee in employees) {
+    if (employee.name == name) {
+      return employee;
+    }
+  }
+  return null;
+}

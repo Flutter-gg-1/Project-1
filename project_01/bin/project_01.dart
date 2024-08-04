@@ -19,6 +19,7 @@ void main() {
         addEmployee();
         break;
       case "2":
+        assignPermissions();
         break;
       case "3":
         break;
