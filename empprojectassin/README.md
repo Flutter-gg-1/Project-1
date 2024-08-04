@@ -1,6 +1,11 @@
 # Employee Manager
 
 ### How to run and test the Project?
+![Image description](./bin/images/starting.png)
+![Image description](./bin/images/addEmp.png)
+![Image description](./bin/images/display.png)
+![Image description](./bin/images/salary.png)
+
 <ol>
 <li>add Employee
 <ul>

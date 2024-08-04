@@ -20,13 +20,14 @@ updateEmployee(String inputID) {
         //###########Modify Salary
         case '0':
           double newSalary;
-          print('Employee: ${copyOfData["empName"]} new Salary is: ');
+          print(
+              'Employee: ${copyOfData["empName"]} new Salary most be above 3000: ');
           newSalary = double.parse(stdin.readLineSync()!);
           if (newSalary > 3000 || newSalary < 50000) {
             copyOfData['salary'] = newSalary;
             print('Salary changed successfully');
           } else {
-            print('most be above 3000 ');
+            print('most be above 3000 \x1B[0m');
           }
           break;
         //###########Modify Description
@@ -50,6 +51,7 @@ updateEmployee(String inputID) {
             case '2':
               permission = 'Employeer';
             default:
+              print('nothing change only choose 0/1/2');
           }
           copyOfData['permission'] = permission;
           print('permission changed successfully');
@@ -59,7 +61,7 @@ updateEmployee(String inputID) {
           isExit = true;
           break;
         default:
-          print('please only write the showing number');
+          print('$redBG please only write the showing number\x1B[0m');
       }
       empData[int.parse(inputID)] = copyOfData;
     } while (!isExit);

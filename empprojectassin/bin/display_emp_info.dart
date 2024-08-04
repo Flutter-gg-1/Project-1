@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'colors.dart';
 
 //display Employee information
 displayInfo({required List<Map<String, dynamic>> displayListInfo}) {
@@ -14,6 +15,6 @@ displayInfo({required List<Map<String, dynamic>> displayListInfo}) {
     }
     stdin.readLineSync();
   } else {
-    print('there is no Employees');
+    print('$redBG there is no Employees\x1B[0m');
   }
 }
