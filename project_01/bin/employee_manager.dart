@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'employee.dart';
+import 'print_info.dart';
 
 // List to store employee data
 List<Employee> employees = [];
@@ -68,4 +69,18 @@ Employee? findEmployeeByName(String name) {
     }
   }
   return null;
+}
+
+//This function will display the employee data
+void displayEmployeeData() {
+  print("Enter employee name to display data:");
+  String name = stdin.readLineSync() ?? "";
+
+  // Find employee by name
+  Employee? employee = findEmployeeByName(name);
+  if (employee == null) {
+    print("Employee not found.");
+    return;
+  }
+  printEmployeeDetails(employee);
 }

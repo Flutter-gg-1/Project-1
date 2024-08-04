@@ -22,6 +22,7 @@ void main() {
         assignPermissions();
         break;
       case "3":
+        displayEmployeeData();
         break;
       case "4":
         break;
